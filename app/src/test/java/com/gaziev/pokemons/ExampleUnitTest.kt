@@ -1,4 +1,4 @@
-package com.gaziev.api_example
+package com.gaziev.pokemons
 
 import org.junit.Test
 
