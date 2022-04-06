@@ -30,7 +30,7 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>() {
                 }
                 }
             }
-
         }
     }
+
 }

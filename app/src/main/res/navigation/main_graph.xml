@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.gaziev.pokemons.ui.screens.FavoriteFragment"
+        android:name="com.gaziev.pokemons.ui.screens.favorites.FavoritesFragment"
         android:label="FavoriteFragment" />
     <activity
         android:id="@+id/mainActivity"

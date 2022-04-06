@@ -2,11 +2,12 @@
     <item
         android:id="@+id/page_1"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="one"/>
+        android:icon="@drawable/icon_5"
+        android:iconTint="@color/white"
+        android:title="POKEMONS"/>
     <item
         android:id="@+id/page_2"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="two"/>
+        android:icon="@drawable/icon_13"
+        android:title="LIKES"/>
 </menu>
