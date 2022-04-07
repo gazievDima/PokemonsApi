@@ -8,7 +8,7 @@ import com.gaziev.pokemons.ui.models.PokemonUI
 
 class PokemonsAdapter(
     private val pokemons: List<PokemonUI>,
-    private val lambda: (name: String?) -> Unit
+    private val lambda: (name: String) -> Unit
 ) : RecyclerView.Adapter<PokemonsHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonsHolder {

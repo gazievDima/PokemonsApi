@@ -4,6 +4,8 @@
     <bytecodeTargetLevel target="1.7">
       <module name="API_example.app" target="11" />
       <module name="API_example.data" target="11" />
+      <module name="Pokemons_Gallery.app" target="11" />
+      <module name="Pokemons_Gallery.data" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -3,6 +3,7 @@ package com.gaziev.pokemons.ui.screens.favorites
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.gaziev.pokemons.PokemonApi
 import com.gaziev.pokemons.ui.models.PokemonUI
 
 class FavoritesViewModel : ViewModel() {
@@ -10,14 +11,8 @@ class FavoritesViewModel : ViewModel() {
     val pokemons: LiveData<List<PokemonUI>> = _pokemons
 
     init {
-        _pokemons.value = getPokemonsList()
+        _pokemons.value = PokemonApi.getPokemonsList()
     }
 
-    private fun getPokemonsList(): MutableList<PokemonUI> {
-        val list: MutableList<PokemonUI> = mutableListOf()
-        for(i in 1..8) {
-            list.add(PokemonUI("Pikachu $i"))
-        }
-        return list
-    }
+
 }

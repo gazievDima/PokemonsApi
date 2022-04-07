@@ -12,7 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "API_example"
+rootProject.name = "Pokemons Gallery"
 include ':app'
 include ':data'
 include ':domain'

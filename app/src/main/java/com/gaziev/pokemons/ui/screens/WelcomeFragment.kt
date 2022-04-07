@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.gaziev.pokemons.databinding.FragmentWelcomeBinding
-import com.gaziev.pokemons.ui.common.BaseFragment
+import com.gaziev.pokemons.ui.common.fragments.BaseFragment
 
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>() {
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentWelcomeBinding = FragmentWelcomeBinding::inflate

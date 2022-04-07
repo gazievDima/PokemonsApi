@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/cardImage"
-            android:src="@mipmap/ic_launcher"
-            android:scaleType="centerCrop"
+            android:padding="30dp"
+            android:src="@drawable/pikachu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

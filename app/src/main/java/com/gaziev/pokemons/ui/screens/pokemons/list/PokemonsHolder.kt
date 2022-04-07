@@ -9,7 +9,7 @@ import com.gaziev.pokemons.ui.models.PokemonUI
 
 class PokemonsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(pokemon: PokemonUI, lambda: (name: String?) -> Unit) {
+    fun bind(pokemon: PokemonUI, lambda: (name: String) -> Unit) {
         itemView.findViewById<ImageView>(R.id.cardImage)?.apply { setOnClickListener { lambda(pokemon.name) } }
         itemView.findViewById<TextView>(R.id.nameText)?.apply { text = pokemon.name }
     }

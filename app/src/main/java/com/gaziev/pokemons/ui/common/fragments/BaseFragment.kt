@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.ui.common
+package com.gaziev.pokemons.ui.common.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.gaziev.pokemons.ui.MainActivity
 
 abstract class BaseFragment<T : ViewBinding> : Fragment() {
     abstract val inflate: (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -18,6 +19,9 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = inflate.invoke(layoutInflater, container, false)
+
+        (requireActivity() as MainActivity).bottomNavigationController(this)
+        (requireActivity() as MainActivity).toolbarController(this)
         return binding.root
     }
 

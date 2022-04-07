@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">API_example</string>
+    <string name="app_name">Pokemons Gallery</string>
     <string name="pokemons">Pokemons</string>
     <string name="exit">Exit</string>
+    <string name="pokemons_up_case">POKEMONS</string>
+    <string name="likes_up_case">LIKES</string>
+    <string name="pickachu">Pickachu</string>
 </resources>

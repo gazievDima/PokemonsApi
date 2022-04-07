@@ -6,25 +6,20 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_width="match_parent"
-        app:cardCornerRadius="20dp"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/cardImage"
-            android:layout_width="match_parent"
-            android:src="@mipmap/ic_launcher"
-            android:layout_height="185dp"/>
-    </androidx.cardview.widget.CardView>
+    <ImageView
+        android:background="@drawable/card_round"
+        android:elevation="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/cardImage"
+        android:layout_width="160dp"
+        android:src="@drawable/pikachu"
+        android:layout_height="185dp"/>
 
     <TextView
-        android:layout_marginVertical="15dp"
+        android:layout_marginVertical="10dp"
         android:id="@+id/nameText"
-        android:text="Item: #"
-        android:textSize="24sp"
+        android:text="@string/pickachu"
+        android:textSize="18sp"
         android:layout_width="100dp"
         android:gravity="center"
         android:layout_height="wrap_content"/>
