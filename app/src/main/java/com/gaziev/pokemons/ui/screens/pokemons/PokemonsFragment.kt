@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,10 +14,11 @@ import com.gaziev.pokemons.databinding.FragmentPokemonsBinding
 import com.gaziev.pokemons.ui.common.fragments.BaseFragment
 import com.gaziev.pokemons.ui.common.fragments.BottomNavigationFragment
 import com.gaziev.pokemons.ui.common.ViewModelFactory
+import com.gaziev.pokemons.ui.common.fragments.ToolbarFragment
 import com.gaziev.pokemons.ui.models.PokemonUI
 import com.gaziev.pokemons.ui.screens.pokemons.list.PokemonsAdapter
 
-class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), BottomNavigationFragment {
+class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), BottomNavigationFragment, ToolbarFragment {
 
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPokemonsBinding =
         FragmentPokemonsBinding::inflate
