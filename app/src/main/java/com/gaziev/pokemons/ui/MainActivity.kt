@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.gaziev.pokemons.R
@@ -25,10 +26,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        if (savedInstanceState == null) {
-            toolbarListeners()
-            initBottomNavigation()
-        }
+        toolbarListeners()
+        initBottomNavigation()
     }
 
     private fun initBottomNavigation() {
@@ -69,4 +68,10 @@ class MainActivity : AppCompatActivity() {
         else binding.toolbar.visibility = View.GONE
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (!navController.popBackStack()) {
+            finish()
+        }
+    }
 }

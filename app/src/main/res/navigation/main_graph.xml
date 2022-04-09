@@ -25,7 +25,6 @@
         android:id="@+id/favoriteFragment"
         android:name="com.gaziev.pokemons.ui.screens.favorites.FavoritesFragment"
         android:label="FavoriteFragment" >
-
         <action
             android:id="@+id/action_favoriteFragment_to_cardFragment"
             app:destination="@id/cardFragment" />
@@ -43,4 +42,16 @@
         android:id="@+id/statisticFragment"
         android:name="com.gaziev.pokemons.ui.screens.statistic.StatisticFragment"
         android:label="StatisticFragment" />
+    <fragment
+        android:id="@+id/AZFragment"
+        android:name="com.gaziev.pokemons.ui.screens.favorites.pager.az.AZFragment"
+        android:label="AZFragment" />
+    <fragment
+        android:id="@+id/healthFragment"
+        android:name="com.gaziev.pokemons.ui.screens.favorites.pager.health.HealthFragment"
+        android:label="HealthFragment" />
+    <fragment
+        android:id="@+id/strongFragment"
+        android:name="com.gaziev.pokemons.ui.screens.favorites.pager.strong.StrongFragment"
+        android:label="StrongFragment" />
 </navigation>
