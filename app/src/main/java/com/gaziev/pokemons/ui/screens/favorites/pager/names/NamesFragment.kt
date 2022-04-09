@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.ui.screens.favorites.pager.strong
+package com.gaziev.pokemons.ui.screens.favorites.pager.names
 
 import android.os.Bundle
 import android.util.Log
@@ -9,16 +9,16 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.pokemons.databinding.PagerFavoritesStrongBinding
+import com.gaziev.pokemons.databinding.PagerFavoritesNamesBinding
 import com.gaziev.pokemons.ui.common.ViewModelFactory
 import com.gaziev.pokemons.ui.models.PokemonUI
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
-import com.gaziev.pokemons.ui.screens.favorites.pager.strong.list.StrongAdapter
+import com.gaziev.pokemons.ui.screens.favorites.pager.names.list.NamesAdapter
 
-class StrongFragment : PagerBaseFragment<PagerFavoritesStrongBinding>() {
-    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesStrongBinding = PagerFavoritesStrongBinding::inflate
-    private val viewModel: StrongViewModel by viewModels { ViewModelFactory() }
+class NamesFragment : PagerBaseFragment<PagerFavoritesNamesBinding>() {
+    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesNamesBinding = PagerFavoritesNamesBinding::inflate
+    private val viewModel: NamesViewModel by viewModels { ViewModelFactory() }
     private val actionToCardPokemon =
         FavoritesFragmentDirections.actionFavoriteFragmentToCardFragment()
 
@@ -29,7 +29,7 @@ class StrongFragment : PagerBaseFragment<PagerFavoritesStrongBinding>() {
             list?.let {
                 binding.favoritesRecycler.layoutManager =
                     GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
-                binding.favoritesRecycler.adapter = StrongAdapter(list) { name: String ->
+                binding.favoritesRecycler.adapter = NamesAdapter(list) { name: String ->
                     findNavController().navigate(actionToCardPokemon)
                     Log.i("TAGS", "Favorite pokemon name: $name")
                 }

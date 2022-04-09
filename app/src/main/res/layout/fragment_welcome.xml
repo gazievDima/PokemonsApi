@@ -26,4 +26,12 @@
         android:layout_height="wrap_content"
         android:text="@string/gallery" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/about"
+        android:backgroundTint="@color/light_red"
+        app:cornerRadius="@dimen/primary_radius_card"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/about" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -44,7 +44,7 @@
         android:label="StatisticFragment" />
     <fragment
         android:id="@+id/AZFragment"
-        android:name="com.gaziev.pokemons.ui.screens.favorites.pager.az.AZFragment"
+        android:name="com.gaziev.pokemons.ui.screens.favorites.pager.latest.LatestFragment"
         android:label="AZFragment" />
     <fragment
         android:id="@+id/healthFragment"
@@ -52,6 +52,6 @@
         android:label="HealthFragment" />
     <fragment
         android:id="@+id/strongFragment"
-        android:name="com.gaziev.pokemons.ui.screens.favorites.pager.strong.StrongFragment"
+        android:name="com.gaziev.pokemons.ui.screens.favorites.pager.names.NamesFragment"
         android:label="StrongFragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.ui.screens.favorites.pager.az
+package com.gaziev.pokemons.ui.screens.favorites.pager.latest
 
 import android.os.Bundle
 import android.util.Log
@@ -9,19 +9,18 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.pokemons.databinding.PagerFavoritesAzBinding
+import com.gaziev.pokemons.databinding.PagerFavoritesLatestBinding
 import com.gaziev.pokemons.ui.common.ViewModelFactory
 import com.gaziev.pokemons.ui.models.PokemonUI
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
-import com.gaziev.pokemons.ui.screens.favorites.pager.az.list.AZAdapter
-import com.gaziev.pokemons.ui.screens.favorites.pager.strong.list.StrongAdapter
+import com.gaziev.pokemons.ui.screens.favorites.pager.latest.list.LatestAdapter
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
 
-class AZFragment : PagerBaseFragment<PagerFavoritesAzBinding>() {
-    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesAzBinding =
-        PagerFavoritesAzBinding::inflate
+class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
+    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesLatestBinding =
+        PagerFavoritesLatestBinding::inflate
 
-    private val viewModel: AZViewModel by viewModels { ViewModelFactory() }
+    private val viewModel: LatestViewModel by viewModels { ViewModelFactory() }
     private val actionToCardPokemon =
         FavoritesFragmentDirections.actionFavoriteFragmentToCardFragment()
 
@@ -32,7 +31,7 @@ class AZFragment : PagerBaseFragment<PagerFavoritesAzBinding>() {
             list?.let {
                 binding.favoritesRecycler.layoutManager =
                     GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
-                binding.favoritesRecycler.adapter = AZAdapter(list) { name: String ->
+                binding.favoritesRecycler.adapter = LatestAdapter(list) { name: String ->
                     findNavController().navigate(actionToCardPokemon)
                     Log.i("TAGS", "Favorite pokemon name: $name")
                 }

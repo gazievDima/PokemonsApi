@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.pokemons.R
 import com.gaziev.pokemons.ui.models.PokemonUI
-import com.gaziev.pokemons.ui.screens.favorites.pager.strong.list.StrongHolder
 
 class HealthAdapter(
     private val pokemons: List<PokemonUI>,

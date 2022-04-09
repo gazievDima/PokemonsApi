@@ -8,4 +8,7 @@
     <string name="favorites">Favorites</string>
     <string name="statistic">STATISTIC</string>
     <string name="gallery">Gallery</string>
+    <string name="about">About</string>
+    <string name="dialog_ok">OK</string>
+    <string name="about_info">This app is not created, approved, supported, or affiliated with Nintendo or Pokémon Company. \n\nThe project is developed with the support of the free Pokemon API.</string>
 </resources>

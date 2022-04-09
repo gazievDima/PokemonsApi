@@ -13,7 +13,6 @@ import com.gaziev.pokemons.databinding.PagerFavoritesHealthBinding
 import com.gaziev.pokemons.ui.common.ViewModelFactory
 import com.gaziev.pokemons.ui.models.PokemonUI
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
-import com.gaziev.pokemons.ui.screens.favorites.pager.strong.list.StrongAdapter
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
 import com.gaziev.pokemons.ui.screens.favorites.pager.health.list.HealthAdapter
 

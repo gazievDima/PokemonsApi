@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.ui.screens.favorites.pager.az
+package com.gaziev.pokemons.ui.screens.favorites.pager.latest
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.gaziev.pokemons.PokemonApi
 import com.gaziev.pokemons.ui.models.PokemonUI
 
-class AZViewModel : ViewModel() {
+class LatestViewModel : ViewModel() {
     private var _pokemons: MutableLiveData<List<PokemonUI>> = MutableLiveData(emptyList())
     val pokemons: LiveData<List<PokemonUI>> = _pokemons
 
