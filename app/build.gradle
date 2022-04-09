@@ -38,6 +38,9 @@ android {
 }
 
 dependencies {
+
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.2.0"
+
     def fragment_version = "1.4.1"
     // Kotlin
     implementation "androidx.fragment:fragment-ktx:$fragment_version"

@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.ui.screens
+package com.gaziev.pokemons.ui.screens.splash
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

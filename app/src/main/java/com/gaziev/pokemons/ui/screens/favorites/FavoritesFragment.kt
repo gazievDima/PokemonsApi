@@ -17,7 +17,7 @@ import com.gaziev.pokemons.ui.common.fragments.ToolbarFragment
 import com.gaziev.pokemons.ui.models.PokemonUI
 import com.gaziev.pokemons.ui.screens.favorites.list.FavoritesAdapter
 
-class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(), BottomNavigationFragment, ToolbarFragment {
+class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(), ToolbarFragment {
 
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFavoritesBinding =
         FragmentFavoritesBinding::inflate
