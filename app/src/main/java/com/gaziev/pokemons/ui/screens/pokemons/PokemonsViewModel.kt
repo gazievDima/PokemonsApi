@@ -3,18 +3,18 @@ package com.gaziev.pokemons.ui.screens.pokemons
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.gaziev.pokemons.core.models.common.Pokemon
-import com.gaziev.pokemons.ui.usecase.GetPokemonsUseCase
+import com.gaziev.pokemons.models.Pokemon
+import com.gaziev.pokemons.repository.GetApiPokemons
 
 class PokemonsViewModel(
+    private val getApiPokemons: GetApiPokemons
 ) : ViewModel() {
-    lateinit var getPokemonsUseCase: GetPokemonsUseCase
 
     private var _pokemons: MutableLiveData<List<Pokemon>> = MutableLiveData(emptyList())
     val pokemons: LiveData<List<Pokemon>> = _pokemons
 
     init {
-        _pokemons.value = getPokemonsUseCase.getPokemons()
+        _pokemons.value = getApiPokemons.get()
     }
 
 }

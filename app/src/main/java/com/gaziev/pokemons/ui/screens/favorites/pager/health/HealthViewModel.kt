@@ -3,19 +3,18 @@ package com.gaziev.pokemons.ui.screens.favorites.pager.health
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.gaziev.pokemons.core.models.common.Pokemon
-import com.gaziev.pokemons.ui.usecase.GetFavoritePokemonsUseCase
-import com.gaziev.pokemons.ui.usecase.GetPokemonsUseCase
+import com.gaziev.pokemons.models.Pokemon
+import com.gaziev.pokemons.repository.GetFavoritePokemons
 
-class HealthViewModel : ViewModel() {
-
-    lateinit var getFavoritePokemonsUseCase: GetFavoritePokemonsUseCase
+class HealthViewModel(
+    private val getFavoritePokemons: GetFavoritePokemons
+) : ViewModel() {
 
     private var _pokemons: MutableLiveData<List<Pokemon>> = MutableLiveData(emptyList())
     val pokemons: LiveData<List<Pokemon>> = _pokemons
 
     init {
-        _pokemons.value = getFavoritePokemonsUseCase.getPokemons()
+        _pokemons.value = getFavoritePokemons.get()
     }
 
 }
