@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.Pokemon
 import com.gaziev.pokemons.databinding.FragmentPokemonsBinding
 import com.gaziev.pokemons.ui.common.fragments.BaseFragment
-import com.gaziev.pokemons.ui.common.fragments.BottomNavigationFragment
+import com.gaziev.pokemons.ui.common.fragments.IBottomNavigationFragment
 import com.gaziev.pokemons.ui.common.ViewModelFactory
-import com.gaziev.pokemons.ui.common.fragments.ToolbarFragment
+import com.gaziev.pokemons.ui.common.fragments.IToolbarFragment
 import com.gaziev.pokemons.ui.screens.pokemons.list.PokemonsAdapter
 
-class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), BottomNavigationFragment, ToolbarFragment {
+class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), IBottomNavigationFragment, IToolbarFragment {
 
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPokemonsBinding =
         FragmentPokemonsBinding::inflate

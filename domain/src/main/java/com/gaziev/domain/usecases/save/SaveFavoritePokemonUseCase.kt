@@ -1,10 +1,10 @@
 package com.gaziev.domain.usecases.save
 
 import com.gaziev.domain.models.Pokemon
-import com.gaziev.domain.repository.SaveFavoritePokemonRepository
+import com.gaziev.domain.repository.ISaveFavoritePokemonRepository
 
 class SaveFavoritePokemonUseCase(
-    private val storage: SaveFavoritePokemonRepository
+    private val storage: ISaveFavoritePokemonRepository
 ) {
 
     fun saveFavoritePokemon(pokemon: Pokemon): Boolean {

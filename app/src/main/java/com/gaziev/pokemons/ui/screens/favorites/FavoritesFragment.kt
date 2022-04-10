@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.gaziev.pokemons.databinding.FragmentFavoritesBinding
 import com.gaziev.pokemons.ui.common.fragments.BaseFragment
-import com.gaziev.pokemons.ui.common.fragments.ToolbarFragment
+import com.gaziev.pokemons.ui.common.fragments.IToolbarFragment
 import com.gaziev.pokemons.ui.screens.favorites.pager.FavoritesPagerAdapter
 import com.google.android.material.tabs.TabLayout
 
-class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(), ToolbarFragment {
+class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(), IToolbarFragment {
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFavoritesBinding =
         FragmentFavoritesBinding::inflate
 

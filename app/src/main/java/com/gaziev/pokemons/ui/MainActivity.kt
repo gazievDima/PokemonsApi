@@ -1,18 +1,16 @@
 package com.gaziev.pokemons.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.ActivityMainBinding
-import com.gaziev.pokemons.ui.common.fragments.BottomNavigationFragment
-import com.gaziev.pokemons.ui.common.fragments.ToolbarFragment
+import com.gaziev.pokemons.ui.common.fragments.IBottomNavigationFragment
+import com.gaziev.pokemons.ui.common.fragments.IToolbarFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -57,13 +55,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun bottomNavigationController(fragment: Fragment) {
-        if (fragment is BottomNavigationFragment)
+        if (fragment is IBottomNavigationFragment)
             binding.bottomNavigation.visibility = View.VISIBLE
         else binding.bottomNavigation.visibility = View.GONE
     }
 
     fun toolbarController(fragment: Fragment) {
-        if (fragment is ToolbarFragment)
+        if (fragment is IToolbarFragment)
             binding.toolbar.visibility = View.VISIBLE
         else binding.toolbar.visibility = View.GONE
     }

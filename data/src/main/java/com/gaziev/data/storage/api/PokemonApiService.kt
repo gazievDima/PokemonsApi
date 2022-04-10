@@ -1,25 +1,25 @@
 package com.gaziev.data.storage.api
 
-import com.gaziev.data.models.PokemonData
-import com.gaziev.data.repository.source.NetworkApi
+import com.gaziev.data.models.PokemonApi
+import com.gaziev.data.repository.source.INetworkApi
 
-class PokemonApiService : NetworkApi {
-    override fun getPokemons(): List<PokemonData> {
+class PokemonApiService : INetworkApi {
+    override fun getPokemons(): List<PokemonApi> {
         return listOf(
-            PokemonData("Покемон 1"),
-            PokemonData("Покемон 2"),
-            PokemonData("Покемон 3"),
-            PokemonData("Покемон 4"),
-            PokemonData("Покемон 5"),
-            PokemonData("Покемон 6"),
-            PokemonData("Покемон 7"),
-            PokemonData("Покемон 8"),
-            PokemonData("Покемон 9"),
-            PokemonData("Покемон 10"),
+            PokemonApi("Покемон 1"),
+            PokemonApi("Покемон 2"),
+            PokemonApi("Покемон 3"),
+            PokemonApi("Покемон 4"),
+            PokemonApi("Покемон 5"),
+            PokemonApi("Покемон 6"),
+            PokemonApi("Покемон 7"),
+            PokemonApi("Покемон 8"),
+            PokemonApi("Покемон 9"),
+            PokemonApi("Покемон 10"),
         )
     }
 
-    override fun getPokemonsPage(pageNumber: Int, pageSize: Int): List<PokemonData> {
+    override fun getPokemonsPage(pageNumber: Int, pageSize: Int): List<PokemonApi> {
         return emptyList()
     }
 }

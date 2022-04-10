@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.gaziev.pokemons.databinding.FragmentWelcomeBinding
 import com.gaziev.pokemons.ui.common.fragments.BaseFragment
-import com.gaziev.pokemons.ui.common.fragments.ToolbarFragment
+import com.gaziev.pokemons.ui.common.fragments.IToolbarFragment
 import com.gaziev.pokemons.ui.screens.welcome.about.AboutDialogFragment
 
-class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(), ToolbarFragment {
+class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(), IToolbarFragment {
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentWelcomeBinding = FragmentWelcomeBinding::inflate
     private val actionToPokemon = WelcomeFragmentDirections.actionWelcomeFragmentToPokemonsFragment()
 
