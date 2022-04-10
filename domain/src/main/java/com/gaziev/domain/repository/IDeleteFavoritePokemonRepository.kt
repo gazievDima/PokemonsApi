@@ -1,7 +1,7 @@
 package com.gaziev.domain.repository
 
-import com.gaziev.domain.models.Pokemon
+import com.gaziev.domain.models.PokemonApiDao
 
 interface IDeleteFavoritePokemonRepository {
-    fun delete(pokemon: Pokemon): Boolean
+    fun delete(pokemon: PokemonApiDao): Boolean
 }

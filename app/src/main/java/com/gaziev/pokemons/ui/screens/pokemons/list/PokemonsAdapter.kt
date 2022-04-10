@@ -3,11 +3,11 @@ package com.gaziev.pokemons.ui.screens.pokemons.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.domain.models.Pokemon
+import com.gaziev.domain.models.PokemonApiDao
 import com.gaziev.pokemons.R
 
 class PokemonsAdapter(
-    private val pokemons: List<Pokemon>,
+    private val pokemons: List<PokemonApiDao>,
     private val lambda: (name: String) -> Unit
 ) : RecyclerView.Adapter<PokemonsHolder>() {
 

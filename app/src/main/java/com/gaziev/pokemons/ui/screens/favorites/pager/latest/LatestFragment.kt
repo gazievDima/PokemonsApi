@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.domain.models.Pokemon
+import com.gaziev.domain.models.PokemonApiDao
 import com.gaziev.pokemons.databinding.PagerFavoritesLatestBinding
 import com.gaziev.pokemons.ui.common.ViewModelFactory
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
@@ -27,7 +27,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.pokemons.observe(viewLifecycleOwner) { list: List<Pokemon>? ->
+        viewModel.pokemons.observe(viewLifecycleOwner) { list: List<PokemonApiDao>? ->
             list?.let {
                 binding.favoritesRecycler.layoutManager =
                     GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)

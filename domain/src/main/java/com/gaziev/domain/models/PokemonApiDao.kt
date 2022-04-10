@@ -1,6 +1,6 @@
 package com.gaziev.domain.models
 
-class Pokemon(
+class PokemonApiDao(
     val id: String,
     val name: String,
     val supertype: String,

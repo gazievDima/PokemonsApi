@@ -1,11 +1,8 @@
 package com.gaziev.data.mapper
 
-import com.gaziev.data.models.PokemonApi
-import com.gaziev.domain.models.Pokemon
-
 class ToData {
 
-    fun mapTo(t: Pokemon): PokemonApi {
+    fun mapTo(t: com.gaziev.domain.models.PokemonApiDao): PokemonApi {
         return PokemonApi(
             id = t.id,
             name = t.name,

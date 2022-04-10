@@ -9,8 +9,8 @@ class PokemonsViewModel(
     private val getApiPokemonsUseCase: GetApiPokemonsUseCase
 ) : ViewModel() {
 
-    private var _pokemons: MutableLiveData<List<com.gaziev.domain.models.Pokemon>> = MutableLiveData(emptyList())
-    val pokemons: LiveData<List<com.gaziev.domain.models.Pokemon>> = _pokemons
+    private var _pokemons: MutableLiveData<List<com.gaziev.domain.models.PokemonApiDao>> = MutableLiveData(emptyList())
+    val pokemons: LiveData<List<com.gaziev.domain.models.PokemonApiDao>> = _pokemons
 
     init {
         _pokemons.value = getApiPokemonsUseCase.get()

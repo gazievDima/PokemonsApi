@@ -1,13 +1,13 @@
 package com.gaziev.domain.usecases.delete
 
-import com.gaziev.domain.models.Pokemon
+import com.gaziev.domain.models.PokemonApiDao
 import com.gaziev.domain.repository.IDeleteFavoritePokemonRepository
 
 class DeleteFavoritePokemonUseCase(
     private val storage: IDeleteFavoritePokemonRepository
 ) {
 
-    fun deleteFavoritePokemon(pokemon: Pokemon): Boolean {
+    fun deleteFavoritePokemon(pokemon: PokemonApiDao): Boolean {
        return storage.delete(pokemon)
     }
 }
