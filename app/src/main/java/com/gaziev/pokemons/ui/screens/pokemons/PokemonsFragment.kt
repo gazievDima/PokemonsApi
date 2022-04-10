@@ -9,12 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gaziev.domain.models.Pokemon
 import com.gaziev.pokemons.databinding.FragmentPokemonsBinding
 import com.gaziev.pokemons.ui.common.fragments.BaseFragment
 import com.gaziev.pokemons.ui.common.fragments.BottomNavigationFragment
 import com.gaziev.pokemons.ui.common.ViewModelFactory
 import com.gaziev.pokemons.ui.common.fragments.ToolbarFragment
-import com.gaziev.pokemons.core.models.common.Pokemon
 import com.gaziev.pokemons.ui.screens.pokemons.list.PokemonsAdapter
 
 class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), BottomNavigationFragment, ToolbarFragment {

@@ -9,9 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gaziev.domain.models.Pokemon
 import com.gaziev.pokemons.databinding.PagerFavoritesLatestBinding
 import com.gaziev.pokemons.ui.common.ViewModelFactory
-import com.gaziev.pokemons.core.models.common.Pokemon
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.latest.list.LatestAdapter
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment

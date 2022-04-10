@@ -1,7 +1,7 @@
 package com.gaziev.data.mapper
 
 import com.gaziev.data.models.PokemonData
-import com.gaziev.pokemons.models.Pokemon
+import com.gaziev.domain.models.Pokemon
 
 class FromData {
 

@@ -3,8 +3,8 @@ package com.gaziev.pokemons.ui.screens.favorites.pager.names.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.gaziev.domain.models.Pokemon
 import com.gaziev.pokemons.R
-import com.gaziev.pokemons.core.models.common.Pokemon
 
 class NamesAdapter(
     private val pokemons: List<Pokemon>,

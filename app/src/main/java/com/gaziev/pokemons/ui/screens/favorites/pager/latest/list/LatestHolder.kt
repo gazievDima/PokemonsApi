@@ -4,8 +4,8 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.gaziev.domain.models.Pokemon
 import com.gaziev.pokemons.R
-import com.gaziev.pokemons.core.models.common.Pokemon
 
 class LatestHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

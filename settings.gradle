@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Pokemons Gallery"
 include ':app'
 include ':data'
+include ':domain'
