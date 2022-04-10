@@ -5,7 +5,7 @@ import com.gaziev.pokemons.models.Pokemon
 
 class FromData {
 
-    fun map(t: PokemonData): Pokemon {
+    fun mapTo(t: PokemonData): Pokemon {
         return Pokemon(name = t.name)
     }
 }
