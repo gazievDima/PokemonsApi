@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.pokemons.databinding.PagerFavoritesLatestBinding
 import com.gaziev.pokemons.ui.common.ViewModelFactory
-import com.gaziev.pokemons.ui.models.PokemonUI
+import com.gaziev.pokemons.core.models.common.Pokemon
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.latest.list.LatestAdapter
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
@@ -27,7 +27,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.pokemons.observe(viewLifecycleOwner) { list: List<PokemonUI>? ->
+        viewModel.pokemons.observe(viewLifecycleOwner) { list: List<Pokemon>? ->
             list?.let {
                 binding.favoritesRecycler.layoutManager =
                     GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)

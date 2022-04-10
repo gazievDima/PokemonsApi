@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.pokemons.R
-import com.gaziev.pokemons.ui.models.PokemonUI
+import com.gaziev.pokemons.core.models.common.Pokemon
 
 class PokemonsAdapter(
-    private val pokemons: List<PokemonUI>,
+    private val pokemons: List<Pokemon>,
     private val lambda: (name: String) -> Unit
 ) : RecyclerView.Adapter<PokemonsHolder>() {
 

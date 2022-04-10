@@ -6,6 +6,7 @@ import com.gaziev.pokemons.ui.screens.favorites.pager.latest.LatestViewModel
 import com.gaziev.pokemons.ui.screens.favorites.pager.health.HealthViewModel
 import com.gaziev.pokemons.ui.screens.favorites.pager.names.NamesViewModel
 import com.gaziev.pokemons.ui.screens.pokemons.PokemonsViewModel
+import com.gaziev.pokemons.ui.usecase.GetPokemonsUseCase
 
 class ViewModelFactory : ViewModelProvider.Factory {
 
