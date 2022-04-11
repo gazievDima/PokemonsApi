@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.PokemonApiDao
 import com.gaziev.domain.models.PokemonBDDao
+import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.PagerFavoritesLatestBinding
 import com.gaziev.pokemons.ui.MainActivity
 import com.gaziev.pokemons.ui.common.ViewModelFactory
@@ -38,9 +39,28 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
                 binding.favoritesRecycler.adapter = LatestAdapter(list) { name: String ->
                     findNavController().navigate(actionToCardPokemon)
                 }
-
             }
-
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        (activity as MainActivity).binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.search -> {
+                    Log.i("TAGS", "latest fragment: SEARCH")
+                    true
+                }
+                R.id.sort -> {
+                    viewModel.sortItems()
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
+    }
+
 }

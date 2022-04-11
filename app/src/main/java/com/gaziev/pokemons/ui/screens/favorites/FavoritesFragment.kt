@@ -1,11 +1,14 @@
 package com.gaziev.pokemons.ui.screens.favorites
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
+import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.FragmentFavoritesBinding
+import com.gaziev.pokemons.ui.MainActivity
 import com.gaziev.pokemons.ui.common.fragments.BaseFragment
 import com.gaziev.pokemons.ui.common.fragments.IToolbarFragment
 import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSearchIcon
@@ -37,6 +40,7 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(), IToolbarFrag
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
+
     }
 
 }

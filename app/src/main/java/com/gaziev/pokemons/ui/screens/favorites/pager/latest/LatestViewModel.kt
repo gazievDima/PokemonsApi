@@ -12,12 +12,22 @@ class LatestViewModel(
     private val sortLatestFavoritePokemonsUseCase: SortLatestFavoritePokemonsUseCase
 ) : ViewModel() {
 
+    private var stateSortedUp: Boolean = true
     private var _pokemons: MutableLiveData<List<PokemonBDDao>> = MutableLiveData(emptyList())
     val pokemons: LiveData<List<PokemonBDDao>> = _pokemons
 
     init {
         val listPokemons = getFavoritePokemonsUseCase.get()
         _pokemons.value = sortLatestFavoritePokemonsUseCase.up(listPokemons)
+    }
+
+    fun sortItems() {
+        if (stateSortedUp) {
+            _pokemons.value = sortLatestFavoritePokemonsUseCase.down(pokemons.value!!)
+        } else {
+            _pokemons.value = sortLatestFavoritePokemonsUseCase.up(pokemons.value!!)
+        }
+        stateSortedUp = !stateSortedUp
     }
 
 }

@@ -51,14 +51,6 @@ class MainActivity : AppCompatActivity() {
                             navController.navigate(R.id.favoriteFragment)
                         true
                     }
-                    R.id.search -> {
-                        Log.i("TAGS", "click search")
-                        true
-                    }
-                    R.id.sort -> {
-                        Log.i("TAGS", "click sort")
-                        true
-                    }
                     else -> {
                         false
                     }

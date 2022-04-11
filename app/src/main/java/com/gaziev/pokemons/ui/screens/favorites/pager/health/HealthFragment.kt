@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.PokemonApiDao
 import com.gaziev.domain.models.PokemonBDDao
+import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.PagerFavoritesHealthBinding
+import com.gaziev.pokemons.ui.MainActivity
 import com.gaziev.pokemons.ui.common.ViewModelFactory
 import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSearchIcon
 import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSortIcon
@@ -38,4 +40,25 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        (activity as MainActivity).binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.search -> {
+                  Log.i("TAGS", "health fragment: SEARCH")
+                    true
+                }
+                R.id.sort -> {
+                    viewModel.sortItems()
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
+    }
+
 }
