@@ -3,17 +3,21 @@ package com.gaziev.pokemons.ui.screens.favorites.pager.latest
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.gaziev.domain.models.PokemonBDDao
 import com.gaziev.domain.usecases.get.GetFavoritePokemonsUseCase
+import com.gaziev.domain.usecases.sort.SortLatestFavoritePokemonsUseCase
 
 class LatestViewModel(
-    private val getFavoritePokemonsUseCase: GetFavoritePokemonsUseCase
+    private val getFavoritePokemonsUseCase: GetFavoritePokemonsUseCase,
+    private val sortLatestFavoritePokemonsUseCase: SortLatestFavoritePokemonsUseCase
 ) : ViewModel() {
 
-    private var _pokemons: MutableLiveData<List<com.gaziev.domain.models.PokemonApiDao>> = MutableLiveData(emptyList())
-    val pokemons: LiveData<List<com.gaziev.domain.models.PokemonApiDao>> = _pokemons
+    private var _pokemons: MutableLiveData<List<PokemonBDDao>> = MutableLiveData(emptyList())
+    val pokemons: LiveData<List<PokemonBDDao>> = _pokemons
 
     init {
-        _pokemons.value = getFavoritePokemonsUseCase.get()
+        val listPokemons = getFavoritePokemonsUseCase.get()
+        _pokemons.value = sortLatestFavoritePokemonsUseCase.up(listPokemons)
     }
 
 }

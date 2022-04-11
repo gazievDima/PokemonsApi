@@ -15,6 +15,9 @@ import com.gaziev.data.repository.source.INetworkApi
 import com.gaziev.data.storage.api.PokemonApiService
 import com.gaziev.data.storage.room.PokemonRoomDataBase
 import com.gaziev.domain.repository.IGetFavoritePokemonsRepository
+import com.gaziev.domain.usecases.sort.SortHealthFavoritePokemonsUseCase
+import com.gaziev.domain.usecases.sort.SortLatestFavoritePokemonsUseCase
+import com.gaziev.domain.usecases.sort.SortNamesFavoritePokemonsUseCase
 
 class ViewModelFactory : ViewModelProvider.Factory {
 
@@ -26,13 +29,16 @@ class ViewModelFactory : ViewModelProvider.Factory {
 
     private val getFavoritePokemonsUseCase: GetFavoritePokemonsUseCase = GetFavoritePokemonsUseCase(getFavoritePokemonsRepository)
     private val getApiPokemonsUse: GetApiPokemonsUseCase = GetApiPokemonsUseCase(getApiPokemonsRepository)
+    private val sortNamesFavoritePokemonsUseCase: SortNamesFavoritePokemonsUseCase = SortNamesFavoritePokemonsUseCase()
+    private val sortHealthFavoritePokemonsUseCase: SortHealthFavoritePokemonsUseCase = SortHealthFavoritePokemonsUseCase()
+    private val sortLatestFavoritePokemonsUseCase: SortLatestFavoritePokemonsUseCase = SortLatestFavoritePokemonsUseCase()
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         when {
             modelClass.isAssignableFrom(PokemonsViewModel::class.java) -> return PokemonsViewModel(getApiPokemonsUse) as T
-            modelClass.isAssignableFrom(LatestViewModel::class.java) -> return LatestViewModel(getFavoritePokemonsUseCase) as T
-            modelClass.isAssignableFrom(HealthViewModel::class.java) -> return HealthViewModel(getFavoritePokemonsUseCase) as T
-            modelClass.isAssignableFrom(NamesViewModel::class.java) -> return NamesViewModel(getFavoritePokemonsUseCase) as T
+            modelClass.isAssignableFrom(LatestViewModel::class.java) -> return LatestViewModel(getFavoritePokemonsUseCase, sortLatestFavoritePokemonsUseCase) as T
+            modelClass.isAssignableFrom(HealthViewModel::class.java) -> return HealthViewModel(getFavoritePokemonsUseCase, sortHealthFavoritePokemonsUseCase) as T
+            modelClass.isAssignableFrom(NamesViewModel::class.java) -> return NamesViewModel(getFavoritePokemonsUseCase, sortNamesFavoritePokemonsUseCase) as T
         }
         return modelClass.newInstance()
     }

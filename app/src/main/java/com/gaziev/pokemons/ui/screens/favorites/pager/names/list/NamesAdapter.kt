@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.PokemonApiDao
+import com.gaziev.domain.models.PokemonBDDao
 import com.gaziev.pokemons.R
 
 class NamesAdapter(
-    private val pokemons: List<PokemonApiDao>,
+    private val pokemons: List<PokemonBDDao>,
     private val lambda: (name: String) -> Unit
 ) : RecyclerView.Adapter<NamesHolder>() {
 

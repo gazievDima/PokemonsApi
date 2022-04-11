@@ -1,9 +1,10 @@
 package com.gaziev.data.repository.source
 
-import com.gaziev.data.models.PokemonApi
+import com.gaziev.data.models.PokemonApiDaoData
+import com.gaziev.data.models.PokemonBDDaoData
 
 interface ILocalDataBase {
-    fun deletePokemon(pokemon: PokemonApi): Boolean
-    fun savePokemon(pokemon: PokemonApi): Boolean
-    fun getPokemons(): List<PokemonApi>
+    fun deletePokemon(pokemon: PokemonBDDaoData): Boolean
+    fun savePokemon(pokemon: PokemonBDDaoData): Boolean
+    fun getPokemons(): List<PokemonBDDaoData>
 }

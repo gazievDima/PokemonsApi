@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.PokemonApiDao
+import com.gaziev.domain.models.PokemonBDDao
 import com.gaziev.pokemons.databinding.PagerFavoritesHealthBinding
 import com.gaziev.pokemons.ui.common.ViewModelFactory
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
@@ -25,13 +26,12 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.pokemons.observe(viewLifecycleOwner) { list: List<PokemonApiDao>? ->
+        viewModel.pokemons.observe(viewLifecycleOwner) { list: List<PokemonBDDao>? ->
             list?.let {
                 binding.favoritesRecycler.layoutManager =
                     GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
                 binding.favoritesRecycler.adapter = HealthAdapter(list) { name: String ->
                     findNavController().navigate(actionToCardPokemon)
-                    Log.i("TAGS", "Favorite pokemon name: $name")
                 }
             }
         }

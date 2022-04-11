@@ -8,6 +8,7 @@ import com.gaziev.domain.repository.IGetApiPokemonsRepository
 class GetApiPokemonsRepository(
     private val storage: INetworkApi
 ) : IGetApiPokemonsRepository {
+
     override fun get(): List<PokemonApiDao> {
         return storage.getPokemons().map { FromData().mapTo(it) }
     }
