@@ -19,13 +19,16 @@ import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSearchIcon
 import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSortIcon
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
+import com.gaziev.pokemons.ui.screens.favorites.pager.common.SearchToolbar
 import com.gaziev.pokemons.ui.screens.favorites.pager.health.list.HealthAdapter
 
 class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
-    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesHealthBinding = PagerFavoritesHealthBinding::inflate
+    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesHealthBinding =
+        PagerFavoritesHealthBinding::inflate
     private val viewModel: HealthViewModel by viewModels { ViewModelFactory() }
     private val actionToCardPokemon =
         FavoritesFragmentDirections.actionFavoriteFragmentToCardFragment()
+    private var searchToolbar: SearchToolbar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,6 +42,12 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
                 }
             }
         }
+
+        searchToolbar = SearchToolbar(
+            (activity as MainActivity).binding.inputClose,
+            (activity as MainActivity).binding.inputSearch,
+            (activity as MainActivity)
+        )
     }
 
     override fun onResume() {
@@ -47,7 +56,7 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
         (activity as MainActivity).binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.search -> {
-                  Log.i("TAGS", "health fragment: SEARCH")
+                    searchToolbar?.modeOn()
                     true
                 }
                 R.id.sort -> {
@@ -59,6 +68,11 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
                 }
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        searchToolbar?.modeOff()
     }
 
 }

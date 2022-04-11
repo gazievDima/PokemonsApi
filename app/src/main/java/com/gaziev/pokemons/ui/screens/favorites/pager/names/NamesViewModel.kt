@@ -13,6 +13,7 @@ class NamesViewModel(
 ) : ViewModel() {
 
     private var stateSortedUp: Boolean = true
+
     private var _pokemons: MutableLiveData<List<PokemonBDDao>> = MutableLiveData(emptyList())
     val pokemons: LiveData<List<PokemonBDDao>> = _pokemons
 

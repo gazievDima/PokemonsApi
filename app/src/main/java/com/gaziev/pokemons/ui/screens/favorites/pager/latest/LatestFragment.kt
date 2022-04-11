@@ -1,10 +1,12 @@
 package com.gaziev.pokemons.ui.screens.favorites.pager.latest
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,6 +22,7 @@ import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSortIcon
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.latest.list.LatestAdapter
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
+import com.gaziev.pokemons.ui.screens.favorites.pager.common.SearchToolbar
 
 class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesLatestBinding =
@@ -28,6 +31,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
     private val viewModel: LatestViewModel by viewModels { ViewModelFactory() }
     private val actionToCardPokemon =
         FavoritesFragmentDirections.actionFavoriteFragmentToCardFragment()
+    private var searchToolbar: SearchToolbar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,6 +45,12 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
                 }
             }
         }
+
+        searchToolbar = SearchToolbar(
+            (activity as MainActivity).binding.inputClose,
+            (activity as MainActivity).binding.inputSearch,
+            (activity as MainActivity)
+        )
     }
 
     override fun onResume() {
@@ -49,7 +59,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
         (activity as MainActivity).binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.search -> {
-                    Log.i("TAGS", "latest fragment: SEARCH")
+                    searchToolbar?.modeOn()
                     true
                 }
                 R.id.sort -> {
@@ -61,6 +71,11 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
                 }
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        searchToolbar?.modeOff()
     }
 
 }
