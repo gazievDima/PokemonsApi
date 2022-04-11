@@ -43,19 +43,6 @@ class MainActivity : AppCompatActivity() {
             toolbar.setNavigationOnClickListener {
                 if (!navController.popBackStack()) finish()
             }
-
-            toolbar.setOnMenuItemClickListener { menuItem ->
-                when (menuItem.itemId) {
-                    R.id.favorite -> {
-                        if (navController.currentDestination?.id != R.id.favoriteFragment)
-                            navController.navigate(R.id.favoriteFragment)
-                        true
-                    }
-                    else -> {
-                        false
-                    }
-                }
-            }
         }
     }
 
