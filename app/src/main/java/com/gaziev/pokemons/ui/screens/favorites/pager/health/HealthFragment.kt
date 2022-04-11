@@ -13,6 +13,8 @@ import com.gaziev.domain.models.PokemonApiDao
 import com.gaziev.domain.models.PokemonBDDao
 import com.gaziev.pokemons.databinding.PagerFavoritesHealthBinding
 import com.gaziev.pokemons.ui.common.ViewModelFactory
+import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSearchIcon
+import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSortIcon
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
 import com.gaziev.pokemons.ui.screens.favorites.pager.health.list.HealthAdapter

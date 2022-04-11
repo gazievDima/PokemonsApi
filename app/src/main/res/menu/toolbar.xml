@@ -2,6 +2,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:showAsAction="ifRoom"
+        android:contentDescription="@string/favorites"
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/sort"
+        android:icon="@drawable/ic_baseline_sort_24"
+        app:showAsAction="ifRoom"
+        android:contentDescription="@string/favorites"
+        android:title="@string/sorted" />
+
+    <item
         android:id="@+id/favorite"
         android:icon="@drawable/ic_baseline_favorite_24"
         app:showAsAction="ifRoom"

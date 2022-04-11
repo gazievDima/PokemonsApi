@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.PokemonApiDao
 import com.gaziev.domain.models.PokemonBDDao
 import com.gaziev.pokemons.databinding.PagerFavoritesLatestBinding
+import com.gaziev.pokemons.ui.MainActivity
 import com.gaziev.pokemons.ui.common.ViewModelFactory
+import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSearchIcon
+import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSortIcon
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.latest.list.LatestAdapter
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment

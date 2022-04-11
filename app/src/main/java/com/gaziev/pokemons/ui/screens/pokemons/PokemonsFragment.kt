@@ -15,9 +15,10 @@ import com.gaziev.pokemons.ui.common.fragments.BaseFragment
 import com.gaziev.pokemons.ui.common.fragments.IBottomNavigationFragment
 import com.gaziev.pokemons.ui.common.ViewModelFactory
 import com.gaziev.pokemons.ui.common.fragments.IToolbarFragment
+import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarFavoriteIcon
 import com.gaziev.pokemons.ui.screens.pokemons.list.PokemonsAdapter
 
-class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), IBottomNavigationFragment, IToolbarFragment {
+class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), IBottomNavigationFragment, IToolbarFragment, IToolbarFavoriteIcon {
 
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPokemonsBinding =
         FragmentPokemonsBinding::inflate

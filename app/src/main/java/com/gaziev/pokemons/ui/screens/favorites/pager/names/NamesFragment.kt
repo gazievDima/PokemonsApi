@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.PokemonBDDao
 import com.gaziev.pokemons.databinding.PagerFavoritesNamesBinding
 import com.gaziev.pokemons.ui.common.ViewModelFactory
+import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSearchIcon
+import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSortIcon
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
 import com.gaziev.pokemons.ui.screens.favorites.pager.names.list.NamesAdapter

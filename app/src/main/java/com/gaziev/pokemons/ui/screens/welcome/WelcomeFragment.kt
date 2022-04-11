@@ -20,7 +20,7 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(), IToolbarFragment
         binding.pokemons.setOnClickListener {
             findNavController().navigate(actionToPokemon) }
         binding.about.setOnClickListener {
-            AboutDialogFragment().show(childFragmentManager, null)
+           AboutDialogFragment().show(childFragmentManager, null)
         }
     }
 
