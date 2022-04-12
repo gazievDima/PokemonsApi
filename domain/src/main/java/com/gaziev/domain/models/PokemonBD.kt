@@ -1,5 +1,7 @@
 package com.gaziev.domain.models
 
+import com.gaziev.domain.usecases.search.Compared
+
 class PokemonBD(
     val primary_key: Int,
     val id: String,
@@ -10,4 +12,14 @@ class PokemonBD(
     val artist: String,
     val rarity: String,
     val flavorText: String
-)
+) : Compared {
+
+    override fun equalsFields(element: String): Boolean {
+        return (id).contains(element) ||
+                (name).contains(element) ||
+                (supertype).contains(element) ||
+                (artist).contains(element) ||
+                (rarity).contains(element) ||
+                (flavorText).contains(element)
+    }
+}
