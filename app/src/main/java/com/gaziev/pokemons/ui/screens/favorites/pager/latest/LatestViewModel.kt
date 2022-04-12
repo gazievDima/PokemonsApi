@@ -1,5 +1,6 @@
 package com.gaziev.pokemons.ui.screens.favorites.pager.latest
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,20 +22,6 @@ class LatestViewModel(
     private var listSearch: List<PokemonBD> = emptyList()
     private var stateSortedUp: Boolean = true
 
-    /**
-     *  - в UI подписываемся на pokemons
-     *
-     *  - получаем данные с БД и сохраняем в listFromBD
-     *  - в pokemons закидываем listFromBD
-     *
-     *  поиск
-     *  - получаем данные из Юзкейса и сохраняем в listSearch
-     *  - в pokemons закидываем listSearch
-     *
-     *  закрываем поиск
-     *  - в pokemons закидываем listFromBD
-     */
-
     init {
         listFromBD = getFavoritePokemonsUseCase.get()
         _pokemons.value = sortLatestFavoritePokemonsUseCase.up(listFromBD)
@@ -54,7 +41,7 @@ class LatestViewModel(
         _pokemons.value = listSearch
     }
 
-    fun closeSearch() {
+    fun endSearch() {
         _pokemons.value = listFromBD
     }
 

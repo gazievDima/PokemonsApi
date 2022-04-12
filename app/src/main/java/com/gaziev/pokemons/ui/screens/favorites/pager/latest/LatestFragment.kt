@@ -1,6 +1,5 @@
 package com.gaziev.pokemons.ui.screens.favorites.pager.latest
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,8 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,8 +16,6 @@ import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.PagerFavoritesLatestBinding
 import com.gaziev.pokemons.ui.MainActivity
 import com.gaziev.pokemons.ui.common.ViewModelFactory
-import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSearchIcon
-import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSortIcon
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.latest.list.LatestAdapter
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
@@ -57,11 +52,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
         (activity as MainActivity).binding.inputSearch.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
-                //в случае изменения тут вызываем поиск
-            //    Log.i("TAGS", "text: $text, start: $start, before: $before, count: $count")
-                if(start > 0) {
-                    viewModel.search(text)
-                }
+                    viewModel.search(text.toString())
             }
             override fun afterTextChanged(p0: Editable?) = Unit
         })
@@ -90,6 +81,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
     override fun onPause() {
         super.onPause()
         searchToolbar?.modeOff()
+        viewModel.endSearch()
     }
 
 }
