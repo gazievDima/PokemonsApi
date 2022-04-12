@@ -3,12 +3,11 @@ package com.gaziev.pokemons.ui.screens.favorites.pager.latest.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.domain.models.PokemonApiDao
-import com.gaziev.domain.models.PokemonBDDao
+import com.gaziev.domain.models.PokemonBD
 import com.gaziev.pokemons.R
 
 class LatestAdapter(
-    private val pokemons: List<PokemonBDDao>,
+    private val pokemons: List<PokemonBD>,
     private val lambda: (name: String) -> Unit
 ) : RecyclerView.Adapter<LatestHolder>() {
 

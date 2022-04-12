@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.domain.models.PokemonApiDao
+import com.gaziev.domain.models.PokemonApi
 import com.gaziev.pokemons.databinding.FragmentPokemonsBinding
 import com.gaziev.pokemons.ui.common.fragments.BaseFragment
 import com.gaziev.pokemons.ui.common.fragments.IBottomNavigationFragment
@@ -28,7 +28,7 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), IBottomNavigat
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.pokemons.observe(viewLifecycleOwner) { list: List<PokemonApiDao>? ->
+        viewModel.pokemons.observe(viewLifecycleOwner) { list: List<PokemonApi>? ->
             list?.let {
                 binding.pokemonsRecycler.layoutManager =
                     GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)

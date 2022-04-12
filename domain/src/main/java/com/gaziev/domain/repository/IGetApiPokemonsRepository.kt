@@ -1,7 +1,7 @@
 package com.gaziev.domain.repository
 
-import com.gaziev.domain.models.PokemonApiDao
+import com.gaziev.domain.models.PokemonApi
 
 interface IGetApiPokemonsRepository {
-    fun get(): List<PokemonApiDao>
+    fun get(): List<PokemonApi>
 }
