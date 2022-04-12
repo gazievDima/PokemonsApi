@@ -53,6 +53,18 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
             (activity as MainActivity).binding.inputSearch,
             (activity as MainActivity)
         )
+
+        (activity as MainActivity).binding.inputSearch.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
+            override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
+                //в случае изменения тут вызываем поиск
+            //    Log.i("TAGS", "text: $text, start: $start, before: $before, count: $count")
+                if(start > 0) {
+                    viewModel.search(text)
+                }
+            }
+            override fun afterTextChanged(p0: Editable?) = Unit
+        })
     }
 
     override fun onResume() {
