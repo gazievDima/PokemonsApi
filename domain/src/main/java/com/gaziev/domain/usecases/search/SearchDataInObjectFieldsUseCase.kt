@@ -1,9 +1,9 @@
 package com.gaziev.domain.usecases.search
 
-class SearchDataInObjectFieldsUseCase {
+class SearchDataInObjectFieldsUseCase<T : Compared> {
 
-    fun search(list: List<Compared>, element: String): List<Compared> {
-        val bufferList: MutableList<Compared> = mutableListOf()
+    fun search(list: List<T>, element: String): List<T> {
+        val bufferList: MutableList<T> = mutableListOf()
 
         for (obj in list) {
             if (obj.equalsFields(element))
