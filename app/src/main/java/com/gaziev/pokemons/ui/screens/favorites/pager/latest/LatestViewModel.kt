@@ -12,16 +12,32 @@ import com.gaziev.domain.usecases.sort.SortLatestFavoritePokemonsUseCase
 class LatestViewModel(
     private val getFavoritePokemonsUseCase: GetFavoritePokemonsUseCase,
     private val sortLatestFavoritePokemonsUseCase: SortLatestFavoritePokemonsUseCase,
-    private val searchDataInObjectFieldsUseCase: SearchDataInObjectFieldsUseCase
+    private val searchDataInObjectFieldsUseCase: SearchDataInObjectFieldsUseCase<PokemonBD>
 ) : ViewModel() {
 
     private var _pokemons: MutableLiveData<List<PokemonBD>> = MutableLiveData(emptyList())
     val pokemons: LiveData<List<PokemonBD>> = _pokemons
+    private var listFromBD: List<PokemonBD> = emptyList()
+    private var listSearch: List<PokemonBD> = emptyList()
     private var stateSortedUp: Boolean = true
 
+    /**
+     *  - в UI подписываемся на pokemons
+     *
+     *  - получаем данные с БД и сохраняем в listFromBD
+     *  - в pokemons закидываем listFromBD
+     *
+     *  поиск
+     *  - получаем данные из Юзкейса и сохраняем в listSearch
+     *  - в pokemons закидываем listSearch
+     *
+     *  закрываем поиск
+     *  - в pokemons закидываем listFromBD
+     */
+
     init {
-        val listPokemons = getFavoritePokemonsUseCase.get()
-        _pokemons.value = sortLatestFavoritePokemonsUseCase.up(listPokemons)
+        listFromBD = getFavoritePokemonsUseCase.get()
+        _pokemons.value = sortLatestFavoritePokemonsUseCase.up(listFromBD)
     }
 
     fun sortItems() {
@@ -34,8 +50,12 @@ class LatestViewModel(
     }
 
     fun search(text: String) {
-        val list: List<Compared> = emptyList()
-        searchDataInObjectFieldsUseCase.search(list, text)
+        listSearch = searchDataInObjectFieldsUseCase.search(listFromBD, text)
+        _pokemons.value = listSearch
+    }
+
+    fun closeSearch() {
+        _pokemons.value = listFromBD
     }
 
 }
