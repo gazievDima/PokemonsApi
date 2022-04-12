@@ -34,8 +34,8 @@ class LatestViewModel(
     }
 
     fun search(text: String) {
-        val list: List<PokemonBD> = emptyList()
-        _pokemons.value = searchDataInObjectFieldsUseCase.search(list!!, text)
+        val list: List<Compared> = emptyList()
+        searchDataInObjectFieldsUseCase.search(list, text)
     }
 
 }
