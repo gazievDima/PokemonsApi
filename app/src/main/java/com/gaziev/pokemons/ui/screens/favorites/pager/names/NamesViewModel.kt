@@ -12,15 +12,9 @@ class NamesViewModel(
     private val sortNamesFavoritePokemonsUseCase: SortNamesFavoritePokemonsUseCase
 ) : ViewModel() {
 
-<<<<<<< HEAD
     private var _pokemons: MutableLiveData<List<PokemonBD>> = MutableLiveData(emptyList())
     val pokemons: LiveData<List<PokemonBD>> = _pokemons
-=======
     private var stateSortedUp: Boolean = true
-
-    private var _pokemons: MutableLiveData<List<PokemonBDDao>> = MutableLiveData(emptyList())
-    val pokemons: LiveData<List<PokemonBDDao>> = _pokemons
->>>>>>> UI
 
     init {
         val listPokemons = getFavoritePokemonsUseCase.get()

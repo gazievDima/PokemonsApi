@@ -8,18 +8,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-<<<<<<< HEAD
 import com.gaziev.domain.models.PokemonBD
-=======
-import com.gaziev.domain.models.PokemonApiDao
-import com.gaziev.domain.models.PokemonBDDao
 import com.gaziev.pokemons.R
->>>>>>> UI
 import com.gaziev.pokemons.databinding.PagerFavoritesHealthBinding
 import com.gaziev.pokemons.ui.MainActivity
 import com.gaziev.pokemons.ui.common.ViewModelFactory
-import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSearchIcon
-import com.gaziev.pokemons.ui.common.fragments.toolbar.IToolbarSortIcon
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.SearchToolbar

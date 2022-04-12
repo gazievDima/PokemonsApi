@@ -9,12 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-<<<<<<< HEAD
 import com.gaziev.domain.models.PokemonApi
-=======
-import com.gaziev.domain.models.PokemonApiDao
 import com.gaziev.pokemons.R
->>>>>>> UI
 import com.gaziev.pokemons.databinding.FragmentPokemonsBinding
 import com.gaziev.pokemons.ui.MainActivity
 import com.gaziev.pokemons.ui.common.fragments.BaseFragment

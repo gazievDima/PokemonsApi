@@ -23,10 +23,6 @@ class FromData {
 
     fun mapTo(t: PokemonApiData): PokemonApi {
         return PokemonApi(
-<<<<<<< HEAD
-
-=======
->>>>>>> DOMAIN
             id = t.id,
             name = t.name,
             supertype = t.supertype,
