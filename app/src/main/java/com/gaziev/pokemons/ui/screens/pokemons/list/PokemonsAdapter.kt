@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.PokemonApi
+import com.gaziev.domain.models.PokemonBD
 import com.gaziev.pokemons.R
 
 class PokemonsAdapter(
     private val pokemons: List<PokemonApi>,
-    private val lambda: (name: String) -> Unit
+    private val lambda: (pokemon: PokemonApi) -> Unit
 ) : RecyclerView.Adapter<PokemonsHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonsHolder {

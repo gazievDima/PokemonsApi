@@ -20,14 +20,13 @@ import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.latest.list.LatestAdapter
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.SearchToolbar
+import com.gaziev.pokemons.ui.screens.favorites.pager.health.list.HealthAdapter
 
 class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesLatestBinding =
         PagerFavoritesLatestBinding::inflate
 
     private val viewModel: LatestViewModel by viewModels { ViewModelFactory() }
-    private val actionToCardPokemon =
-        FavoritesFragmentDirections.actionFavoriteFragmentToCardFragment()
     private var searchToolbar: SearchToolbar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,8 +36,10 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
             list?.let {
                 binding.favoritesRecycler.layoutManager =
                     GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
-                binding.favoritesRecycler.adapter = LatestAdapter(list) { name: String ->
-                    findNavController().navigate(actionToCardPokemon)
+                binding.favoritesRecycler.adapter = HealthAdapter(list) { pokemon: PokemonBD ->
+                    val bundle = Bundle()
+                    bundle.putSerializable("info", pokemon)
+                    findNavController().navigate(R.id.cardFragment, bundle)
                 }
             }
         }

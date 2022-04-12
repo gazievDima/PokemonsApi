@@ -12,6 +12,7 @@
 
         <ImageView
             android:id="@+id/cardImage"
+            android:layout_gravity="center"
             android:layout_width="100dp"
             android:src="@drawable/pikachu"
             android:layout_height="120dp"/>

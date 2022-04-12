@@ -9,13 +9,16 @@ import com.gaziev.pokemons.R
 
 class LatestHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(pokemon: PokemonBD, lambda: (name: String) -> Unit) {
+    fun bind(pokemon: PokemonBD, lambda: (pokemon: PokemonBD) -> Unit) {
         val info =
-            "primary_key: ${pokemon.primary_key}" + "\n" +
+                    "id: ${pokemon.id}" + "\n" +
                     "name: ${pokemon.name}" + "\n" +
-                    "hp: ${pokemon.hp}"
+                    "supertype: ${pokemon.supertype}" + "\n" +
+                    "hp: ${pokemon.hp}" + "\n" +
+                    "number: ${pokemon.number}" + "\n" +
+                    "artist: ${pokemon.artist}" + "\n"
 
-        itemView.findViewById<LinearLayoutCompat>(R.id.card)?.apply { setOnClickListener { lambda(pokemon.name) } }
+        itemView.findViewById<LinearLayoutCompat>(R.id.card)?.apply { setOnClickListener { lambda(pokemon) } }
         itemView.findViewById<TextView>(R.id.nameText)?.apply {
             text = info
         }

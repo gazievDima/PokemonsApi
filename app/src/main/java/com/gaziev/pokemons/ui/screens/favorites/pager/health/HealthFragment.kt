@@ -1,6 +1,8 @@
 package com.gaziev.pokemons.ui.screens.favorites.pager.health
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,8 +24,6 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesHealthBinding =
         PagerFavoritesHealthBinding::inflate
     private val viewModel: HealthViewModel by viewModels { ViewModelFactory() }
-    private val actionToCardPokemon =
-        FavoritesFragmentDirections.actionFavoriteFragmentToCardFragment()
     private var searchToolbar: SearchToolbar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,8 +33,10 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
             list?.let {
                 binding.favoritesRecycler.layoutManager =
                     GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
-                binding.favoritesRecycler.adapter = HealthAdapter(list) { name: String ->
-                    findNavController().navigate(actionToCardPokemon)
+                binding.favoritesRecycler.adapter = HealthAdapter(list) { pokemon: PokemonBD ->
+                    val bundle = Bundle()
+                    bundle.putSerializable("info", pokemon)
+                    findNavController().navigate(R.id.cardFragment, bundle)
                 }
             }
         }
@@ -44,6 +46,14 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
             (activity as MainActivity).binding.inputSearch,
             (activity as MainActivity)
         )
+
+        (activity as MainActivity).binding.inputSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
+            override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
+                viewModel.search(text.toString())
+            }
+            override fun afterTextChanged(p0: Editable?) = Unit
+        })
     }
 
     override fun onResume() {
@@ -69,6 +79,8 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
     override fun onPause() {
         super.onPause()
         searchToolbar?.modeOff()
+        viewModel.endSearch()
+
     }
 
 }

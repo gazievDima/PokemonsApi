@@ -1,5 +1,7 @@
 package com.gaziev.domain.models
 
+import java.io.Serializable
+
 class PokemonApi(
     val id: String,
     val name: String,
@@ -9,4 +11,4 @@ class PokemonApi(
     val artist: String,
     val rarity: String,
     val flavorText: String
-)
+) : Serializable

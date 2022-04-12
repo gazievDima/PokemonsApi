@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.PokemonApi
+import com.gaziev.domain.models.PokemonBD
 import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.FragmentPokemonsBinding
 import com.gaziev.pokemons.ui.MainActivity
@@ -26,8 +27,6 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), IBottomNavigat
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPokemonsBinding =
         FragmentPokemonsBinding::inflate
     private val viewModel: PokemonsViewModel by viewModels { ViewModelFactory() }
-    private val actionToCardPokemon =
-        PokemonsFragmentDirections.actionPokemonsFragmentToCardFragment()
     private val actionToFavorite = PokemonsFragmentDirections.actionPokemonsFragmentToFavoriteFragment()
 
 
@@ -38,9 +37,10 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), IBottomNavigat
             list?.let {
                 binding.pokemonsRecycler.layoutManager =
                     GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
-                binding.pokemonsRecycler.adapter = PokemonsAdapter(list) { name: String ->
-                    findNavController().navigate(actionToCardPokemon)
-                    Log.i("TAGS", "Pokemon name: $name")
+                binding.pokemonsRecycler.adapter = PokemonsAdapter(list) { pokemon: PokemonApi ->
+                    val bundle = Bundle()
+                    bundle.putSerializable("info", pokemon)
+                    findNavController().navigate(R.id.cardFragment, bundle)
                 }
             }
         }

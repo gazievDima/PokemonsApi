@@ -8,7 +8,7 @@ import com.gaziev.pokemons.R
 
 class LatestAdapter(
     private val pokemons: List<PokemonBD>,
-    private val lambda: (name: String) -> Unit
+    private val lambda: (pokemon: PokemonBD) -> Unit
 ) : RecyclerView.Adapter<LatestHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LatestHolder {

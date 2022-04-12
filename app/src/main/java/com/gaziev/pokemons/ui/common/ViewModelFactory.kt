@@ -40,8 +40,8 @@ class ViewModelFactory : ViewModelProvider.Factory {
         when {
             modelClass.isAssignableFrom(PokemonsViewModel::class.java) -> return PokemonsViewModel(getApiPokemonsUse) as T
             modelClass.isAssignableFrom(LatestViewModel::class.java) -> return LatestViewModel(getFavoritePokemonsUseCase, sortLatestFavoritePokemonsUseCase, searchDataInObjectFieldsUseCase) as T
-            modelClass.isAssignableFrom(HealthViewModel::class.java) -> return HealthViewModel(getFavoritePokemonsUseCase, sortHealthFavoritePokemonsUseCase) as T
-            modelClass.isAssignableFrom(NamesViewModel::class.java) -> return NamesViewModel(getFavoritePokemonsUseCase, sortNamesFavoritePokemonsUseCase) as T
+            modelClass.isAssignableFrom(HealthViewModel::class.java) -> return HealthViewModel(getFavoritePokemonsUseCase, sortHealthFavoritePokemonsUseCase, searchDataInObjectFieldsUseCase) as T
+            modelClass.isAssignableFrom(NamesViewModel::class.java) -> return NamesViewModel(getFavoritePokemonsUseCase, sortNamesFavoritePokemonsUseCase, searchDataInObjectFieldsUseCase) as T
         }
         return modelClass.newInstance()
     }

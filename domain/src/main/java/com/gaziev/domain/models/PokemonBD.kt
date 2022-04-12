@@ -1,6 +1,7 @@
 package com.gaziev.domain.models
 
 import com.gaziev.domain.usecases.search.Compared
+import java.io.Serializable
 
 class PokemonBD(
     val primary_key: Int,
@@ -12,7 +13,7 @@ class PokemonBD(
     val artist: String,
     val rarity: String,
     val flavorText: String
-) : Compared {
+) : Compared, Serializable {
 
     override fun equalsFields(element: String): Boolean {
       return id.contains(element) ||

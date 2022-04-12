@@ -1,45 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:gravity="end"
-        android:layout_height="wrap_content">
+        android:paddingBottom="40dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/close"
-            android:layout_margin="10dp"
-            android:src="@drawable/ic_baseline_close_24"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            app:tint="?colorPrimary" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <FrameLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardContainer"
-            android:layout_gravity="center"
-            app:cardCornerRadius="@dimen/primary_radius_card"
-            android:layout_margin="40dp"
-            android:layout_width="300dp"
-            android:layout_height="300dp">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end">
 
             <ImageView
-                android:id="@+id/cardImage"
-                android:padding="30dp"
-                android:src="@drawable/pikachu"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:id="@+id/close"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_baseline_close_24"
+                app:tint="?colorPrimary" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        </androidx.cardview.widget.CardView>
-    </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardContainer"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:layout_margin="40dp"
+                app:cardCornerRadius="@dimen/primary_radius_card">
+
+                <ImageView
+                    android:id="@+id/cardImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="30dp"
+                    android:src="@drawable/pikachu" />
+
+            </androidx.cardview.widget.CardView>
+        </FrameLayout>
+
+        <TextView
+            android:padding="20sp"
+            android:textSize="24sp"
+            android:text="id: #### \n\nname: #### \n\nsupertype: #### \n\nhp: #### \n\nnumber: #### \n\nartist: #### \n\nrarity: #### \n\nflavorText: #### \n"
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

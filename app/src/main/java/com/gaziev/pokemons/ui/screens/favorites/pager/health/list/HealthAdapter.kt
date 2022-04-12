@@ -8,7 +8,7 @@ import com.gaziev.pokemons.R
 
 class HealthAdapter(
     private val pokemons: List<PokemonBD>,
-    private val lambda: (name: String) -> Unit
+    private val lambda: (pokemon: PokemonBD) -> Unit
 ) : RecyclerView.Adapter<HealthHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HealthHolder {
