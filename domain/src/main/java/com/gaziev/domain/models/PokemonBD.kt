@@ -1,6 +1,6 @@
 package com.gaziev.domain.models
 
-class PokemonBDDao(
+class PokemonBD(
     val primary_key: Int,
     val id: String,
     val name: String,

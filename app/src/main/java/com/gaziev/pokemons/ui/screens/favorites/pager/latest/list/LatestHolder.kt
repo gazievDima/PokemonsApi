@@ -4,13 +4,12 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.domain.models.PokemonApiDao
-import com.gaziev.domain.models.PokemonBDDao
+import com.gaziev.domain.models.PokemonBD
 import com.gaziev.pokemons.R
 
 class LatestHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(pokemon: PokemonBDDao, lambda: (name: String) -> Unit) {
+    fun bind(pokemon: PokemonBD, lambda: (name: String) -> Unit) {
         val info =
             "primary_key: ${pokemon.primary_key}" + "\n" +
                     "name: ${pokemon.name}" + "\n" +

@@ -1,7 +1,7 @@
 package com.gaziev.domain.repository
 
-import com.gaziev.domain.models.PokemonBDDao
+import com.gaziev.domain.models.PokemonBD
 
 interface ISaveFavoritePokemonRepository {
-    fun save(pokemon: PokemonBDDao): Boolean
+    fun save(pokemon: PokemonBD): Boolean
 }

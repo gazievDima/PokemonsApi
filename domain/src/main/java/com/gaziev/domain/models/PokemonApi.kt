@@ -1,7 +1,6 @@
-package com.gaziev.data.models
+package com.gaziev.domain.models
 
-class PokemonBDDaoData(
-    val primary_key: Int,
+class PokemonApi(
     val id: String,
     val name: String,
     val supertype: String,
@@ -10,5 +9,4 @@ class PokemonBDDaoData(
     val artist: String,
     val rarity: String,
     val flavorText: String
-) {
-}
+)
