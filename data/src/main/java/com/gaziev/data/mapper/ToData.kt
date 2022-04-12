@@ -1,14 +1,14 @@
 package com.gaziev.data.mapper
 
-import com.gaziev.data.models.PokemonApiDaoData
-import com.gaziev.data.models.PokemonBDDaoData
+import com.gaziev.data.models.PokemonApiData
+import com.gaziev.data.models.PokemonBDData
 import com.gaziev.domain.models.PokemonApi
 import com.gaziev.domain.models.PokemonBD
 
 class ToData {
 
-    fun mapTo(t: PokemonBD): PokemonBDDaoData {
-        return PokemonBDDaoData(
+    fun mapTo(t: PokemonBD): PokemonBDData {
+        return PokemonBDData(
             primary_key = t.primary_key,
             id = t.id,
             name = t.name,
@@ -21,8 +21,8 @@ class ToData {
         )
     }
 
-    fun mapTo(t: PokemonApi): PokemonApiDaoData {
-        return PokemonApiDaoData(
+    fun mapTo(t: PokemonApi): PokemonApiData {
+        return PokemonApiData(
             id = t.id,
             name = t.name,
             supertype = t.supertype,
