@@ -1,6 +1,5 @@
 package com.gaziev.data.storage.room
 
-import com.gaziev.data.models.PokemonApiDaoData
 import com.gaziev.data.models.PokemonBDDaoData
 import com.gaziev.data.repository.source.ILocalDataBase
 

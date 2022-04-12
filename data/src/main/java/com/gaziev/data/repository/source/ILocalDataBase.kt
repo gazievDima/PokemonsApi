@@ -1,6 +1,5 @@
 package com.gaziev.data.repository.source
 
-import com.gaziev.data.models.PokemonApiDaoData
 import com.gaziev.data.models.PokemonBDDaoData
 
 interface ILocalDataBase {
