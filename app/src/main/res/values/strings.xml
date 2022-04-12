@@ -11,4 +11,6 @@
     <string name="about">About</string>
     <string name="dialog_ok">OK</string>
     <string name="about_info">This app is not created, approved, supported, or affiliated with Nintendo or Pokémon Company. \n\nThe project is developed with the support of the free Pokemon API.</string>
+    <string name="sorted">Sorted</string>
+    <string name="search">Search</string>
 </resources>

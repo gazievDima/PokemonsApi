@@ -1,6 +1,10 @@
 package com.gaziev.data.storage.room
 
+<<<<<<< HEAD
 import com.gaziev.data.models.PokemonBDData
+=======
+import com.gaziev.data.models.PokemonBDDaoData
+>>>>>>> UI
 import com.gaziev.data.repository.source.ILocalDataBase
 
 class PokemonRoomDataBase : ILocalDataBase {

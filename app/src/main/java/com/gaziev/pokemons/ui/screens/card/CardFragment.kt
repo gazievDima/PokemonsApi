@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.gaziev.pokemons.databinding.FragmentCardBinding
+import com.gaziev.pokemons.ui.MainActivity
 import com.gaziev.pokemons.ui.common.fragments.BaseFragment
 
 class CardFragment : BaseFragment<FragmentCardBinding>() {
-    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCardBinding = FragmentCardBinding::inflate
+    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCardBinding =
+        FragmentCardBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -18,5 +20,5 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
             findNavController().popBackStack()
         }
     }
-
 }
+

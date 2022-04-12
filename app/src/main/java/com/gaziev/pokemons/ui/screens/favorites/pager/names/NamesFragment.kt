@@ -8,18 +8,27 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+<<<<<<< HEAD
 import com.gaziev.domain.models.PokemonBD
+=======
+import com.gaziev.domain.models.PokemonBDDao
+import com.gaziev.pokemons.R
+>>>>>>> UI
 import com.gaziev.pokemons.databinding.PagerFavoritesNamesBinding
+import com.gaziev.pokemons.ui.MainActivity
 import com.gaziev.pokemons.ui.common.ViewModelFactory
 import com.gaziev.pokemons.ui.screens.favorites.FavoritesFragmentDirections
 import com.gaziev.pokemons.ui.screens.favorites.pager.common.PagerBaseFragment
+import com.gaziev.pokemons.ui.screens.favorites.pager.common.SearchToolbar
 import com.gaziev.pokemons.ui.screens.favorites.pager.names.list.NamesAdapter
 
 class NamesFragment : PagerBaseFragment<PagerFavoritesNamesBinding>() {
-    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesNamesBinding = PagerFavoritesNamesBinding::inflate
+    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesNamesBinding =
+        PagerFavoritesNamesBinding::inflate
     private val viewModel: NamesViewModel by viewModels { ViewModelFactory() }
     private val actionToCardPokemon =
         FavoritesFragmentDirections.actionFavoriteFragmentToCardFragment()
+    private var searchToolbar: SearchToolbar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,5 +42,37 @@ class NamesFragment : PagerBaseFragment<PagerFavoritesNamesBinding>() {
                 }
             }
         }
+        searchToolbar = SearchToolbar(
+            (activity as MainActivity).binding.inputClose,
+            (activity as MainActivity).binding.inputSearch,
+            (activity as MainActivity)
+        )
     }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.search -> {
+                    searchToolbar?.modeOn()
+                    true
+                }
+                R.id.sort -> {
+                    viewModel.sortItems()
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        searchToolbar?.modeOff()
+    }
+
 }
+
