@@ -1,13 +1,13 @@
 package com.gaziev.data.mapper
 
-import com.gaziev.data.models.PokemonApiDaoData
-import com.gaziev.data.models.PokemonBDDaoData
+import com.gaziev.data.models.PokemonApiData
+import com.gaziev.data.models.PokemonBDData
 import com.gaziev.domain.models.PokemonApiDao
 import com.gaziev.domain.models.PokemonBDDao
 
 class FromData {
 
-    fun mapTo(t: PokemonBDDaoData): PokemonBDDao {
+    fun mapTo(t: PokemonBDData): PokemonBDDao {
         return PokemonBDDao(
             primary_key = t.primary_key,
             id = t.id,
@@ -21,7 +21,7 @@ class FromData {
         )
     }
 
-    fun mapTo(t: PokemonApiDaoData): PokemonApiDao {
+    fun mapTo(t: PokemonApiData): PokemonApiDao {
         return PokemonApiDao(
             id = t.id,
             name = t.name,
