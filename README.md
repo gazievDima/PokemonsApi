@@ -1,1 +1,1 @@
-## _Реализация клиент-серверного приложения использующего бесплатный Pokemons API_
+## Example of a client-server application using the free Pokemon API

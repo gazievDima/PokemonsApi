@@ -11,4 +11,5 @@ class SearchDataInObjectFieldsUseCase<T : Compared> {
         }
         return if (bufferList.size > 0) bufferList else emptyList()
     }
+
 }
