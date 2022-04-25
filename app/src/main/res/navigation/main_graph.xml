@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.gaziev.pokemons.ui.screens.welcome.WelcomeFragment"
+        android:name="com.gaziev.pokemons.presentation.screens.welcome.WelcomeFragment"
         android:label="WelcomeFragment" >
         <action
             android:id="@+id/action_welcomeFragment_to_pokemonsFragment"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/pokemonsFragment"
-        android:name="com.gaziev.pokemons.ui.screens.pokemons.PokemonsFragment"
+        android:name="com.gaziev.pokemons.presentation.screens.pokemons.PokemonsFragment"
         android:label="PokemonsFragment" >
         <action
             android:id="@+id/action_pokemonsFragment_to_cardFragment"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.gaziev.pokemons.ui.screens.favorites.FavoritesFragment"
+        android:name="com.gaziev.pokemons.presentation.screens.favorites.FavoritesFragment"
         android:label="FavoriteFragment" >
         <action
             android:id="@+id/action_favoriteFragment_to_cardFragment"
@@ -34,16 +34,16 @@
     </fragment>
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.gaziev.pokemons.ui.MainActivity"
+        android:name="com.gaziev.pokemons.presentation.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/cardFragment"
-        android:name="com.gaziev.pokemons.ui.screens.card.CardFragment"
+        android:name="com.gaziev.pokemons.presentation.screens.card.CardFragment"
         android:label="CardFragment" />
     <fragment
         android:id="@+id/statisticFragment"
-        android:name="com.gaziev.pokemons.ui.screens.statistic.StatisticFragment"
+        android:name="com.gaziev.pokemons.presentation.screens.statistic.StatisticFragment"
         android:label="StatisticFragment" >
         <action
             android:id="@+id/action_statisticFragment_to_favoriteFragment"
@@ -51,14 +51,14 @@
     </fragment>
     <fragment
         android:id="@+id/AZFragment"
-        android:name="com.gaziev.pokemons.ui.screens.favorites.pager.latest.LatestFragment"
+        android:name="com.gaziev.pokemons.presentation.screens.favorites.pager.latest.LatestFragment"
         android:label="AZFragment" />
     <fragment
         android:id="@+id/healthFragment"
-        android:name="com.gaziev.pokemons.ui.screens.favorites.pager.health.HealthFragment"
+        android:name="com.gaziev.pokemons.presentation.screens.favorites.pager.health.HealthFragment"
         android:label="HealthFragment" />
     <fragment
         android:id="@+id/strongFragment"
-        android:name="com.gaziev.pokemons.ui.screens.favorites.pager.names.NamesFragment"
+        android:name="com.gaziev.pokemons.presentation.screens.favorites.pager.names.NamesFragment"
         android:label="StrongFragment" />
 </navigation>

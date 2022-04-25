@@ -1,0 +1,22 @@
+package com.gaziev.pokemons.di
+
+import com.gaziev.pokemons.presentation.screens.favorites.pager.health.HealthFragment
+import com.gaziev.pokemons.presentation.screens.favorites.pager.latest.LatestFragment
+import com.gaziev.pokemons.presentation.screens.favorites.pager.names.NamesFragment
+import com.gaziev.pokemons.presentation.screens.pokemons.PokemonsFragment
+import dagger.Component
+
+@Component(
+    modules = [MapperModule::class,
+        RepositoryModule::class,
+        SourceModule::class,
+        ViewModelModule::class]
+)
+
+interface AppComponent {
+
+    fun inject(fragment: PokemonsFragment)
+    fun inject(fragment: NamesFragment)
+    fun inject(fragment: LatestFragment)
+    fun inject(fragment: HealthFragment)
+}
