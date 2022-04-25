@@ -1,13 +1,13 @@
 #TASKS
 
 - внедрить корутины \ подключить апи https://pokemontcg.io для главной страницы
+- сделать обочку ответа от сервера Result.Success, Result.Error. Класс лежит в domain/response
+- сделать splash экран
 - подключить пагинацию
 - подключить sql-lite(room):
     - добавить работу с кешем (api -> sql-lite -> view)
     - добавить функцию сохранение, удаление и получение избранных карточек покемонов
     - diff util callback плавное изменение списка в recycler view
-- сделать обочку ответа от сервера Result.Success, Result.Error. Класс лежит в domain/response
-- сделать splash экран
 - написать юнит тесты на приложение
 - отдать прилу на оценку диме
 - custom view:
