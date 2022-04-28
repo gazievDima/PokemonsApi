@@ -3,12 +3,12 @@ package com.gaziev.pokemons.presentation.screens.favorites.pager.latest.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.domain.models.PokemonLocal
+import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.pokemons.R
 
 class LatestAdapter(
-    private val pokemons: List<PokemonLocal>,
-    private val lambda: (pokemon: PokemonLocal) -> Unit
+    private val pokemons: List<PokemonLocalDetails>,
+    private val lambda: (pokemon: PokemonLocalDetails) -> Unit
 ) : RecyclerView.Adapter<LatestHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LatestHolder {

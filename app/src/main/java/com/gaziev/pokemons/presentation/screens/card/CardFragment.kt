@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.gaziev.domain.models.PokemonRemote
-import com.gaziev.domain.models.PokemonLocal
+import com.gaziev.domain.models.PokemonRemoteDetails
+import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.pokemons.databinding.FragmentCardBinding
 import com.gaziev.pokemons.presentation.common.BaseFragment
 
@@ -20,7 +20,7 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
         val pokemon = arguments?.getSerializable("info")
         var info = "Not data"
         if (pokemon != null) {
-            if (pokemon is PokemonLocal) {
+            if (pokemon is PokemonLocalDetails) {
                 info = """
             id: ${pokemon.id}
             name: ${pokemon.name}
@@ -32,7 +32,7 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
             flavorText: ${pokemon.flavorText}
         """.trimIndent()
             }
-            if (pokemon is PokemonRemote) {
+            if (pokemon is PokemonRemoteDetails) {
                 info = """
             id: ${pokemon.id}
             name: ${pokemon.name}

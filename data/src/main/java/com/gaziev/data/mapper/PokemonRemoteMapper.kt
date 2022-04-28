@@ -1,12 +1,12 @@
 package com.gaziev.data.mapper
 
 import com.gaziev.data.models.PokemonRemoteEntity
-import com.gaziev.domain.models.PokemonRemote
+import com.gaziev.domain.models.PokemonRemoteDetails
 import javax.inject.Inject
 
-class PokemonRemoteMapper @Inject constructor() : IMapper<PokemonRemoteEntity, PokemonRemote> {
-    override fun mapTo(t: PokemonRemoteEntity): PokemonRemote {
-        return PokemonRemote(
+class PokemonRemoteMapper @Inject constructor() : IMapper<PokemonRemoteEntity, PokemonRemoteDetails> {
+    override fun mapTo(t: PokemonRemoteEntity): PokemonRemoteDetails {
+        return PokemonRemoteDetails(
             id = t.id,
             name = t.name,
             supertype = t.supertype,
@@ -18,7 +18,7 @@ class PokemonRemoteMapper @Inject constructor() : IMapper<PokemonRemoteEntity, P
         )
     }
 
-    override fun mapFrom(v: PokemonRemote): PokemonRemoteEntity {
+    override fun mapFrom(v: PokemonRemoteDetails): PokemonRemoteEntity {
         return PokemonRemoteEntity(
             id = v.id,
             name = v.name,

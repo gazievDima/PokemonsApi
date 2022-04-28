@@ -1,43 +1,67 @@
 package com.gaziev.pokemons.presentation.screens.favorites.pager.latest
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.gaziev.domain.models.PokemonLocal
+import androidx.lifecycle.viewModelScope
+import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.domain.usecases.get.GetFavoritesPokemonsUseCase
 import com.gaziev.domain.usecases.search.SearchInFieldsDetailsUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByLatestUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class LatestViewModel @Inject constructor(
     private val getFavoritePokemonsUseCase: GetFavoritesPokemonsUseCase,
     private val sortLatestFavoritePokemonsUseCase: SortedPokemonsByLatestUseCase,
-    private val searchDataInObjectFieldsUseCase: SearchInFieldsDetailsUseCase<PokemonLocal>
+    private val searchDataInObjectFieldsUseCase: SearchInFieldsDetailsUseCase<PokemonLocalDetails>
 ) : ViewModel() {
 
-    private var _pokemons: MutableLiveData<List<PokemonLocal>> = MutableLiveData(emptyList())
-    val pokemons: LiveData<List<PokemonLocal>> = _pokemons
-    private var listFromBD: List<PokemonLocal> = emptyList()
-    private var listSearch: List<PokemonLocal> = emptyList()
+    private var _pokemons = MutableLiveData<List<PokemonLocalDetails>>(emptyList())
+    val pokemons: LiveData<List<PokemonLocalDetails>> = _pokemons
+    private var listFromBD: List<PokemonLocalDetails> = emptyList()
+    private var listSearch: List<PokemonLocalDetails> = emptyList()
     private var stateSortedUp: Boolean = true
 
     init {
-        listFromBD = getFavoritePokemonsUseCase.get()
-        _pokemons.value = sortLatestFavoritePokemonsUseCase.up(listFromBD)
+        viewModelScope.launch {
+            getFavoritePokemonsUseCase.get()
+                .collect { list ->
+                    listFromBD = list
+                    _pokemons.value = sortLatestFavoritePokemonsUseCase.up(listFromBD)
+                }
+        }
     }
 
     fun sortItems() {
-        if (stateSortedUp) {
-            _pokemons.value = sortLatestFavoritePokemonsUseCase.down(pokemons.value!!)
-        } else {
-            _pokemons.value = sortLatestFavoritePokemonsUseCase.up(pokemons.value!!)
+        viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                val list = mutableListOf<PokemonLocalDetails>()
+               if (stateSortedUp) {
+                   list.addAll(sortLatestFavoritePokemonsUseCase.down(pokemons.value!!))
+               } else {
+                   list.addAll(sortLatestFavoritePokemonsUseCase.up(pokemons.value!!))
+               }
+                Log.i(TAG, "equals = " + list.equals(_pokemons.value).toString())
+                _pokemons.value = list
+                stateSortedUp = !stateSortedUp
+                Log.i(TAG, pokemons.value.toString())
+            }
         }
-        stateSortedUp = !stateSortedUp
     }
 
     fun search(text: String) {
-        listSearch = searchDataInObjectFieldsUseCase.search(listFromBD, text)
-        _pokemons.value = listSearch
+        viewModelScope.launch {
+            listSearch = searchDataInObjectFieldsUseCase.search(listFromBD, text)
+            _pokemons.value = listSearch
+        }
     }
 
     fun endSearch() {

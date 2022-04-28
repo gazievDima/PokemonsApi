@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.presentation.screens.favorites.pager
+package com.gaziev.pokemons.presentation.screens.favorites.pager.common
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

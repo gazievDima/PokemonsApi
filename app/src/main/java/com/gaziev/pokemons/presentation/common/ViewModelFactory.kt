@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.presentation
+package com.gaziev.pokemons.presentation.common
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

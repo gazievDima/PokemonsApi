@@ -1,9 +1,9 @@
-package com.gaziev.pokemons.di
+package com.gaziev.pokemons.di.modules
 
 import com.gaziev.data.repository.sources.PokemonLocalSource
 import com.gaziev.data.repository.sources.PokemonRemoteSource
-import com.gaziev.data.sources.PokemonLocalSourceImpl
-import com.gaziev.data.sources.PokemonRemoteSourceImpl
+import com.gaziev.data.sources.room.PokemonLocalSourceImpl
+import com.gaziev.data.sources.retrofit.PokemonRemoteSourceImpl
 import dagger.Module
 import dagger.Provides
 

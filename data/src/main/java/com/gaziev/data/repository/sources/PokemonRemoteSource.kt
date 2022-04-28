@@ -1,8 +1,9 @@
 package com.gaziev.data.repository.sources
 
 import com.gaziev.data.models.PokemonRemoteEntity
+import kotlinx.coroutines.flow.Flow
 
 interface PokemonRemoteSource {
 
-    fun getPokemons(): List<PokemonRemoteEntity>
+    suspend fun getPokemons(): Flow<List<PokemonRemoteEntity>>
 }

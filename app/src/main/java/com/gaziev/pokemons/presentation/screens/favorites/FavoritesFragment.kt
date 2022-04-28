@@ -8,7 +8,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.gaziev.pokemons.databinding.FragmentFavoritesBinding
 import com.gaziev.pokemons.presentation.common.BaseFragment
 import com.gaziev.pokemons.presentation.common.ToolbarFragment
-import com.gaziev.pokemons.presentation.screens.favorites.pager.FavoritesPagerAdapter
+import com.gaziev.pokemons.presentation.screens.favorites.pager.common.FavoritesPagerAdapter
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.ToolbarSearchIcon
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.ToolbarSortIcon
 import com.google.android.material.tabs.TabLayout

@@ -1,8 +1,9 @@
-package com.gaziev.pokemons.di
+package com.gaziev.pokemons.di.modules
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.gaziev.pokemons.presentation.ViewModelFactory
+import com.gaziev.pokemons.di.key.ViewModelKey
+import com.gaziev.pokemons.presentation.common.ViewModelFactory
 import com.gaziev.pokemons.presentation.screens.favorites.pager.health.HealthViewModel
 import com.gaziev.pokemons.presentation.screens.favorites.pager.latest.LatestViewModel
 import com.gaziev.pokemons.presentation.screens.favorites.pager.names.NamesViewModel

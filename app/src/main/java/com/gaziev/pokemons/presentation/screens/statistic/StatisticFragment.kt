@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.FragmentStaticsticBinding
-import com.gaziev.pokemons.presentation.MainActivity
+import com.gaziev.pokemons.presentation.common.MainActivity
 import com.gaziev.pokemons.presentation.common.BaseFragment
 import com.gaziev.pokemons.presentation.common.BottomNavigationFragment
 import com.gaziev.pokemons.presentation.common.ToolbarFragment

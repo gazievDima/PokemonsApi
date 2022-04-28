@@ -3,7 +3,7 @@ package com.gaziev.domain.models
 import com.gaziev.domain.usecases.search.Compared
 import java.io.Serializable
 
-class PokemonLocal(
+class PokemonLocalDetails(
     val primary_key: Int,
     val id: String,
     val name: String,
@@ -23,4 +23,13 @@ class PokemonLocal(
               rarity.contains(element) ||
               flavorText.contains(element)
     }
+
+    override fun toString(): String {
+        return "id: ${this.id}, name: ${this.name}"
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return false
+    }
+
 }

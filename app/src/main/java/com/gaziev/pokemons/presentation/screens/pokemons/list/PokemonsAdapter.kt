@@ -3,12 +3,12 @@ package com.gaziev.pokemons.presentation.screens.pokemons.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.domain.models.PokemonRemote
+import com.gaziev.domain.models.PokemonRemoteDetails
 import com.gaziev.pokemons.R
 
 class PokemonsAdapter(
-    private val pokemons: List<PokemonRemote>,
-    private val lambda: (pokemon: PokemonRemote) -> Unit
+    private val pokemons: List<PokemonRemoteDetails>,
+    private val lambda: (pokemon: PokemonRemoteDetails) -> Unit
 ) : RecyclerView.Adapter<PokemonsHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonsHolder {

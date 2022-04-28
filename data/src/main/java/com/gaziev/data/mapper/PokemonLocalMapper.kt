@@ -1,12 +1,12 @@
 package com.gaziev.data.mapper
 
 import com.gaziev.data.models.PokemonLocalEntity
-import com.gaziev.domain.models.PokemonLocal
+import com.gaziev.domain.models.PokemonLocalDetails
 import javax.inject.Inject
 
-class PokemonLocalMapper @Inject constructor() : IMapper<PokemonLocalEntity, PokemonLocal> {
-    override fun mapTo(t: PokemonLocalEntity): PokemonLocal {
-        return PokemonLocal(
+class PokemonLocalMapper @Inject constructor() : IMapper<PokemonLocalEntity, PokemonLocalDetails> {
+    override fun mapTo(t: PokemonLocalEntity): PokemonLocalDetails {
+        return PokemonLocalDetails(
             primary_key = t.primary_key,
             id = t.id,
             name = t.name,
@@ -19,7 +19,7 @@ class PokemonLocalMapper @Inject constructor() : IMapper<PokemonLocalEntity, Pok
         )
     }
 
-    override fun mapFrom(v: PokemonLocal): PokemonLocalEntity {
+    override fun mapFrom(v: PokemonLocalDetails): PokemonLocalEntity {
         return PokemonLocalEntity(
             primary_key = v.primary_key,
             id = v.id,

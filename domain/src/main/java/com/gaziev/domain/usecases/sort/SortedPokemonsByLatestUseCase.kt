@@ -1,7 +1,10 @@
 package com.gaziev.domain.usecases.sort
 
 import com.gaziev.domain.comparator.PokemonComparator
-import com.gaziev.domain.models.PokemonLocal
+import com.gaziev.domain.models.PokemonLocalDetails
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
 
@@ -10,13 +13,15 @@ class SortedPokemonsByLatestUseCase @Inject constructor(
     private val pokemonComparatorLatestDown: PokemonComparator.LatestDown,
 ) {
 
-    fun up(pokemons: List<PokemonLocal>): List<PokemonLocal> {
+    suspend fun up(pokemons: List<PokemonLocalDetails>): List<PokemonLocalDetails> =
+        withContext(Dispatchers.Default) {
         Collections.sort(pokemons, pokemonComparatorLatestUp)
-        return pokemons
+        return@withContext pokemons
     }
 
-    fun down(pokemons: List<PokemonLocal>): List<PokemonLocal> {
+    suspend fun down(pokemons: List<PokemonLocalDetails>): List<PokemonLocalDetails> =
+        withContext(Dispatchers.Default) {
         Collections.sort(pokemons, pokemonComparatorLatestDown)
-        return pokemons
+        return@withContext pokemons
     }
 }

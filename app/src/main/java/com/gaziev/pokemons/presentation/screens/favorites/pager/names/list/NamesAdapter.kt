@@ -3,12 +3,12 @@ package com.gaziev.pokemons.presentation.screens.favorites.pager.names.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.domain.models.PokemonLocal
+import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.pokemons.R
 
 class NamesAdapter(
-    private val pokemons: List<PokemonLocal>,
-    private val lambda: (pokemon: PokemonLocal) -> Unit
+    private val pokemons: List<PokemonLocalDetails>,
+    private val lambda: (pokemon: PokemonLocalDetails) -> Unit
 ) : RecyclerView.Adapter<NamesHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NamesHolder {

@@ -1,12 +1,13 @@
 package com.gaziev.domain.repository
 
-import com.gaziev.domain.models.PokemonLocal
-import com.gaziev.domain.models.PokemonRemote
+import com.gaziev.domain.models.PokemonLocalDetails
+import com.gaziev.domain.models.PokemonRemoteDetails
+import kotlinx.coroutines.flow.Flow
 
 interface PokemonRepository {
-    fun getPokemons(): List<PokemonRemote>
-    fun getFavoritesPokemons(): List<PokemonLocal>
-    fun delete(pokemon: PokemonLocal): Boolean
-    fun save(pokemon: PokemonLocal): Boolean
+    suspend fun getPokemons(): Flow<List<PokemonRemoteDetails>>
+    suspend fun getFavoritesPokemons(): Flow<List<PokemonLocalDetails>>
+    suspend fun delete(pokemon: PokemonLocalDetails): Boolean
+    suspend fun save(pokemon: PokemonLocalDetails): Boolean
 
 }

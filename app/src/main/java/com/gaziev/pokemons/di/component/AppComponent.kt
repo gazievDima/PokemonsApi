@@ -1,5 +1,6 @@
-package com.gaziev.pokemons.di
+package com.gaziev.pokemons.di.component
 
+import com.gaziev.pokemons.di.modules.*
 import com.gaziev.pokemons.presentation.screens.favorites.pager.health.HealthFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.latest.LatestFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.names.NamesFragment
@@ -7,10 +8,13 @@ import com.gaziev.pokemons.presentation.screens.pokemons.PokemonsFragment
 import dagger.Component
 
 @Component(
-    modules = [MapperModule::class,
+    modules = [
+        MapperModule::class,
         RepositoryModule::class,
         SourceModule::class,
-        ViewModelModule::class]
+        ViewModelModule::class,
+        UseCaseModule::class,
+    ]
 )
 
 interface AppComponent {

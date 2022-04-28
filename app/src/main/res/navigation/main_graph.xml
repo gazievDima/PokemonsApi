@@ -34,7 +34,7 @@
     </fragment>
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.gaziev.pokemons.presentation.MainActivity"
+        android:name="com.gaziev.pokemons.presentation.common.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <fragment

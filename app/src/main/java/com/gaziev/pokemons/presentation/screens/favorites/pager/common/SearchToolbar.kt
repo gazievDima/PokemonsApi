@@ -2,7 +2,7 @@ package com.gaziev.pokemons.presentation.screens.favorites.pager.common
 
 import android.view.View
 import android.widget.EditText
-import com.gaziev.pokemons.presentation.MainActivity
+import com.gaziev.pokemons.presentation.common.MainActivity
 
 class SearchToolbar(
     private val close: View,

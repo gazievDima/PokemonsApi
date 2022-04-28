@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.di
+package com.gaziev.pokemons.di.key
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

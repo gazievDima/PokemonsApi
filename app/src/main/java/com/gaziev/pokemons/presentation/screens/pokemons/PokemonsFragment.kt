@@ -5,19 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gaziev.domain.models.PokemonRemote
+import com.gaziev.domain.models.PokemonRemoteDetails
 import com.gaziev.pokemons.App
 import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.FragmentPokemonsBinding
-import com.gaziev.pokemons.presentation.MainActivity
+import com.gaziev.pokemons.presentation.common.MainActivity
 import com.gaziev.pokemons.presentation.common.BaseFragment
 import com.gaziev.pokemons.presentation.common.BottomNavigationFragment
 import com.gaziev.pokemons.presentation.common.ToolbarFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.ToolbarFavoriteIcon
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsAdapter
+import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), BottomNavigationFragment,
@@ -37,16 +39,14 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), BottomNavigati
         (activity?.application as App).daggerAppComponent.inject(this)
         val viewModel = ViewModelProvider(this, viewModelFactory)[PokemonsViewModel::class.java]
 
-        viewModel.pokemons.observe(viewLifecycleOwner) { list: List<PokemonRemote>? ->
-            list?.let {
-                binding.pokemonsRecycler.layoutManager =
-                    GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
-                binding.pokemonsRecycler.adapter = PokemonsAdapter(list) { pokemon: PokemonRemote ->
-                    val bundle = Bundle()
-                    bundle.putSerializable("info", pokemon)
-                    findNavController().navigate(R.id.cardFragment, bundle)
-                }
-            }
+            viewModel.pokemons.observe(viewLifecycleOwner) { list ->
+                    binding.pokemonsRecycler.layoutManager =
+                        GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
+                    binding.pokemonsRecycler.adapter = PokemonsAdapter(list) { pokemon: PokemonRemoteDetails ->
+                        val bundle = Bundle()
+                        bundle.putSerializable("info", pokemon)
+                        findNavController().navigate(R.id.cardFragment, bundle)
+                    }
         }
     }
 

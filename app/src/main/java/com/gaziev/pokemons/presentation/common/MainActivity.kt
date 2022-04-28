@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.presentation
+package com.gaziev.pokemons.presentation.common
 
 import android.content.Context
 import android.os.Bundle
