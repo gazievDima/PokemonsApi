@@ -1,7 +1,6 @@
 #TASKS
 
 - внедрить корутины \ подключить апи https://pokemontcg.io для главной страницы
-- сделать обочку ответа от сервера Result.Success, Result.Error. Класс лежит в domain/response
 - сделать splash экран
 - подключить пагинацию
 - подключить sql-lite(room):
