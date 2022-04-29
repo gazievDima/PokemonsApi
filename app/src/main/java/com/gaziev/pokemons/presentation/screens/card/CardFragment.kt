@@ -51,7 +51,7 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
                     .load(pokemon.images?.large)
                     .centerCrop()
                     .placeholder(R.drawable.loading)
-                    .into(binding.cardImage);
+                    .into(binding.cardImage)
             }
         }
         binding.info.text = info

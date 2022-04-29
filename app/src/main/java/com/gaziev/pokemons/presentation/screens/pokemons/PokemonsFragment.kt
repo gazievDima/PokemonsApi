@@ -42,7 +42,7 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), BottomNavigati
 
             viewModel.pokemons.observe(viewLifecycleOwner) { list ->
                     binding.pokemonsRecycler.layoutManager =
-                        LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                        GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
                     binding.pokemonsRecycler.adapter = PokemonsAdapter(list) { pokemon: PokemonRemoteDetails ->
                         val bundle = Bundle()
                         bundle.putSerializable("info", pokemon)

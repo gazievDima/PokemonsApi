@@ -16,7 +16,7 @@ class PokemonsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(pokemon: PokemonRemoteDetails, lambda: (pokemon: PokemonRemoteDetails) -> Unit) {
         Glide
             .with(itemView)
-            .load(pokemon.images?.large)
+            .load(pokemon.images?.small)
             .centerCrop()
             .placeholder(R.drawable.loading)
             .into(binding.cardImage)
