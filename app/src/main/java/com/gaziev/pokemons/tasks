@@ -1,10 +1,9 @@
 #TASKS
 
+- debounce на строку поиска
 - подключить апи https://pokemontcg.io для главной страницы
-- внедрять Dispatchers через конструктор
 - сделать splash экран
 - подключить пагинацию
-- debounce на строку поиска
 
 - подключить sql-lite(room):
     - добавить работу с кешем (api -> sql-lite -> view)

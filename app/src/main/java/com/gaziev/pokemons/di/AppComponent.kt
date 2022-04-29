@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.di.component
+package com.gaziev.pokemons.di
 
 import com.gaziev.pokemons.di.modules.*
 import com.gaziev.pokemons.presentation.screens.favorites.pager.health.HealthFragment
@@ -14,6 +14,7 @@ import dagger.Component
         SourceModule::class,
         ViewModelModule::class,
         UseCaseModule::class,
+        DispatchersModule::class
     ]
 )
 

@@ -11,10 +11,9 @@ import com.gaziev.domain.usecases.search.SearchInFieldsDetailsUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByHealthUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByLatestUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByNamesUseCase
+import com.gaziev.pokemons.di.dispatcher.DispatcherDomainImpl
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 
 @Module
 class UseCaseModule {
@@ -22,59 +21,67 @@ class UseCaseModule {
     @Provides
     fun provideGetFavoritesPokemonsUseCase(
         repository: PokemonRepositoryImpl,
+        dispatcher: DispatcherDomainImpl
     ): GetFavoritesPokemonsUseCase {
-        return GetFavoritesPokemonsUseCase(repository)
+        return GetFavoritesPokemonsUseCase(repository, dispatcher)
     }
 
     @Provides
     fun provideGetPokemonsUseCase(
         repository: PokemonRepositoryImpl,
+        dispatcher: DispatcherDomainImpl
     ): GetPokemonsUseCase {
-        return GetPokemonsUseCase(repository)
+        return GetPokemonsUseCase(repository, dispatcher)
     }
 
     @Provides
     fun provideDeleteFavoritePokemonUseCase(
         repository: PokemonRepositoryImpl,
+        dispatcher: DispatcherDomainImpl
     ): DeleteFavoritePokemonUseCase {
-        return DeleteFavoritePokemonUseCase(repository)
+        return DeleteFavoritePokemonUseCase(repository, dispatcher)
     }
 
     @Provides
     fun provideSaveFavoritePokemonUseCase(
         repository: PokemonRepositoryImpl,
+        dispatcher: DispatcherDomainImpl
     ): SaveFavoritePokemonUseCase {
-        return SaveFavoritePokemonUseCase(repository)
+        return SaveFavoritePokemonUseCase(repository, dispatcher)
     }
 
     @Provides
     fun provideSortedPokemonByHealthUseCase(
         pokemonComparatorHealthUp: PokemonComparator.HealthUP,
         pokemonComparatorHealthDown: PokemonComparator.HealthDown,
+        dispatcher: DispatcherDomainImpl
     ) : SortedPokemonsByHealthUseCase {
-        return SortedPokemonsByHealthUseCase(pokemonComparatorHealthUp, pokemonComparatorHealthDown)
+        return SortedPokemonsByHealthUseCase(pokemonComparatorHealthUp, pokemonComparatorHealthDown, dispatcher)
     }
 
     @Provides
     fun provideSortedPokemonsByLatestUseCase(
         pokemonComparatorLatestUp: PokemonComparator.LatestUp,
         pokemonComparatorLatestDown: PokemonComparator.LatestDown,
+        dispatcher: DispatcherDomainImpl
     ): SortedPokemonsByLatestUseCase {
-        return SortedPokemonsByLatestUseCase(pokemonComparatorLatestUp, pokemonComparatorLatestDown)
+        return SortedPokemonsByLatestUseCase(pokemonComparatorLatestUp, pokemonComparatorLatestDown, dispatcher)
     }
 
     @Provides
     fun provideSortedPokemonsByNamesUseCase(
         pokemonComparatorNameUp: PokemonComparator.NameUp,
         pokemonComparatorNameDown: PokemonComparator.NameDown,
+        dispatcher: DispatcherDomainImpl
     ): SortedPokemonsByNamesUseCase {
-        return SortedPokemonsByNamesUseCase(pokemonComparatorNameUp, pokemonComparatorNameDown)
+        return SortedPokemonsByNamesUseCase(pokemonComparatorNameUp, pokemonComparatorNameDown, dispatcher)
     }
 
     @Provides
     fun provideSearchInFieldsDetailsUseCase(
+        dispatcher: DispatcherDomainImpl
     ) : SearchInFieldsDetailsUseCase<Compared> {
-        return SearchInFieldsDetailsUseCase()
+        return SearchInFieldsDetailsUseCase(dispatcher)
     }
 
 }

@@ -1,8 +1,8 @@
 package com.gaziev.pokemons
 
 import android.app.Application
-import com.gaziev.pokemons.di.component.AppComponent
-import com.gaziev.pokemons.di.component.DaggerAppComponent
+import com.gaziev.pokemons.di.AppComponent
+import com.gaziev.pokemons.di.DaggerAppComponent
 
 class App : Application() {
 
