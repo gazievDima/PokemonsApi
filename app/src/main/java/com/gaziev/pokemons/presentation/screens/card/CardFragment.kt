@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.gaziev.domain.models.PokemonRemoteDetails
 import com.gaziev.domain.models.PokemonLocalDetails
+import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.FragmentCardBinding
 import com.gaziev.pokemons.presentation.common.BaseFragment
 
@@ -43,6 +45,13 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
             rarity: ${pokemon.rarity}
             flavorText: ${pokemon.flavorText}
         """.trimIndent()
+
+                Glide
+                    .with(this)
+                    .load(pokemon.images?.small)
+                    .centerCrop()
+                    .placeholder(R.drawable.loading)
+                    .into(binding.cardImage);
             }
         }
         binding.info.text = info

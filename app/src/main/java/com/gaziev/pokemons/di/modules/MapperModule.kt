@@ -1,10 +1,13 @@
 package com.gaziev.pokemons.di.modules
 
 import com.gaziev.data.mapper.IMapper
+import com.gaziev.data.mapper.ImagesRemoteMapper
 import com.gaziev.data.mapper.PokemonLocalMapper
 import com.gaziev.data.mapper.PokemonRemoteMapper
+import com.gaziev.data.models.ImagesEntity
 import com.gaziev.data.models.PokemonLocalEntity
 import com.gaziev.data.models.PokemonRemoteEntity
+import com.gaziev.domain.models.ImagesDetails
 import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.domain.models.PokemonRemoteDetails
 import dagger.Module
@@ -19,8 +22,10 @@ class MapperModule {
     }
 
     @Provides
-    fun providePokemonRemoteMapper(): IMapper<PokemonRemoteEntity, PokemonRemoteDetails> {
-        return PokemonRemoteMapper()
+    fun providePokemonRemoteMapper(
+        imagesRemoteMapper: ImagesRemoteMapper
+    ): IMapper<PokemonRemoteEntity, PokemonRemoteDetails> {
+        return PokemonRemoteMapper(imagesRemoteMapper)
     }
 
 }

@@ -11,5 +11,7 @@ class PokemonRemoteDetails(
     val number: String?,
     val artist: String?,
     val rarity: String?,
-    val flavorText: String?
+    val flavorText: String?,
+    val images: ImagesDetails?
+
 ) : Serializable
