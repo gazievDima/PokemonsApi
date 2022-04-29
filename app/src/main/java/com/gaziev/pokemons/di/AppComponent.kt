@@ -14,7 +14,8 @@ import dagger.Component
         SourceModule::class,
         ViewModelModule::class,
         UseCaseModule::class,
-        DispatchersModule::class
+        DispatchersModule::class,
+        ServicesModule::class
     ]
 )
 

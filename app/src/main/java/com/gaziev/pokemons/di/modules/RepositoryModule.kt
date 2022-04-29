@@ -4,7 +4,7 @@ import com.gaziev.data.mapper.PokemonLocalMapper
 import com.gaziev.data.mapper.PokemonRemoteMapper
 import com.gaziev.data.repository.PokemonRepositoryImpl
 import com.gaziev.data.sources.room.PokemonLocalSourceImpl
-import com.gaziev.data.sources.retrofit.PokemonRemoteSourceImpl
+import com.gaziev.data.sources.remote.PokemonRemoteSourceImpl
 import com.gaziev.domain.repository.PokemonRepository
 import com.gaziev.pokemons.dispatcher.DispatcherDataImpl
 import dagger.Module
