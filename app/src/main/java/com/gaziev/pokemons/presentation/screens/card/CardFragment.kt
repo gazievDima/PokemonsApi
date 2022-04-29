@@ -48,7 +48,7 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
 
                 Glide
                     .with(this)
-                    .load(pokemon.images?.small)
+                    .load(pokemon.images?.large)
                     .centerCrop()
                     .placeholder(R.drawable.loading)
                     .into(binding.cardImage);

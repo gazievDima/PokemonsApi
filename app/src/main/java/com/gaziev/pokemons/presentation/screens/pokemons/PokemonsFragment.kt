@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.PokemonRemoteDetails
 import com.gaziev.pokemons.App
@@ -41,7 +42,7 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), BottomNavigati
 
             viewModel.pokemons.observe(viewLifecycleOwner) { list ->
                     binding.pokemonsRecycler.layoutManager =
-                        GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
+                        LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
                     binding.pokemonsRecycler.adapter = PokemonsAdapter(list) { pokemon: PokemonRemoteDetails ->
                         val bundle = Bundle()
                         bundle.putSerializable("info", pokemon)

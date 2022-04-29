@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <ImageView
-        android:background="@drawable/card_round"
-        android:elevation="10dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/cardImage"
-        android:layout_width="160dp"
-        android:src="@drawable/pikachu"
-        android:layout_height="185dp"/>
+        android:layout_width="320dp"
+        android:layout_height="480dp"
+        android:layout_marginTop="10dp"
+        android:elevation="10dp"
+        android:src="@drawable/pikachu" />
 
     <TextView
-        android:layout_marginVertical="10dp"
         android:id="@+id/nameText"
-        android:text="@string/pickachu"
-        android:textSize="18sp"
-        android:layout_width="100dp"
+        android:layout_width="300dp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
         android:gravity="center"
-        android:layout_height="wrap_content"/>
+        android:text="@string/pickachu"
+        android:textSize="28sp" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
