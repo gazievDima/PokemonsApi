@@ -21,10 +21,10 @@ import com.gaziev.pokemons.presentation.common.MainActivity
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.PagerBaseFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.SearchToolbar
 import com.gaziev.pokemons.presentation.screens.favorites.pager.health.list.HealthAdapter
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,6 +32,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesLatestBinding =
         PagerFavoritesLatestBinding::inflate
     private var searchToolbar: SearchToolbar? = null
+    private val stateFlow: MutableStateFlow<String> = MutableStateFlow("")
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -46,17 +47,17 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
         super.onViewCreated(view, savedInstanceState)
         (activity?.application as App).daggerAppComponent.inject(this)
 
-            viewModel.pokemons.observe(viewLifecycleOwner) { list ->
+        viewModel.pokemons.observe(viewLifecycleOwner) { list ->
 
-                binding.favoritesRecycler.layoutManager =
-                    GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
-                binding.favoritesRecycler.adapter =
-                    HealthAdapter(list) { pokemon: PokemonLocalDetails ->
-                        val bundle = Bundle()
-                        bundle.putSerializable("info", pokemon)
-                        findNavController().navigate(R.id.cardFragment, bundle)
-                    }
-            }
+            binding.favoritesRecycler.layoutManager =
+                GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
+            binding.favoritesRecycler.adapter =
+                HealthAdapter(list) { pokemon: PokemonLocalDetails ->
+                    val bundle = Bundle()
+                    bundle.putSerializable("info", pokemon)
+                    findNavController().navigate(R.id.cardFragment, bundle)
+                }
+        }
 
         searchToolbar = SearchToolbar(
             (activity as MainActivity).binding.inputClose,
@@ -64,12 +65,17 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
             (activity as MainActivity)
         )
 
+        stateFlow.debounce(700)
+            .onEach {
+                Log.e(TAG, "result -> $it")
+                viewModel.search(it)
+            }.launchIn(lifecycleScope)
+
         (activity as MainActivity).binding.inputSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
-                viewModel.search(text.toString())
+                stateFlow.value = text.toString()
             }
-
             override fun afterTextChanged(p0: Editable?) = Unit
         })
     }

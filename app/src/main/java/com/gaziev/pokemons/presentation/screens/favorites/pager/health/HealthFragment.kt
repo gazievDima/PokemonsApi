@@ -1,8 +1,10 @@
 package com.gaziev.pokemons.presentation.screens.favorites.pager.health
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,13 +21,14 @@ import com.gaziev.pokemons.presentation.common.MainActivity
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.PagerBaseFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.SearchToolbar
 import com.gaziev.pokemons.presentation.screens.favorites.pager.health.list.HealthAdapter
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> PagerFavoritesHealthBinding =
         PagerFavoritesHealthBinding::inflate
     private var searchToolbar: SearchToolbar? = null
+    private val stateFlow: MutableStateFlow<String> = MutableStateFlow("")
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -57,16 +60,17 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
             (activity as MainActivity)
         )
 
+        stateFlow.debounce(700)
+            .onEach {
+                Log.e(ContentValues.TAG, "result -> $it")
+                viewModel.search(it)
+            }.launchIn(lifecycleScope)
+
         (activity as MainActivity).binding.inputSearch.addTextChangedListener(object :
             TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
-            override fun onTextChanged(
-                text: CharSequence?,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                viewModel.search(text.toString())
+            override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
+                stateFlow.value = text.toString()
             }
 
             override fun afterTextChanged(p0: Editable?) = Unit
