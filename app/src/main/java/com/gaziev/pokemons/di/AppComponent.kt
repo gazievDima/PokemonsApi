@@ -6,7 +6,9 @@ import com.gaziev.pokemons.presentation.screens.favorites.pager.latest.LatestFra
 import com.gaziev.pokemons.presentation.screens.favorites.pager.names.NamesFragment
 import com.gaziev.pokemons.presentation.screens.pokemons.PokemonsFragment
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(
     modules = [
         MapperModule::class,

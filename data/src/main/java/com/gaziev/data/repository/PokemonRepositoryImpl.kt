@@ -24,7 +24,7 @@ class PokemonRepositoryImpl @Inject constructor(
 ) : PokemonRepository {
 
     override suspend fun getPokemons(): Flow<List<PokemonRemoteDetails>> = withContext(dispatcher.inject()) {
-        return@withContext remoteSource.getPokemons()
+        return@withContext remoteSource.getPagePokemons(1, 10)
             .map { list ->
                 list.map { pokemon ->
                     pokemonRemoteMapper.mapTo(pokemon) }

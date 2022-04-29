@@ -24,4 +24,14 @@ class PokemonRemoteSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun getPagePokemons(page: Int, pageSize: Int): Flow<List<PokemonRemoteEntity>> = flow {
+        try {
+            val response: PokemonCards = pokemonsApiService.getPagePokemonsCards(page, pageSize)
+            if (response.data == null) emit(emptyList()) else emit(response.data)
+        } catch (e: Exception) {
+            Log.e(TAG, "Connection failed: $e")
+            emit(emptyList())
+        }
+    }
+
 }

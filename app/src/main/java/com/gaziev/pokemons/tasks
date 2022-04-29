@@ -2,7 +2,9 @@
 ======== api: https://pokemontcg.io
 ======== key: 0c5f87d2-75d5-4203-8364-f3a2b1821bcc
 
+- отрефакторить presentation layer
 - подключить пагинацию
+- разобраться с ключом от АПИ
 
 - подключить sql-lite(room):
     - добавить работу с кешем (api -> sql-lite -> view)
