@@ -1,7 +1,8 @@
 #TASKS
+======== api: https://pokemontcg.io
+======== key: 0c5f87d2-75d5-4203-8364-f3a2b1821bcc
 
-- подключить апи https://pokemontcg.io для главной страницы
-    api-key: 0c5f87d2-75d5-4203-8364-f3a2b1821bcc
+- сделать splash экран
 
 - подключить sql-lite(room):
     - добавить работу с кешем (api -> sql-lite -> view)
@@ -9,7 +10,6 @@
     - diff util callback плавное изменение списка в recycler view
 
 - debounce на строку поиска
-- сделать splash экран
 - подключить пагинацию
 
 - написать юнит тесты на приложение

@@ -16,7 +16,7 @@ class PokemonsViewModel @Inject constructor(
     private val getApiPokemonsUseCase: GetPokemonsUseCase
 ) : ViewModel() {
 
-    private var _pokemons: MutableLiveData<List<PokemonRemoteDetails>> = MutableLiveData(emptyList())
+    private var _pokemons: MutableLiveData<List<PokemonRemoteDetails>> = MutableLiveData()
     val pokemons: LiveData<List<PokemonRemoteDetails>> = _pokemons
 
     init {

@@ -11,6 +11,7 @@ import com.gaziev.domain.usecases.get.GetFavoritesPokemonsUseCase
 import com.gaziev.domain.usecases.search.SearchInFieldsDetailsUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByLatestUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -24,7 +25,7 @@ class LatestViewModel @Inject constructor(
     private val searchDataInObjectFieldsUseCase: SearchInFieldsDetailsUseCase<PokemonLocalDetails>
 ) : ViewModel() {
 
-    private var _pokemons = MutableLiveData<List<PokemonLocalDetails>>(emptyList())
+    private var _pokemons = MutableLiveData<List<PokemonLocalDetails>>()
     val pokemons: LiveData<List<PokemonLocalDetails>> = _pokemons
     private var listFromBD: List<PokemonLocalDetails> = emptyList()
     private var listSearch: List<PokemonLocalDetails> = emptyList()
@@ -32,6 +33,7 @@ class LatestViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
+            delay(3000)
             getFavoritePokemonsUseCase.get()
                 .collect { list ->
                     listFromBD = list

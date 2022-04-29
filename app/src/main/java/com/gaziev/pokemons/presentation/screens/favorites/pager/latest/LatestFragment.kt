@@ -56,7 +56,8 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
                         bundle.putSerializable("info", pokemon)
                         findNavController().navigate(R.id.cardFragment, bundle)
                     }
-        }
+                binding.splash.visibility = View.GONE
+            }
 
         searchToolbar = SearchToolbar(
             (activity as MainActivity).binding.inputClose,

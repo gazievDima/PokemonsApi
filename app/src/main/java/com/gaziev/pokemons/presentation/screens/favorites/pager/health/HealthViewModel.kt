@@ -8,6 +8,7 @@ import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.domain.usecases.get.GetFavoritesPokemonsUseCase
 import com.gaziev.domain.usecases.search.SearchInFieldsDetailsUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByHealthUseCase
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -21,7 +22,7 @@ class HealthViewModel @Inject constructor(
 
 ) : ViewModel() {
 
-    private var _pokemons: MutableLiveData<List<PokemonLocalDetails>> = MutableLiveData(emptyList())
+    private var _pokemons: MutableLiveData<List<PokemonLocalDetails>> = MutableLiveData()
     val pokemons: LiveData<List<PokemonLocalDetails>> = _pokemons
     private var listFromBD: List<PokemonLocalDetails> = emptyList()
     private var listSearch: List<PokemonLocalDetails> = emptyList()
@@ -29,7 +30,8 @@ class HealthViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-                getFavoritePokemonsUseCase.get()
+            delay(3000)
+            getFavoritePokemonsUseCase.get()
                     .collect { list ->
                         listFromBD = list
                         _pokemons.value = sortHealthFavoritePokemonsUseCase.up(listFromBD)

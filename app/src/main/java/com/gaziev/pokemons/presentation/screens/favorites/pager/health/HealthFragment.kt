@@ -49,30 +49,32 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
                     bundle.putSerializable("info", pokemon)
                     findNavController().navigate(R.id.cardFragment, bundle)
                 }
+            binding.splash.visibility = View.GONE
 
-
-            searchToolbar = SearchToolbar(
-                (activity as MainActivity).binding.inputClose,
-                (activity as MainActivity).binding.inputSearch,
-                (activity as MainActivity)
-            )
-
-            (activity as MainActivity).binding.inputSearch.addTextChangedListener(object :
-                TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
-                override fun onTextChanged(
-                    text: CharSequence?,
-                    start: Int,
-                    before: Int,
-                    count: Int
-                ) {
-                    viewModel.search(text.toString())
-                }
-
-                override fun afterTextChanged(p0: Editable?) = Unit
-            })
         }
+
+        searchToolbar = SearchToolbar(
+            (activity as MainActivity).binding.inputClose,
+            (activity as MainActivity).binding.inputSearch,
+            (activity as MainActivity)
+        )
+
+        (activity as MainActivity).binding.inputSearch.addTextChangedListener(object :
+            TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
+            override fun onTextChanged(
+                text: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                viewModel.search(text.toString())
+            }
+
+            override fun afterTextChanged(p0: Editable?) = Unit
+        })
     }
+
 
     override fun onResume() {
         super.onResume()

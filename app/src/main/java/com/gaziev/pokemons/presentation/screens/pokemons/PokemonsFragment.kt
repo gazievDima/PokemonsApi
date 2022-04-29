@@ -47,6 +47,7 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(), BottomNavigati
                         bundle.putSerializable("info", pokemon)
                         findNavController().navigate(R.id.cardFragment, bundle)
                     }
+                binding.splash.visibility = View.GONE
         }
     }
 

@@ -8,6 +8,7 @@ import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.domain.usecases.get.GetFavoritesPokemonsUseCase
 import com.gaziev.domain.usecases.search.SearchInFieldsDetailsUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByNamesUseCase
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -20,7 +21,7 @@ class NamesViewModel @Inject constructor(
     private val searchDataInObjectFieldsUseCase: SearchInFieldsDetailsUseCase<PokemonLocalDetails>
 ) : ViewModel() {
 
-    private var _pokemons: MutableLiveData<List<PokemonLocalDetails>> = MutableLiveData(emptyList())
+    private var _pokemons: MutableLiveData<List<PokemonLocalDetails>> = MutableLiveData()
     val pokemons: LiveData<List<PokemonLocalDetails>> = _pokemons
     private var listFromBD: List<PokemonLocalDetails> = emptyList()
     private var listSearch: List<PokemonLocalDetails> = emptyList()
@@ -28,6 +29,7 @@ class NamesViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
+            delay(3000)
             getFavoritePokemonsUseCase.get()
                 .collect { list ->
                     listFromBD = list
