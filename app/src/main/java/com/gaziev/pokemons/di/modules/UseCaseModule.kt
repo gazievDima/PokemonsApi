@@ -11,7 +11,7 @@ import com.gaziev.domain.usecases.search.SearchInFieldsDetailsUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByHealthUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByLatestUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByNamesUseCase
-import com.gaziev.pokemons.di.dispatcher.DispatcherDomainImpl
+import com.gaziev.pokemons.dispatcher.DispatcherDomainImpl
 import dagger.Module
 import dagger.Provides
 

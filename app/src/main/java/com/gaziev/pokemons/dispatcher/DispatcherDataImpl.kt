@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.di.dispatcher
+package com.gaziev.pokemons.dispatcher
 
 import com.gaziev.data.common.DispatcherData
 import kotlinx.coroutines.CoroutineDispatcher

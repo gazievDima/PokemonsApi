@@ -4,8 +4,8 @@ import com.gaziev.data.common.DispatcherData
 import dagger.Module
 import dagger.Provides
 import com.gaziev.domain.common.DispatcherDomain
-import com.gaziev.pokemons.di.dispatcher.DispatcherDataImpl
-import com.gaziev.pokemons.di.dispatcher.DispatcherDomainImpl
+import com.gaziev.pokemons.dispatcher.DispatcherDataImpl
+import com.gaziev.pokemons.dispatcher.DispatcherDomainImpl
 
 @Module
 class DispatchersModule {

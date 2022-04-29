@@ -6,7 +6,7 @@ import com.gaziev.data.repository.PokemonRepositoryImpl
 import com.gaziev.data.sources.room.PokemonLocalSourceImpl
 import com.gaziev.data.sources.retrofit.PokemonRemoteSourceImpl
 import com.gaziev.domain.repository.PokemonRepository
-import com.gaziev.pokemons.di.dispatcher.DispatcherDataImpl
+import com.gaziev.pokemons.dispatcher.DispatcherDataImpl
 import dagger.Module
 import dagger.Provides
 
