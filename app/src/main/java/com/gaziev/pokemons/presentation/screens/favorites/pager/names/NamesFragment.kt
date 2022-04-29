@@ -49,8 +49,6 @@ class NamesFragment : PagerBaseFragment<PagerFavoritesNamesBinding>() {
                         bundle.putSerializable("info", pokemon)
                         findNavController().navigate(R.id.cardFragment, bundle)
                     }
-                binding.splash.visibility = View.GONE
-
         }
 
         searchToolbar = SearchToolbar(

@@ -30,7 +30,6 @@ class HealthViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            delay(3000)
             getFavoritePokemonsUseCase.get()
                     .collect { list ->
                         listFromBD = list
