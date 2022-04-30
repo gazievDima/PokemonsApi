@@ -1,6 +1,6 @@
 package com.gaziev.pokemons.dispatcher
 
-import com.gaziev.domain.common.DispatcherDomain
+import com.gaziev.domain.usecases.DispatcherDomain
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject

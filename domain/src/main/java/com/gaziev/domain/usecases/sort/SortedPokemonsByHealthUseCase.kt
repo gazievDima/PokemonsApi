@@ -1,17 +1,15 @@
 package com.gaziev.domain.usecases.sort
 
-import com.gaziev.domain.common.DispatcherDomain
-import com.gaziev.domain.comparator.PokemonComparator
+import com.gaziev.domain.usecases.DispatcherDomain
 import com.gaziev.domain.models.PokemonLocalDetails
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
+import kotlin.Comparator
 
 class SortedPokemonsByHealthUseCase @Inject constructor(
-    private val pokemonComparatorHealthUp: PokemonComparator.HealthUP,
-    private val pokemonComparatorHealthDown: PokemonComparator.HealthDown,
+    private val pokemonComparatorHealthUp: Comparator<PokemonLocalDetails>,
+    private val pokemonComparatorHealthDown: Comparator<PokemonLocalDetails>,
     private val dispatcher: DispatcherDomain
 ) {
 

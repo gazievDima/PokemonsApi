@@ -2,13 +2,14 @@ package com.gaziev.data.mapper
 
 import com.gaziev.data.models.ImagesEntity
 import com.gaziev.data.models.PokemonRemoteEntity
+import com.gaziev.data.repository.mapper.Mapper
 import com.gaziev.domain.models.ImagesDetails
 import com.gaziev.domain.models.PokemonRemoteDetails
 import javax.inject.Inject
 
-class PokemonRemoteMapper @Inject constructor(
-    private val imageRemoteMapper: IMapper<ImagesEntity, ImagesDetails>
-) : IMapper<PokemonRemoteEntity, PokemonRemoteDetails> {
+class PokemonRemoteMapperImpl @Inject constructor(
+    private val imageRemoteMapper: Mapper<ImagesEntity, ImagesDetails>
+) : Mapper<PokemonRemoteEntity, PokemonRemoteDetails> {
     override fun mapTo(t: PokemonRemoteEntity): PokemonRemoteDetails {
         return PokemonRemoteDetails(
             id = t.id,

@@ -1,10 +1,12 @@
 package com.gaziev.data.mapper
 
 import com.gaziev.data.models.PokemonLocalEntity
+import com.gaziev.data.repository.mapper.Mapper
 import com.gaziev.domain.models.PokemonLocalDetails
 import javax.inject.Inject
 
-class PokemonLocalMapper @Inject constructor() : IMapper<PokemonLocalEntity, PokemonLocalDetails> {
+class PokemonLocalMapperImpl @Inject constructor() :
+    Mapper<PokemonLocalEntity, PokemonLocalDetails> {
     override fun mapTo(t: PokemonLocalEntity): PokemonLocalDetails {
         return PokemonLocalDetails(
             primary_key = t.primary_key,

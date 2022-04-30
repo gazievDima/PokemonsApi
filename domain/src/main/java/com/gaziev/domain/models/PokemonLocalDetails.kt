@@ -24,12 +24,4 @@ class PokemonLocalDetails(
               flavorText.contains(element)
     }
 
-    override fun toString(): String {
-        return "id: ${this.id}, name: ${this.name}"
-    }
-
-    override fun equals(other: Any?): Boolean {
-        return false
-    }
-
 }

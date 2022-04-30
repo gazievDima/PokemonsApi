@@ -1,7 +1,6 @@
 package com.gaziev.data.repository
 
-import com.gaziev.data.common.DispatcherData
-import com.gaziev.data.mapper.IMapper
+import com.gaziev.data.repository.mapper.Mapper
 import com.gaziev.data.models.PokemonLocalEntity
 import com.gaziev.data.models.PokemonRemoteEntity
 import com.gaziev.data.repository.sources.PokemonLocalSource
@@ -18,8 +17,8 @@ import javax.inject.Inject
 class PokemonRepositoryImpl @Inject constructor(
     private val localSource: PokemonLocalSource,
     private val remoteSource: PokemonRemoteSource,
-    private val pokemonLocalMapper: IMapper<PokemonLocalEntity, PokemonLocalDetails>,
-    private val pokemonRemoteMapper: IMapper<PokemonRemoteEntity, PokemonRemoteDetails>,
+    private val pokemonLocalMapper: Mapper<PokemonLocalEntity, PokemonLocalDetails>,
+    private val pokemonRemoteMapper: Mapper<PokemonRemoteEntity, PokemonRemoteDetails>,
     private val dispatcher: DispatcherData
 ) : PokemonRepository {
 

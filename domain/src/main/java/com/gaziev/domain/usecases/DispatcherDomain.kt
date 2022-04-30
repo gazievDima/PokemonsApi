@@ -1,4 +1,4 @@
-package com.gaziev.domain.common
+package com.gaziev.domain.usecases
 
 import kotlinx.coroutines.CoroutineDispatcher
 

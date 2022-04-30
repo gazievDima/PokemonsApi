@@ -1,7 +1,7 @@
 package com.gaziev.pokemons.di.modules
 
 import com.gaziev.data.repository.PokemonRepositoryImpl
-import com.gaziev.domain.comparator.PokemonComparator
+import com.gaziev.domain.comparator.PokemonComparatorImpl
 import com.gaziev.domain.usecases.delete.DeleteFavoritePokemonUseCase
 import com.gaziev.domain.usecases.get.GetFavoritesPokemonsUseCase
 import com.gaziev.domain.usecases.get.GetPokemonsUseCase
@@ -52,8 +52,8 @@ class UseCaseModule {
 
     @Provides
     fun provideSortedPokemonByHealthUseCase(
-        pokemonComparatorHealthUp: PokemonComparator.HealthUP,
-        pokemonComparatorHealthDown: PokemonComparator.HealthDown,
+        pokemonComparatorHealthUp: PokemonComparatorImpl.HealthUP,
+        pokemonComparatorHealthDown: PokemonComparatorImpl.HealthDown,
         dispatcher: DispatcherDomainImpl
     ) : SortedPokemonsByHealthUseCase {
         return SortedPokemonsByHealthUseCase(pokemonComparatorHealthUp, pokemonComparatorHealthDown, dispatcher)
@@ -61,8 +61,8 @@ class UseCaseModule {
 
     @Provides
     fun provideSortedPokemonsByLatestUseCase(
-        pokemonComparatorLatestUp: PokemonComparator.LatestUp,
-        pokemonComparatorLatestDown: PokemonComparator.LatestDown,
+        pokemonComparatorLatestUp: PokemonComparatorImpl.LatestUp,
+        pokemonComparatorLatestDown: PokemonComparatorImpl.LatestDown,
         dispatcher: DispatcherDomainImpl
     ): SortedPokemonsByLatestUseCase {
         return SortedPokemonsByLatestUseCase(pokemonComparatorLatestUp, pokemonComparatorLatestDown, dispatcher)
@@ -70,8 +70,8 @@ class UseCaseModule {
 
     @Provides
     fun provideSortedPokemonsByNamesUseCase(
-        pokemonComparatorNameUp: PokemonComparator.NameUp,
-        pokemonComparatorNameDown: PokemonComparator.NameDown,
+        pokemonComparatorNameUp: PokemonComparatorImpl.NameUp,
+        pokemonComparatorNameDown: PokemonComparatorImpl.NameDown,
         dispatcher: DispatcherDomainImpl
     ): SortedPokemonsByNamesUseCase {
         return SortedPokemonsByNamesUseCase(pokemonComparatorNameUp, pokemonComparatorNameDown, dispatcher)

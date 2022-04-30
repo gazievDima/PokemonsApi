@@ -1,9 +1,9 @@
 package com.gaziev.pokemons.di.modules
 
-import com.gaziev.data.mapper.PokemonLocalMapper
-import com.gaziev.data.mapper.PokemonRemoteMapper
+import com.gaziev.data.mapper.PokemonLocalMapperImpl
+import com.gaziev.data.mapper.PokemonRemoteMapperImpl
 import com.gaziev.data.repository.PokemonRepositoryImpl
-import com.gaziev.data.sources.room.PokemonLocalSourceImpl
+import com.gaziev.data.sources.local.PokemonLocalSourceImpl
 import com.gaziev.data.sources.remote.PokemonRemoteSourceImpl
 import com.gaziev.domain.repository.PokemonRepository
 import com.gaziev.pokemons.dispatcher.DispatcherDataImpl
@@ -17,8 +17,8 @@ class RepositoryModule {
     fun providePokemonRepository(
         localSource: PokemonLocalSourceImpl,
         remoteSource: PokemonRemoteSourceImpl,
-        pokemonLocalMapper: PokemonLocalMapper,
-        pokemonRemoteMapper: PokemonRemoteMapper,
+        pokemonLocalMapper: PokemonLocalMapperImpl,
+        pokemonRemoteMapper: PokemonRemoteMapperImpl,
         dispatcher: DispatcherDataImpl
     ) : PokemonRepository {
         return PokemonRepositoryImpl(

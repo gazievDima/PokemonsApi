@@ -1,9 +1,9 @@
 package com.gaziev.pokemons.di.modules
 
-import com.gaziev.data.common.DispatcherData
+import com.gaziev.data.repository.DispatcherData
 import dagger.Module
 import dagger.Provides
-import com.gaziev.domain.common.DispatcherDomain
+import com.gaziev.domain.usecases.DispatcherDomain
 import com.gaziev.pokemons.dispatcher.DispatcherDataImpl
 import com.gaziev.pokemons.dispatcher.DispatcherDomainImpl
 

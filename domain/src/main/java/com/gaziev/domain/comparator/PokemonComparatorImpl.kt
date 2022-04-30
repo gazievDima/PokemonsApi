@@ -3,7 +3,7 @@ package com.gaziev.domain.comparator
 import com.gaziev.domain.models.PokemonLocalDetails
 import javax.inject.Inject
 
-class PokemonComparator {
+class PokemonComparatorImpl {
 
     class LatestUp @Inject constructor() : Comparator<PokemonLocalDetails> {
         override fun compare(p0: PokemonLocalDetails, p1: PokemonLocalDetails): Int =

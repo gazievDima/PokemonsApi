@@ -1,8 +1,6 @@
 package com.gaziev.domain.usecases.search
 
-import com.gaziev.domain.common.DispatcherDomain
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
+import com.gaziev.domain.usecases.DispatcherDomain
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 

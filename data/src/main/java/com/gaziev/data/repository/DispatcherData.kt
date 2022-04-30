@@ -1,4 +1,4 @@
-package com.gaziev.data.common
+package com.gaziev.data.repository
 
 import kotlinx.coroutines.CoroutineDispatcher
 
