@@ -1,7 +1,6 @@
 package com.gaziev.pokemons.di.modules
 
-import com.gaziev.data.sources.remote.PokemonRemoteSourceImpl
-import com.gaziev.data.sources.remote.retrofit.PokemonsApiService
+import com.gaziev.data.sources.remote.PokemonsApiService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -11,13 +10,17 @@ import javax.inject.Singleton
 @Module
 class ServicesModule {
 
-    @Singleton
     @Provides
-    fun pokemonsApiService(): PokemonsApiService {
+    fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.pokemontcg.io/")
             .build()
-            .create(PokemonsApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun pokemonsApiService(retrofit: Retrofit): PokemonsApiService {
+        return retrofit.create(PokemonsApiService::class.java)
     }
 }
