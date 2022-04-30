@@ -16,7 +16,7 @@ class PokemonRemoteSourceImpl @Inject constructor(
 
     override suspend fun getPokemons(): Flow<List<PokemonRemoteEntity>> = flow {
         try {
-            val response: PokemonsRetrofitEntity = pokemonsApiService.getPokemonsCard()
+            val response: PokemonsRetrofitEntity = pokemonsApiService.getPokemonsCards()
             if (response.data == null) emit(emptyList()) else emit(response.data)
         } catch (e: Exception) {
             Log.e(TAG, "Connection failed: $e")
