@@ -6,11 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.gaziev.pokemons.presentation.MainActivity
+import com.gaziev.pokemons.presentation.common.MainBottomNavigation
+import com.gaziev.pokemons.presentation.common.MainToolbar
 
 abstract class PagerBaseFragment<T : ViewBinding> : Fragment() {
     abstract val inflate: (LayoutInflater, ViewGroup?, Boolean) -> T
     private var _binding: T? = null
     val binding: T get() = _binding!!
+    val mainToolbar: MainToolbar by lazy { (requireActivity() as MainActivity).mainToolbar }
+    val mainActivity: MainActivity by lazy { requireActivity() as MainActivity }
 
     override fun onCreateView(
         inflater: LayoutInflater,

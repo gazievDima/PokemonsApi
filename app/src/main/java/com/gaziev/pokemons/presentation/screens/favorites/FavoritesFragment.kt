@@ -33,7 +33,6 @@ class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(), ToolbarFragm
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 binding.viewPager.currentItem = tab?.position!!
             }
-
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })

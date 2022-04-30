@@ -2,7 +2,7 @@
 ======== api: https://pokemontcg.io
 ======== key: 0c5f87d2-75d5-4203-8364-f3a2b1821bcc
 
-- отрефакторить presentation layer
+- описание покемона (добавить recycler view)
 - разобраться с Retrofit + ключом от АПИ
 - подключить пагинацию
 

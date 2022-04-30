@@ -2,31 +2,34 @@ package com.gaziev.pokemons.presentation.screens.favorites.pager.common
 
 import android.view.View
 import android.widget.EditText
-import com.gaziev.pokemons.presentation.common.MainActivity
+import com.gaziev.pokemons.presentation.MainActivity
 
 class SearchToolbar(
-    private val close: View,
-    private val input: EditText,
     private val activity: MainActivity
 ) {
+    private var close: View? = null
+    private var input: EditText? = null
 
     init {
-        close.setOnClickListener {
+        close = activity.binding.inputClose
+        input = activity.binding.inputSearch
+
+        close?.setOnClickListener {
             modeOff()
         }
     }
 
     fun modeOn() {
-        close.visibility = View.VISIBLE
-        input.visibility = View.VISIBLE
-        input.requestFocus()
-        activity.showKeyboard()
+        close?.visibility = View.VISIBLE
+        input?.visibility = View.VISIBLE
+        input?.requestFocus()
+        activity.keyboardManager.up()
     }
 
     fun modeOff() {
-        close.visibility = View.GONE
-        input.visibility = View.GONE
-        input.setText("")
-        activity.hideKeyboard()
+        close?.visibility = View.GONE
+        input?.visibility = View.GONE
+        input?.setText("")
+        activity.keyboardManager.down()
     }
 }
