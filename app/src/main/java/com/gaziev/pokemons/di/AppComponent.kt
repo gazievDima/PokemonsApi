@@ -1,6 +1,7 @@
 package com.gaziev.pokemons.di
 
 import com.gaziev.pokemons.di.modules.*
+import com.gaziev.pokemons.presentation.screens.card.CardFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.health.HealthFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.latest.LatestFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.names.NamesFragment
@@ -27,4 +28,5 @@ interface AppComponent {
     fun inject(fragment: NamesFragment)
     fun inject(fragment: LatestFragment)
     fun inject(fragment: HealthFragment)
+    fun inject(fragment: CardFragment)
 }

@@ -13,4 +13,15 @@
     <string name="about_info">This app is not created, approved, supported, or affiliated with Nintendo or Pokémon Company. \n\nThe project is developed with the support of the free Pokemon API.</string>
     <string name="sorted">Sorted</string>
     <string name="search">Search</string>
+    <string name="id_no_information_available">Id: No information available</string>
+    <string name="name_no_information_available">Name: No information available</string>
+    <string name="supertype_no_information_available">Supertype: No information available</string>
+    <string name="subtypes_no_information_available">Subtypes: No information available</string>
+    <string name="hp_no_information_available">Hp: No information available</string>
+    <string name="types_no_information_available">Types: No information available</string>
+    <string name="evolves_no_information_available">Evolves: No information available</string>
+    <string name="rules_no_information_available">Rules: No information available</string>
+    <string name="number_no_information_available">Number of all: No information available</string>
+    <string name="artist_no_information_available">Artist: No information available</string>
+    <string name="rarity_no_information_available">Rarity: No information available</string>
 </resources>

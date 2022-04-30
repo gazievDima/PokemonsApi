@@ -14,11 +14,13 @@ class PokemonRemoteMapper @Inject constructor(
             id = t.id,
             name = t.name,
             supertype = t.supertype,
+            subtypes = t.subtypes,
             hp = t.hp,
-            number = t.number,
+            types = t.types,
+            evolvesTo = t.evolvesTo,
+            rules = t.rules,
             artist = t.artist,
             rarity = t.rarity,
-            flavorText = t.flavorText,
             images = imageRemoteMapper.mapTo(t.images!!)
         )
     }
@@ -28,11 +30,13 @@ class PokemonRemoteMapper @Inject constructor(
             id = v.id,
             name = v.name,
             supertype = v.supertype,
+            subtypes = v.subtypes,
             hp = v.hp,
-            number = v.number,
+            types = v.types,
+            evolvesTo = v.evolvesTo,
+            rules = v.rules,
             artist = v.artist,
             rarity = v.rarity,
-            flavorText = v.flavorText,
             images = imageRemoteMapper.mapFrom(v.images!!)
         )
     }

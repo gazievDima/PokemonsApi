@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gaziev.pokemons.di.key.ViewModelKey
 import com.gaziev.pokemons.presentation.common.ViewModelFactory
+import com.gaziev.pokemons.presentation.screens.card.CardViewModel
 import com.gaziev.pokemons.presentation.screens.favorites.pager.health.HealthViewModel
 import com.gaziev.pokemons.presentation.screens.favorites.pager.latest.LatestViewModel
 import com.gaziev.pokemons.presentation.screens.favorites.pager.names.NamesViewModel
@@ -37,5 +38,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(NamesViewModel::class)
     abstract fun bindNamesViewModel(viewModel: NamesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CardViewModel::class)
+    abstract fun bindCardViewModel(viewModel: CardViewModel): ViewModel
 
 }

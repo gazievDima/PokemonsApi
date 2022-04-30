@@ -2,25 +2,35 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:scrollbars="none"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:scrollbars="none">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="40dp">
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end">
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/like"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="@dimen/margin_card"
+                android:src="@drawable/ic_baseline_favorite_24" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/close"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin_card"
                 android:src="@drawable/ic_baseline_close_24"
                 app:tint="?colorPrimary" />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -30,15 +40,59 @@
             android:layout_width="350dp"
             android:layout_height="500dp"
             android:layout_gravity="center"
-            android:src="@drawable/large_card" />
+            android:src="@drawable/pikachu" />
 
         <TextView
-            android:id="@+id/info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20sp"
-            android:text="id: #### \n\nname: #### \n\nsupertype: #### \n\nhp: #### \n\nnumber: #### \n\nartist: #### \n\nrarity: #### \n\nflavorText: #### \n"
-            android:textSize="24sp" />
+            android:layout_marginTop="15dp"
+            android:id="@+id/tvId"
+            style="@style/StyleFieldsTextView"
+            android:text="@string/id_no_information_available" />
+
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/StyleFieldsTextView"
+            android:text="@string/name_no_information_available" />
+
+        <TextView
+            android:id="@+id/tvSupertype"
+            style="@style/StyleFieldsTextView"
+            android:text="@string/supertype_no_information_available" />
+
+        <TextView
+            android:id="@+id/tvSubtypes"
+            style="@style/StyleFieldsTextView"
+            android:text="@string/subtypes_no_information_available" />
+
+        <TextView
+            android:id="@+id/tvHp"
+            style="@style/StyleFieldsTextView"
+            android:text="@string/hp_no_information_available" />
+
+        <TextView
+            android:id="@+id/tvTypes"
+            style="@style/StyleFieldsTextView"
+            android:text="@string/types_no_information_available" />
+
+        <TextView
+            android:id="@+id/tvEvolvesTo"
+            style="@style/StyleFieldsTextView"
+            android:text="@string/evolves_no_information_available" />
+
+        <TextView
+            android:id="@+id/tvRules"
+            style="@style/StyleFieldsTextView"
+            android:text="@string/rules_no_information_available" />
+
+        <TextView
+            android:id="@+id/tvArtist"
+            style="@style/StyleFieldsTextView"
+            android:text="@string/artist_no_information_available" />
+
+        <TextView
+            android:id="@+id/tvRarity"
+            android:layout_marginBottom="15dp"
+            style="@style/StyleFieldsTextView"
+            android:text="@string/rarity_no_information_available" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>
