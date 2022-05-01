@@ -8,13 +8,10 @@ import retrofit2.http.Query
 interface PokemonsApiService {
 
         @GET("v2/cards")
-        suspend fun getPokemonsCards(
-                @Header("X-Api-Key") api: String
-        ): PokemonsRetrofitEntity
+        suspend fun getPokemonsCards(): PokemonsRetrofitEntity
 
         @GET("v2/cards")
         suspend fun getPagePokemonsCards(
-                @Header("X-Api-Key") api: String,
                 @Query("page") page: Int,
                 @Query("pageSize") pageSize: Int
         ): PokemonsRetrofitEntity

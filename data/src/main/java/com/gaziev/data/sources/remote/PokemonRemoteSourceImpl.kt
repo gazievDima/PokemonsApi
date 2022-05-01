@@ -17,7 +17,7 @@ class PokemonRemoteSourceImpl @Inject constructor(
     override suspend fun getPokemons(): Flow<List<PokemonRemoteEntity>> = flow {
         try {
             val response: PokemonsRetrofitEntity
-            = pokemonsApiService.getPokemonsCards(BuildConfig.API_KEY)
+            = pokemonsApiService.getPokemonsCards()
             if (response.data == null) emit(emptyList()) else emit(response.data)
         } catch (e: Exception) {
             emit(emptyList())
@@ -27,7 +27,7 @@ class PokemonRemoteSourceImpl @Inject constructor(
     override suspend fun getPagePokemons(page: Int, pageSize: Int): Flow<List<PokemonRemoteEntity>> = flow {
         try {
             val response: PokemonsRetrofitEntity
-            = pokemonsApiService.getPagePokemonsCards(BuildConfig.API_KEY, page, pageSize)
+            = pokemonsApiService.getPagePokemonsCards(page, pageSize)
             if (response.data == null) emit(emptyList()) else emit(response.data)
         } catch (e: Exception) {
             emit(emptyList())

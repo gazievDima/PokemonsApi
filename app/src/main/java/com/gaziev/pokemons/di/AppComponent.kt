@@ -18,7 +18,7 @@ import javax.inject.Singleton
         ViewModelModule::class,
         UseCaseModule::class,
         DispatchersModule::class,
-        ServicesModule::class
+        RetrofitModule::class
     ]
 )
 

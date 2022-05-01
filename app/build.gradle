@@ -5,10 +5,15 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
 android {
     compileSdk 32
 
     defaultConfig {
+        buildConfigField "String", "API_KEY", localProperties['apiKey']
+
         applicationId "com.gaziev.api_example"
         minSdk 23
         targetSdk 32
