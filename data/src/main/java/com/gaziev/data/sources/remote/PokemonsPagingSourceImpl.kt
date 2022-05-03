@@ -1,12 +1,15 @@
 package com.gaziev.data.sources.remote
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.gaziev.data.models.PokemonRemoteEntity
-import com.gaziev.data.repository.mapper.Mapper
+import com.gaziev.data.models.PokemonsRetrofitEntity
+import com.gaziev.data.repository.Mapper
 import com.gaziev.domain.models.PokemonRemoteDetails
+import retrofit2.HttpException
+import java.io.IOException
+import java.lang.Exception
+import java.net.HttpURLConnection
 import javax.inject.Inject
 
 class PokemonsPagingSourceImpl @Inject constructor(
@@ -17,18 +20,26 @@ class PokemonsPagingSourceImpl @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonRemoteDetails> {
         val currentKey = params.key ?: 1
         val nextKey = currentKey + 1
-        val response = source.getPagePokemonsCards(currentKey, params.loadSize)
-
+        var response: PokemonsRetrofitEntity? = null
         val list = mutableListOf<PokemonRemoteDetails>()
-            response.data!!.forEach {
+
+        return try {
+            response = source.getPagePokemonsCards(currentKey, params.loadSize)
+
+            response.data?.forEach {
                 list.add(mapper.mapTo(it))
             }
 
-        return LoadResult.Page(
-            data = list,
-            prevKey = null,
-            nextKey = nextKey
-        )
+            LoadResult.Page(
+                data = list,
+                prevKey = null,
+                nextKey = nextKey,
+            )
+        } catch (e: IOException) {
+            LoadResult.Error(e)
+        } catch (e: HttpException) {
+            LoadResult.Error(e)
+        }
     }
 
     override fun getRefreshKey(state: PagingState<Int, PokemonRemoteDetails>): Int? {

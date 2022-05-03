@@ -10,4 +10,11 @@
             android:id="@+id/pokemonsRecycler"
             android:layout_height="match_parent"/>
 
+        <include layout="@layout/screen_error"
+            android:id="@+id/screenError"
+            />
+        <include layout="@layout/screen_loading"
+            android:id="@+id/screenLoading"
+            />
+
 </FrameLayout>

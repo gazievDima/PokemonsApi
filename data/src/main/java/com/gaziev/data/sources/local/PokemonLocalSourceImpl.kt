@@ -1,7 +1,7 @@
 package com.gaziev.data.sources.local
 
 import com.gaziev.data.models.PokemonLocalEntity
-import com.gaziev.data.repository.sources.PokemonLocalSource
+import com.gaziev.data.repository.PokemonLocalSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

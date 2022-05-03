@@ -20,9 +20,9 @@ class PokemonsPagingHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             .into(binding.cardImage)
 
         binding.nameText.text = pokemon.name
-        binding.cardImage.setOnClickListener {
-            click(pokemon)
-        }
 
+            binding.cardImage.setOnClickListener {
+                click(pokemon)
+        }
     }
 }

@@ -1,7 +1,7 @@
 package com.gaziev.data.mapper
 
 import com.gaziev.data.models.PokemonLocalEntity
-import com.gaziev.data.repository.mapper.Mapper
+import com.gaziev.data.repository.Mapper
 import com.gaziev.domain.models.PokemonLocalDetails
 import javax.inject.Inject
 

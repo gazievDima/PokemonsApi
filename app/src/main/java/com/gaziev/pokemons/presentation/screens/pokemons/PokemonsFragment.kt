@@ -1,6 +1,8 @@
 package com.gaziev.pokemons.presentation.screens.pokemons
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gaziev.domain.models.PokemonRemoteDetails
@@ -20,9 +24,13 @@ import com.gaziev.pokemons.presentation.common.ToolbarFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.ToolbarFavoriteIcon
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsPagingAdapter
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsComparator
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import java.lang.Exception
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
@@ -37,11 +45,14 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
         FragmentPokemonsBinding::inflate
     private val actionToFavorite =
         PokemonsFragmentDirections.actionPokemonsFragmentToFavoriteFragment()
+    private var pagingAdapter: PokemonsPagingAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         (activity?.application as App).daggerAppComponent.inject(this)
+        initRecycler()
+        pagingLoadListener()
         subscribe()
     }
 
@@ -53,8 +64,8 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
         }
     }
 
-    private fun subscribe() {
-        val pagingAdapter = PokemonsPagingAdapter(PokemonsComparator) { pokemon: PokemonRemoteDetails ->
+    private fun initRecycler() {
+        pagingAdapter = PokemonsPagingAdapter(PokemonsComparator) { pokemon: PokemonRemoteDetails ->
             val bundle = Bundle()
             bundle.putSerializable("info", pokemon)
             findNavController().navigate(R.id.cardFragment, bundle)
@@ -63,17 +74,34 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
         binding.pokemonsRecycler.layoutManager =
             GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
         binding.pokemonsRecycler.adapter = pagingAdapter
+    }
 
-        lifecycleScope.launchWhenStarted {
-            launch {
-                viewModel.pokemons()
-                    .collectLatest { pagingData ->
-                        pagingAdapter.submitData(pagingData)
-                    }
+
+    private fun pagingLoadListener() {
+        pagingAdapter?.addLoadStateListener { state ->
+            if (state.refresh != LoadState.Loading) {
+                binding.screenError.splash.visibility = View.GONE
+                binding.screenLoading.splash.visibility = View.GONE
+            }
+
+            if(state.refresh is LoadState.Error) {
+                binding.screenError.splash.visibility = View.VISIBLE
+                binding.screenLoading.splash.visibility = View.GONE
             }
         }
     }
 
+    private fun subscribe() {
+        lifecycleScope.launchWhenStarted {
+            launch {
+                viewModel.pokemons()
+                    .collectLatest { pagingData ->
+                        pagingAdapter?.submitData(pagingData)
+                    }
+            }
+        }
+
+    }
 }
 
 

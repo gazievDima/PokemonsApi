@@ -1,4 +1,4 @@
-package com.gaziev.data.repository.mapper
+package com.gaziev.data.repository
 
 interface Mapper<T, V> {
     fun mapTo(t: T): V

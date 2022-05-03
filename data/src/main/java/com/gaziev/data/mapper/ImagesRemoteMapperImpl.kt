@@ -1,7 +1,7 @@
 package com.gaziev.data.mapper
 
 import com.gaziev.data.models.ImagesEntity
-import com.gaziev.data.repository.mapper.Mapper
+import com.gaziev.data.repository.Mapper
 import com.gaziev.domain.models.ImagesDetails
 import javax.inject.Inject
 

@@ -16,8 +16,8 @@
 
             <ImageView
                 android:id="@+id/like"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/size_icon"
+                android:layout_height="@dimen/size_icon"
                 android:layout_margin="@dimen/margin_card"
                 android:src="@drawable/ic_baseline_favorite_24" />
 
@@ -28,14 +28,15 @@
 
             <ImageView
                 android:id="@+id/close"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/size_icon"
+                android:layout_height="@dimen/size_icon"
                 android:layout_margin="@dimen/margin_card"
                 android:src="@drawable/ic_baseline_close_24"
                 app:tint="?colorPrimary" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <ImageView
+            android:layout_marginVertical="@dimen/margin_card"
             android:id="@+id/cardImage"
             android:layout_width="350dp"
             android:layout_height="500dp"

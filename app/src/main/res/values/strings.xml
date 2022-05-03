@@ -24,4 +24,7 @@
     <string name="number_no_information_available">Number of all: No information available</string>
     <string name="artist_no_information_available">Artist: No information available</string>
     <string name="rarity_no_information_available">Rarity: No information available</string>
+    <string name="check_internet_connection">Check internet \nconnection. :(</string>
+    <string name="loading">Loading</string>
+    <string name="error">Error</string>
 </resources>

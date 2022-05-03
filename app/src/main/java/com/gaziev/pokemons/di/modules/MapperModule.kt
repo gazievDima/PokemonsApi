@@ -1,6 +1,6 @@
 package com.gaziev.pokemons.di.modules
 
-import com.gaziev.data.repository.mapper.Mapper
+import com.gaziev.data.repository.Mapper
 import com.gaziev.data.mapper.ImagesRemoteMapperImpl
 import com.gaziev.data.mapper.PokemonLocalMapperImpl
 import com.gaziev.data.mapper.PokemonRemoteMapperImpl
