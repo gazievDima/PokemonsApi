@@ -1,10 +1,12 @@
 package com.gaziev.pokemons.di.modules
 
+import com.gaziev.data.models.PokemonRemoteEntity
+import com.gaziev.data.repository.mapper.Mapper
 import com.gaziev.data.repository.sources.PokemonLocalSource
-import com.gaziev.data.repository.sources.PokemonRemoteSource
 import com.gaziev.data.sources.local.PokemonLocalSourceImpl
-import com.gaziev.data.sources.remote.PokemonRemoteSourceImpl
 import com.gaziev.data.sources.remote.PokemonsApiService
+import com.gaziev.data.sources.remote.PokemonsPagingSourceImpl
+import com.gaziev.domain.models.PokemonRemoteDetails
 import dagger.Module
 import dagger.Provides
 
@@ -17,9 +19,11 @@ class SourceModule {
     }
 
     @Provides
-    fun providePokemonRemoteSource(
-        pokemonsApiService: PokemonsApiService
-    ): PokemonRemoteSource {
-        return PokemonRemoteSourceImpl(pokemonsApiService)
+    fun providePokemonsPagingSource(
+        pokemonsApiService: PokemonsApiService,
+        mapper: Mapper<PokemonRemoteEntity, PokemonRemoteDetails>
+    ): PokemonsPagingSourceImpl {
+        return PokemonsPagingSourceImpl(pokemonsApiService, mapper)
     }
+
 }

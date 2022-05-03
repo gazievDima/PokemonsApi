@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,11 @@ import com.gaziev.pokemons.presentation.common.BaseFragment
 import com.gaziev.pokemons.presentation.common.BottomNavigationFragment
 import com.gaziev.pokemons.presentation.common.ToolbarFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.ToolbarFavoriteIcon
-import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsAdapter
+import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsPagingAdapter
+import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsComparator
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
@@ -28,8 +33,10 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: PokemonsViewModel by viewModels { viewModelFactory }
-    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPokemonsBinding = FragmentPokemonsBinding::inflate
-    private val actionToFavorite = PokemonsFragmentDirections.actionPokemonsFragmentToFavoriteFragment()
+    override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPokemonsBinding =
+        FragmentPokemonsBinding::inflate
+    private val actionToFavorite =
+        PokemonsFragmentDirections.actionPokemonsFragmentToFavoriteFragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,17 +54,26 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
     }
 
     private fun subscribe() {
-        viewModel.pokemons.observe(viewLifecycleOwner) { list ->
-            binding.pokemonsRecycler.layoutManager =
-                GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)
-            binding.pokemonsRecycler.adapter =
-                PokemonsAdapter(list) { pokemon: PokemonRemoteDetails ->
-                    val bundle = Bundle()
-                    bundle.putSerializable("info", pokemon)
-                    findNavController().navigate(R.id.cardFragment, bundle)
-                }
-            binding.splash.visibility = View.GONE
+        val pagingAdapter = PokemonsPagingAdapter(PokemonsComparator) { pokemon: PokemonRemoteDetails ->
+            val bundle = Bundle()
+            bundle.putSerializable("info", pokemon)
+            findNavController().navigate(R.id.cardFragment, bundle)
+        }
+
+        binding.pokemonsRecycler.layoutManager =
+            GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+        binding.pokemonsRecycler.adapter = pagingAdapter
+
+        lifecycleScope.launchWhenStarted {
+            launch {
+                viewModel.pokemons()
+                    .collectLatest { pagingData ->
+                        pagingAdapter.submitData(pagingData)
+                    }
+            }
         }
     }
+
 }
+
 

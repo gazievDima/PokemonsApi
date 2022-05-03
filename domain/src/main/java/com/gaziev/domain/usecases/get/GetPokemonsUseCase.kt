@@ -1,5 +1,6 @@
 package com.gaziev.domain.usecases.get
 
+import androidx.paging.PagingData
 import com.gaziev.domain.usecases.DispatcherDomain
 import com.gaziev.domain.models.PokemonRemoteDetails
 import com.gaziev.domain.repository.PokemonRepository
@@ -12,7 +13,7 @@ class GetPokemonsUseCase @Inject constructor(
     private val dispatcher: DispatcherDomain
 ) {
 
-    suspend fun get(): Flow<List<PokemonRemoteDetails>> = withContext(dispatcher.inject()) {
+    suspend fun get(): Flow<PagingData<PokemonRemoteDetails>> = withContext(dispatcher.inject()) {
         return@withContext repository.getPokemons()
     }
 }
