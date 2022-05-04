@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.gaziev.pokemons.App
 import com.gaziev.pokemons.databinding.FragmentWelcomeBinding
 import com.gaziev.pokemons.presentation.common.BaseFragment
 import com.gaziev.pokemons.presentation.common.ToolbarFragment
@@ -15,6 +16,7 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(), ToolbarFragment 
     private val actionToPokemon = WelcomeFragmentDirections.actionWelcomeFragmentToPokemonsFragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity?.application as App).appComponent.inject(this)
 
         binding.pokemons.setOnClickListener {
             findNavController().navigate(actionToPokemon) }

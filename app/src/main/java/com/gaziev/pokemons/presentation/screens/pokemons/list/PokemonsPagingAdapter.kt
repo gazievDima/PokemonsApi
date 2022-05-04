@@ -9,8 +9,9 @@ import com.gaziev.pokemons.R
 
 class PokemonsPagingAdapter(
     private val diffCallback: DiffUtil.ItemCallback<PokemonRemoteDetails>,
-    private val click: (pokemon: PokemonRemoteDetails) -> Unit
-) : PagingDataAdapter<PokemonRemoteDetails, PokemonsPagingHolder>(diffCallback) {
+    private val clickOpenCard: (pokemon: PokemonRemoteDetails) -> Unit,
+    private val clickFavoriteCard: (pokemon: PokemonRemoteDetails) -> Unit,
+    ) : PagingDataAdapter<PokemonRemoteDetails, PokemonsPagingHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonsPagingHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_pokemon, parent, false)
@@ -18,7 +19,7 @@ class PokemonsPagingAdapter(
     }
 
     override fun onBindViewHolder(holder: PokemonsPagingHolder, position: Int) {
-        holder.bind(getItem(position)!!, click)
+        holder.bind(getItem(position)!!, clickOpenCard, clickFavoriteCard)
     }
 }
 

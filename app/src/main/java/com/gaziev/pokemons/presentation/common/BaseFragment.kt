@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.gaziev.pokemons.presentation.MainActivity
+import dagger.android.support.DaggerFragment
 
 
 abstract class BaseFragment<T : ViewBinding> : Fragment() {

@@ -38,7 +38,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity?.application as App).daggerAppComponent.inject(this)
+        (activity?.application as App).appComponent.inject(this)
 
         subscribe()
         SearchTextWatcher(mainActivity, lifecycleScope).setup {

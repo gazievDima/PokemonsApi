@@ -1,8 +1,8 @@
 package com.gaziev.pokemons.presentation.screens.pokemons
 
-import android.content.ContentValues.TAG
+import android.app.Fragment
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,12 +24,9 @@ import com.gaziev.pokemons.presentation.screens.favorites.pager.common.ToolbarFa
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsPagingAdapter
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsComparator
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.delay
+import dagger.android.AndroidInjection
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.lang.Exception
-import java.net.UnknownHostException
 import javax.inject.Inject
 
 class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
@@ -49,8 +45,7 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        (activity?.application as App).daggerAppComponent.inject(this)
+        (activity?.application as App).appComponent.inject(this)
         initRecycler()
         pagingLoadListener()
         subscribe()
@@ -65,11 +60,17 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
     }
 
     private fun initRecycler() {
-        pagingAdapter = PokemonsPagingAdapter(PokemonsComparator) { pokemon: PokemonRemoteDetails ->
+        pagingAdapter = PokemonsPagingAdapter(PokemonsComparator, { pokemon: PokemonRemoteDetails ->
             val bundle = Bundle()
             bundle.putSerializable("info", pokemon)
             findNavController().navigate(R.id.cardFragment, bundle)
-        }
+        }, { pokemon ->
+            //добавляем или удаляем карту из лок базы
+            lifecycleScope.launch {
+                viewModel.savePokemons(pokemon)
+            }
+            Snackbar.make(binding.pokemonsRecycler, "pokemon id:${pokemon.id} is saved.", Snackbar.LENGTH_LONG).show()
+        })
 
         binding.pokemonsRecycler.layoutManager =
             GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)

@@ -11,18 +11,23 @@ class PokemonsPagingHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val binding = ItemPokemonBinding.bind(itemView)
 
-    fun bind(pokemon: PokemonRemoteDetails, click: (pokemon: PokemonRemoteDetails) -> Unit) {
-        Glide
-            .with(itemView)
-            .load(pokemon.images?.small)
-            .centerCrop()
-            .placeholder(R.drawable.loading)
-            .into(binding.cardImage)
+    fun bind(
+        pokemon: PokemonRemoteDetails,
+        clickOpenCard: (pokemon: PokemonRemoteDetails) -> Unit,
+        clickFavoriteCard: (pokemon: PokemonRemoteDetails) -> Unit
+        ) {
+
+        binding.favorite.setOnClickListener {
+            clickFavoriteCard(pokemon)
+        }
+
+        binding.cardImage.setOnClickListener {
+            clickOpenCard(pokemon)
+        }
 
         binding.nameText.text = pokemon.name
+        Glide.with(itemView).load(pokemon.images?.small)
+            .centerCrop().placeholder(R.drawable.loading).into(binding.cardImage)
 
-            binding.cardImage.setOnClickListener {
-                click(pokemon)
-        }
     }
 }

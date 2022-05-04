@@ -11,7 +11,7 @@ class DeleteFavoritePokemonUseCase @Inject constructor(
     private val dispatcher: DispatcherDomain
 ) {
 
-    suspend fun deleteFavoritePokemon(pokemon: PokemonLocalDetails): Boolean =
+    suspend fun deleteFavoritePokemon(pokemon: PokemonLocalDetails) =
         withContext(dispatcher.inject()) {
             return@withContext repository.delete(pokemon)
         }

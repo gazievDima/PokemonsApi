@@ -13,10 +13,6 @@ class HealthHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val info =
                     "id: ${pokemon.id}" + "\n" +
                     "name: ${pokemon.name}" + "\n" +
-                    "supertype: ${pokemon.supertype}" + "\n" +
-                    "hp: ${pokemon.hp}" + "\n" +
-                    "number: ${pokemon.number}" + "\n" +
-                    "artist: ${pokemon.artist}" + "\n"
 
         itemView.findViewById<LinearLayoutCompat>(R.id.card)
             ?.apply { setOnClickListener { lambda(pokemon) } }

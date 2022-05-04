@@ -11,7 +11,8 @@ class SaveFavoritePokemonUseCase @Inject constructor(
     private val dispatcher: DispatcherDomain
 ) {
 
-    suspend fun saveFavoritePokemon(pokemon: PokemonLocalDetails): Boolean = withContext(dispatcher.inject()) {
-        return@withContext storage.save(pokemon)
-    }
+    suspend fun saveFavoritePokemon(pokemon: PokemonLocalDetails) =
+        withContext(dispatcher.inject()) {
+            return@withContext storage.save(pokemon)
+        }
 }
