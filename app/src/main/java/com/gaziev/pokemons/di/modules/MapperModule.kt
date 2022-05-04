@@ -18,8 +18,10 @@ import dagger.Provides
 class MapperModule {
 
     @Provides
-    fun providePokemonLocalMapper(): Mapper<PokemonLocalEntity, PokemonLocalDetails> {
-        return PokemonLocalMapperImpl()
+    fun providePokemonLocalMapper(
+        mapper: Mapper<ImagesEntity, ImagesDetails>
+    ): Mapper<PokemonLocalEntity, PokemonLocalDetails> {
+        return PokemonLocalMapperImpl(mapper)
     }
 
     @Provides

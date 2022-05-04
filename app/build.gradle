@@ -15,7 +15,7 @@ android {
         buildConfigField "String", "API_KEY", localProperties['apiKey']
 
         applicationId "com.gaziev.api_example"
-        minSdk 23
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -56,6 +56,7 @@ dependencies {
     //room local database
     implementation "androidx.room:room-runtime:2.4.2"
     kapt "androidx.room:room-compiler:2.4.2"
+    implementation "androidx.room:room-ktx:2.4.2"
     implementation "androidx.room:room-paging:2.5.0-alpha01"
 
     //paging

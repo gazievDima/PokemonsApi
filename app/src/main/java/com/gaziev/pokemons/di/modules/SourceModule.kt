@@ -1,7 +1,6 @@
 package com.gaziev.pokemons.di.modules
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
 import com.gaziev.data.models.PokemonRemoteEntity
 import com.gaziev.data.repository.Mapper
@@ -10,7 +9,6 @@ import com.gaziev.data.sources.local.PokemonDataBase
 import com.gaziev.data.sources.remote.PokemonsApiService
 import com.gaziev.data.sources.remote.PokemonsPagingSourceImpl
 import com.gaziev.domain.models.PokemonRemoteDetails
-import com.gaziev.pokemons.App
 import com.gaziev.pokemons.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -30,7 +28,9 @@ class SourceModule {
         return Room.databaseBuilder(
             context.applicationContext,
             PokemonDataBase::class.java, "database-name"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Singleton

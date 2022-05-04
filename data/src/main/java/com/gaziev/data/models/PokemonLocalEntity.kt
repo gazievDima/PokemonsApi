@@ -1,19 +1,14 @@
 package com.gaziev.data.models
 
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
-import com.gaziev.domain.models.ImagesDetails
+import androidx.room.*
+import com.gaziev.data.models.converter.ConverterImagesEntity
+import com.gaziev.data.models.converter.ConverterListStrings
+import retrofit2.Converter
 
-@Entity(
-    indices = [Index(
-        value = ["id", "name", "supertype", "hp", "number", "artist", "rarity", "flavorText"],
-        unique = true
-    )]
-)
+@Entity
+@TypeConverters(ConverterListStrings::class, ConverterImagesEntity::class)
 class PokemonLocalEntity(
-    @PrimaryKey(autoGenerate = true)
-    val primary_key: Int?,
+    @PrimaryKey(autoGenerate = true) var primary_key: Int? = null,
     val id: String?,
     val name: String?,
     val supertype: String?,
@@ -24,6 +19,5 @@ class PokemonLocalEntity(
     val rules: List<String>?,
     val artist: String?,
     val rarity: String?,
-    val images: ImagesDetails?
-) {
-}
+    val images: ImagesEntity?
+)

@@ -11,7 +11,7 @@ class PokemonRemoteLocalMapperImpl @Inject constructor() :
 
     override fun mapTo(t: PokemonRemoteDetails): PokemonLocalDetails {
         return PokemonLocalDetails(
-            primary_key = 0,
+            primary_key = null,
             id = t.id,
             name = t.name,
             supertype = t.supertype,

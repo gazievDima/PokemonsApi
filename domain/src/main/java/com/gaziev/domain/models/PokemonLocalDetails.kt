@@ -4,7 +4,7 @@ import com.gaziev.domain.usecases.search.Compared
 import java.io.Serializable
 
 class PokemonLocalDetails(
-    val primary_key: Int?,
+    var primary_key: Int?,
     val id: String?,
     val name: String?,
     val supertype: String?,
