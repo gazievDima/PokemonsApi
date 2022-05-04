@@ -14,7 +14,7 @@ class HealthHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(pokemon: PokemonLocalDetails, lambda: (pokemon: PokemonLocalDetails) -> Unit) {
         val info =
-            "primary_key: ${pokemon.primary_key}" + "\n" +
+         //   "primary_key: ${pokemon.primary_key}" + "\n" +
                     "id: ${pokemon.id}" + "\n" +
                     "name: ${pokemon.name}" + "\n"
 
