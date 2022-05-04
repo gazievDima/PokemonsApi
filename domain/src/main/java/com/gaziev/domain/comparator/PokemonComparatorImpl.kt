@@ -7,12 +7,20 @@ class PokemonComparatorImpl {
 
     class LatestUp @Inject constructor() : Comparator<PokemonLocalDetails> {
         override fun compare(p0: PokemonLocalDetails, p1: PokemonLocalDetails): Int =
-            p0.primary_key!! - p1.primary_key!!
+            if(p0.primary_key == null && p1.primary_key == null) {
+                0
+            } else {
+                p0.primary_key!! - p1.primary_key!!
+            }
     }
 
     class LatestDown @Inject constructor() : Comparator<PokemonLocalDetails> {
         override fun compare(p0: PokemonLocalDetails, p1: PokemonLocalDetails): Int =
-            p1.primary_key!! - p0.primary_key!!
+            if(p1.primary_key == null && p0.primary_key == null) {
+                0
+            } else {
+                p1.primary_key!! - p0.primary_key!!
+            }
     }
 
     class NameUp @Inject constructor() : Comparator<PokemonLocalDetails> {
