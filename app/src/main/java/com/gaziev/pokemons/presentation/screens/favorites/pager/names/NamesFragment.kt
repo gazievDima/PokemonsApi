@@ -24,6 +24,7 @@ import com.gaziev.pokemons.presentation.screens.favorites.pager.common.PagerTool
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.SearchTextWatcher
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.SearchToolbar
 import com.gaziev.pokemons.presentation.screens.favorites.pager.health.list.HealthAdapter
+import com.gaziev.pokemons.presentation.screens.favorites.pager.names.list.NamesAdapter
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
@@ -66,7 +67,7 @@ class NamesFragment : PagerBaseFragment<PagerFavoritesNamesBinding>() {
             binding.favoritesRecycler.layoutManager =
                 GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
             binding.favoritesRecycler.adapter =
-                HealthAdapter(list) { pokemon: PokemonLocalDetails ->
+                NamesAdapter(list) { pokemon: PokemonLocalDetails ->
                     val bundle = Bundle()
                     bundle.putSerializable("info", pokemon)
                     findNavController().navigate(R.id.cardFragment, bundle)

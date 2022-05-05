@@ -24,6 +24,7 @@ import com.gaziev.pokemons.presentation.screens.favorites.pager.common.PagerTool
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.SearchTextWatcher
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.SearchToolbar
 import com.gaziev.pokemons.presentation.screens.favorites.pager.health.list.HealthAdapter
+import com.gaziev.pokemons.presentation.screens.favorites.pager.latest.list.LatestAdapter
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
@@ -66,7 +67,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
             binding.favoritesRecycler.layoutManager =
                 GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
             binding.favoritesRecycler.adapter =
-                HealthAdapter(list) { pokemon: PokemonLocalDetails ->
+                LatestAdapter(list) { pokemon: PokemonLocalDetails ->
                     val bundle = Bundle()
                     bundle.putSerializable("info", pokemon)
                     findNavController().navigate(R.id.cardFragment, bundle)

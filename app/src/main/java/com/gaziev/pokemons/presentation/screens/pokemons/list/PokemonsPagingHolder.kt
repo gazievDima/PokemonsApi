@@ -13,13 +13,7 @@ class PokemonsPagingHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(
         pokemon: PokemonRemoteDetails,
-        clickOpenCard: (pokemon: PokemonRemoteDetails) -> Unit,
-        clickFavoriteCard: (pokemon: PokemonRemoteDetails) -> Unit
-        ) {
-
-        binding.favorite.setOnClickListener {
-            clickFavoriteCard(pokemon)
-        }
+        clickOpenCard: (pokemon: PokemonRemoteDetails) -> Unit) {
 
         binding.cardImage.setOnClickListener {
             clickOpenCard(pokemon)

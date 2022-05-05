@@ -15,14 +15,8 @@ import javax.inject.Inject
 
 class PokemonsViewModel @Inject constructor(
     private val getApiPokemonsUseCase: GetPokemonsUseCase,
-    private val saveFavoritePokemonUseCase: SaveFavoritePokemonUseCase,
-    private val mapper: Mapper<PokemonRemoteDetails, PokemonLocalDetails>
 ) : ViewModel() {
 
     suspend fun pokemons(): Flow<PagingData<PokemonRemoteDetails>> =
         getApiPokemonsUseCase.get().cachedIn(viewModelScope)
-
-    suspend fun savePokemons(pokemon: PokemonRemoteDetails) {
-        saveFavoritePokemonUseCase.saveFavoritePokemon(mapper.mapTo(pokemon))
-    }
 }

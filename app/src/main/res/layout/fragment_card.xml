@@ -19,7 +19,8 @@
                 android:layout_width="@dimen/size_icon"
                 android:layout_height="@dimen/size_icon"
                 android:layout_margin="@dimen/margin_card_10dp"
-                android:src="@drawable/ic_baseline_favorite_24" />
+                android:src="@drawable/ic_baseline_favorite_24"
+                 />
 
             <Space
                 android:layout_width="match_parent"

@@ -13,11 +13,11 @@ class PokemonRemoteEntity(
     val rules: List<String>?,
     val artist: String?,
     val rarity: String?,
-    val images: ImagesEntity?
+    val images: ImagesRemoteEntity?
 
 ) : Serializable
 
-class ImagesEntity(val small: String?, val large: String?)
+class ImagesRemoteEntity(val small: String?, val large: String?)
 
 class PokemonsRetrofitEntity(
     val data: List<PokemonRemoteEntity>?,

@@ -16,7 +16,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AppModule::class,
-        MapperModule::class,
+        MappersModule::class,
         RepositoryModule::class,
         SourceModule::class,
         ViewModelModule::class,

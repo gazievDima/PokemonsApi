@@ -1,15 +1,16 @@
-package com.gaziev.data.mapper
+package com.gaziev.data.mapper.pokemon
 
-import com.gaziev.data.models.ImagesEntity
+import com.gaziev.data.models.ImagesRemoteEntity
 import com.gaziev.data.models.PokemonRemoteEntity
 import com.gaziev.data.repository.Mapper
-import com.gaziev.domain.models.ImagesDetails
+import com.gaziev.domain.models.ImagesRemoteDetails
 import com.gaziev.domain.models.PokemonRemoteDetails
 import javax.inject.Inject
 
 class PokemonRemoteMapperImpl @Inject constructor(
-    private val imageRemoteMapper: Mapper<ImagesEntity, ImagesDetails>
+    private val mapper: Mapper<ImagesRemoteEntity, ImagesRemoteDetails>
 ) : Mapper<PokemonRemoteEntity, PokemonRemoteDetails> {
+
     override fun mapTo(t: PokemonRemoteEntity): PokemonRemoteDetails {
         return PokemonRemoteDetails(
             id = t.id,
@@ -22,7 +23,7 @@ class PokemonRemoteMapperImpl @Inject constructor(
             rules = t.rules,
             artist = t.artist,
             rarity = t.rarity,
-            images = imageRemoteMapper.mapTo(t.images!!)
+            images = mapper.mapTo(t.images!!)
         )
     }
 
@@ -38,7 +39,7 @@ class PokemonRemoteMapperImpl @Inject constructor(
             rules = v.rules,
             artist = v.artist,
             rarity = v.rarity,
-            images = imageRemoteMapper.mapFrom(v.images!!)
+            images = mapper.mapFrom(v.images!!)
         )
     }
 }

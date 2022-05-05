@@ -1,12 +1,16 @@
 package com.gaziev.pokemons.presentation.screens.card
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.gaziev.domain.models.PokemonRemoteDetails
@@ -15,11 +19,15 @@ import com.gaziev.pokemons.App
 import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.FragmentCardBinding
 import com.gaziev.pokemons.presentation.common.BaseFragment
-import com.gaziev.pokemons.presentation.screens.pokemons.PokemonsViewModel
+import com.gaziev.pokemons.presentation.screens.card.model.PokemonCardMapperImpl
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CardFragment : BaseFragment<FragmentCardBinding>() {
 
+    @Inject
+    lateinit var mapper: PokemonCardMapperImpl
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: CardViewModel by viewModels { viewModelFactory }
@@ -30,34 +38,44 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
         super.onViewCreated(view, savedInstanceState)
         (activity?.application as App).appComponent.inject(this)
 
+
         if (savedInstanceState == null) {
             arguments?.getSerializable("info")?.apply {
                 if (this is PokemonLocalDetails) {
-                    viewModel.setLocalPokemon(this)
-                    viewModel.flagLocalPokemon = true
+                    val pokemon = mapper.mapLocalToCard(this)
+                    viewModel.setPokemon(pokemon)
+                    changeLike(pokemon.liked)
                 }
                 if (this is PokemonRemoteDetails) {
-                    viewModel.setRemotePokemon(this)
-                    viewModel.flagLocalPokemon = false
+                    val pokemon = mapper.mapRemoteToCard(this)
+                    viewModel.setPokemon(pokemon)
+                    changeLike(pokemon.liked)
                 }
-
             }
         }
-        subscribe()
 
-        binding.close.setOnClickListener {
-            findNavController().popBackStack()
-        }
+        subscribe()
+        clickListeners()
+
     }
 
-    private fun subscribe() {
-        if(viewModel.flagLocalPokemon) subscribePokemonLocal()
-            else subscribePokemonRemote()
+    private fun changeLike(flag: Boolean) {
+        if (flag)
+            ImageViewCompat.setImageTintList(
+                binding.like,
+                ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.light_red))
+            )
+        else
+            ImageViewCompat.setImageTintList(
+                binding.like,
+                ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey))
+            )
     }
 
     @SuppressLint("SetTextI18n")
-    private fun subscribePokemonRemote() {
-        viewModel.pokemonRemote.observe(viewLifecycleOwner) {
+    private fun subscribe() {
+        viewModel.pokemon.observe(viewLifecycleOwner) {
+
             with(binding) {
                 tvId.text = "Id: ${it.id ?: "..."}"
                 tvName.text = "Name: ${it.name ?: "..."}"
@@ -80,19 +98,37 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun subscribePokemonLocal() {
-        viewModel.pokemonLocal.observe(viewLifecycleOwner) {
-            with(binding) {
-                tvId.text = "Id: ${it.id ?: "..."}"
-                tvName.text = "Name: ${it.name ?: "..."}"
-                tvSupertype.text = "Supertype: ${it.supertype ?: "..."}"
-                tvSubtypes.text = "Subtypes: ${it.supertype ?: "..."}"
-                tvHp.text = "Hp: ${it.hp ?: "..."}"
-                tvArtist.text = "Artist: ${it.artist ?: "..."}"
-                tvRarity.text = "Rarity: ${it.rarity ?: "..."}"
+    private fun clickListeners() {
+        binding.close.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.like.setOnClickListener {
+            if (viewModel.pokemon.value?.liked!!) {
+                lifecycleScope.launch {
+                    viewModel.pokemon.value?.liked = false
+                    changeLike(viewModel.pokemon.value?.liked!!)
+                    viewModel.deletePokemon(viewModel.pokemon.value!!)
+                    Snackbar.make(
+                        binding.cardImage,
+                        "pokemon name: ${viewModel.pokemon.value?.name} is deleted.",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+            } else {
+                lifecycleScope.launch {
+                    viewModel.pokemon.value?.liked = true
+                    changeLike(viewModel.pokemon.value?.liked!!)
+                    viewModel.savePokemon(viewModel.pokemon.value!!)
+                    Snackbar.make(
+                        binding.cardImage,
+                        "pokemon name: ${viewModel.pokemon.value?.name} is saved.",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
             }
         }
     }
+
 }
 

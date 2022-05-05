@@ -1,10 +1,10 @@
-package com.gaziev.domain.models
+package com.gaziev.pokemons.presentation.screens.card.model
 
-import java.io.Serializable
+import com.gaziev.domain.models.ImagesLocalDetails
 
-class ImagesRemoteDetails(val small: String?, val large: String?)
-
-class PokemonRemoteDetails(
+class PokemonCard(
+    var liked: Boolean,
+    var primary_key: Int? = null,
     val id: String?,
     val name: String?,
     val supertype: String?,
@@ -15,7 +15,5 @@ class PokemonRemoteDetails(
     val rules: List<String>?,
     val artist: String?,
     val rarity: String?,
-    val images: ImagesRemoteDetails?
-
-) : Serializable
-
+    val images: ImagesLocalDetails?
+)

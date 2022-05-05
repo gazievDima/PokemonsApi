@@ -13,10 +13,7 @@ class NamesHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val binding = ItemFavoriteBinding.bind(itemView)
 
     fun bind(pokemon: PokemonLocalDetails, lambda: (pokemon: PokemonLocalDetails) -> Unit) {
-        val info =
-          //  "primary_key: ${pokemon.primary_key}" + "\n" +
-                    "id: ${pokemon.id}" + "\n" +
-                    "name: ${pokemon.name}" + "\n"
+        val info = "name: ${pokemon.name}" + "\n"
 
         binding.card.setOnClickListener {
              lambda(pokemon) }

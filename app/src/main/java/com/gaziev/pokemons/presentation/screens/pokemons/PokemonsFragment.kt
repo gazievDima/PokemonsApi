@@ -60,17 +60,11 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
     }
 
     private fun initRecycler() {
-        pagingAdapter = PokemonsPagingAdapter(PokemonsComparator, { pokemon: PokemonRemoteDetails ->
+        pagingAdapter = PokemonsPagingAdapter(PokemonsComparator) { pokemon: PokemonRemoteDetails ->
             val bundle = Bundle()
             bundle.putSerializable("info", pokemon)
             findNavController().navigate(R.id.cardFragment, bundle)
-        }, { pokemon ->
-            //добавляем или удаляем карту из лок базы
-            lifecycleScope.launch {
-                viewModel.savePokemons(pokemon)
-            }
-            Snackbar.make(binding.pokemonsRecycler, "pokemon id:${pokemon.id} is saved.", Snackbar.LENGTH_LONG).show()
-        })
+        }
 
         binding.pokemonsRecycler.layoutManager =
             GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
