@@ -7,6 +7,7 @@ import com.gaziev.domain.usecases.get.GetFavoritesPokemonsUseCase
 import com.gaziev.domain.usecases.get.GetPokemonsUseCase
 import com.gaziev.domain.usecases.save.SaveFavoritePokemonUseCase
 import com.gaziev.domain.usecases.search.Compared
+import com.gaziev.domain.usecases.search.SearchFavoritePokemonUseCase
 import com.gaziev.domain.usecases.search.SearchInFieldsDetailsUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByHealthUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByLatestUseCase
@@ -17,6 +18,14 @@ import dagger.Provides
 
 @Module
 class UseCaseModule {
+
+    @Provides
+    fun provideSearchFavoritePokemonUseCase(
+        repository: PokemonRepositoryImpl,
+        dispatcher: DispatcherDomainImpl
+    ): SearchFavoritePokemonUseCase {
+        return SearchFavoritePokemonUseCase(repository, dispatcher)
+    }
 
     @Provides
     fun provideGetFavoritesPokemonsUseCase(

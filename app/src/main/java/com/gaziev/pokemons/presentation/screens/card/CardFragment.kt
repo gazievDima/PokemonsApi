@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.gaziev.data.mapper.pokemon.PokemonRemoteLocalMapperImpl
 import com.gaziev.domain.models.PokemonRemoteDetails
 import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.pokemons.App
@@ -22,12 +23,17 @@ import com.gaziev.pokemons.presentation.common.BaseFragment
 import com.gaziev.pokemons.presentation.screens.card.model.PokemonCardMapperImpl
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import java.io.Serializable
 import javax.inject.Inject
 
 class CardFragment : BaseFragment<FragmentCardBinding>() {
 
     @Inject
     lateinit var mapper: PokemonCardMapperImpl
+
+    @Inject
+    lateinit var mapperRemoteLocalDetails: PokemonRemoteLocalMapperImpl
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: CardViewModel by viewModels { viewModelFactory }
@@ -38,18 +44,21 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
         super.onViewCreated(view, savedInstanceState)
         (activity?.application as App).appComponent.inject(this)
 
-
         if (savedInstanceState == null) {
-            arguments?.getSerializable("info")?.apply {
-                if (this is PokemonLocalDetails) {
-                    val pokemon = mapper.mapLocalToCard(this)
-                    viewModel.setPokemon(pokemon)
-                    changeLike(pokemon.liked)
+            val pokemon = arguments?.getSerializable("info")
+
+            pokemon?.let {
+                if (pokemon is PokemonLocalDetails) {
+                    openLocalPokemon(pokemon)
                 }
-                if (this is PokemonRemoteDetails) {
-                    val pokemon = mapper.mapRemoteToCard(this)
-                    viewModel.setPokemon(pokemon)
-                    changeLike(pokemon.liked)
+                if (pokemon is PokemonRemoteDetails) {
+                    lifecycleScope.launch {
+                        if (viewModel.checkPokemonFromFavorite(pokemon)) {
+                            openLocalPokemon(pokemon)
+                        } else {
+                            openRemotePokemon(pokemon)
+                        }
+                    }
                 }
             }
         }
@@ -57,6 +66,23 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
         subscribe()
         clickListeners()
 
+    }
+
+    private fun openLocalPokemon(o: Serializable) {
+        val pokemon = if (o is PokemonRemoteDetails) {
+            mapperRemoteLocalDetails.mapTo(o)
+        } else {
+            o as PokemonLocalDetails
+        }
+        val pokemonCard = mapper.mapLocalToCard(pokemon)
+        viewModel.setPokemon(pokemonCard)
+        changeLike(pokemonCard.liked)
+    }
+
+    private fun openRemotePokemon(o: Serializable) {
+        val pokemon = mapper.mapRemoteToCard(o as PokemonRemoteDetails)
+        viewModel.setPokemon(pokemon)
+        changeLike(pokemon.liked)
     }
 
     private fun changeLike(flag: Boolean) {
@@ -108,10 +134,10 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
                 lifecycleScope.launch {
                     viewModel.pokemon.value?.liked = false
                     changeLike(viewModel.pokemon.value?.liked!!)
-                    viewModel.deletePokemon(viewModel.pokemon.value!!)
+                    viewModel.deletePokemon(viewModel.pokemon.value?.id!!)
                     Snackbar.make(
                         binding.cardImage,
-                        "pokemon name: ${viewModel.pokemon.value?.name} is deleted.",
+                        "pokemon: ${viewModel.pokemon.value?.name} is deleted.",
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
@@ -122,7 +148,7 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
                     viewModel.savePokemon(viewModel.pokemon.value!!)
                     Snackbar.make(
                         binding.cardImage,
-                        "pokemon name: ${viewModel.pokemon.value?.name} is saved.",
+                        "pokemon: ${viewModel.pokemon.value?.name} is saved.",
                         Snackbar.LENGTH_LONG
                     ).show()
                 }

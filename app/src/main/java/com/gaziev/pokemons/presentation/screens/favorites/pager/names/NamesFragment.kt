@@ -1,6 +1,7 @@
 package com.gaziev.pokemons.presentation.screens.favorites.pager.names
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -41,7 +42,9 @@ class NamesFragment : PagerBaseFragment<PagerFavoritesNamesBinding>() {
         super.onViewCreated(view, savedInstanceState)
         (activity?.application as App).appComponent.inject(this)
 
+        viewModel.getPokemons()
         subscribe()
+
         SearchTextWatcher(mainActivity, lifecycleScope).setup {
             viewModel.search(it)
         }

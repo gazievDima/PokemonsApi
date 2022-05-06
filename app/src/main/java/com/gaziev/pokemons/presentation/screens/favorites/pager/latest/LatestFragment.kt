@@ -41,7 +41,9 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
         super.onViewCreated(view, savedInstanceState)
         (activity?.application as App).appComponent.inject(this)
 
+        viewModel.getPokemons()
         subscribe()
+
         SearchTextWatcher(mainActivity, lifecycleScope).setup {
             viewModel.search(it)
         }
@@ -66,12 +68,12 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesLatestBinding>() {
         viewModel.pokemons.observe(viewLifecycleOwner) { list ->
             binding.favoritesRecycler.layoutManager =
                 GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
-            binding.favoritesRecycler.adapter =
-                LatestAdapter(list) { pokemon: PokemonLocalDetails ->
-                    val bundle = Bundle()
-                    bundle.putSerializable("info", pokemon)
-                    findNavController().navigate(R.id.cardFragment, bundle)
-                }
+            val mapNumbers = viewModel.resetNumbersForView(list)
+            binding.favoritesRecycler.adapter = LatestAdapter(list, mapNumbers) { pokemon: PokemonLocalDetails ->
+                val bundle = Bundle()
+                bundle.putSerializable("info", pokemon)
+                findNavController().navigate(R.id.cardFragment, bundle)
+            }
         }
     }
 

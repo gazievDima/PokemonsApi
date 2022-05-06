@@ -40,7 +40,9 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
         super.onViewCreated(view, savedInstanceState)
         (activity?.application as App).appComponent.inject(this)
 
+        viewModel.getPokemons()
         subscribe()
+
         SearchTextWatcher(mainActivity, lifecycleScope).setup {
             viewModel.search(it)
         }

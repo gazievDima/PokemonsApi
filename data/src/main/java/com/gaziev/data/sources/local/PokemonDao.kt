@@ -12,6 +12,10 @@ interface PokemonDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(pokemon: PokemonLocalEntity)
 
-    @Delete
-    suspend fun delete(pokemon: PokemonLocalEntity)
+    @Query("DELETE FROM pokemonlocalentity WHERE id = :idPokemon")
+    suspend fun delete(idPokemon: String)
+
+    @Query("SELECT * FROM pokemonlocalentity WHERE id = :idPokemon")
+    suspend fun search(idPokemon: String): List<PokemonLocalEntity>
+
 }

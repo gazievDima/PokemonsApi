@@ -8,6 +8,7 @@ import com.gaziev.pokemons.R
 
 class LatestAdapter(
     private val pokemons: List<PokemonLocalDetails>,
+    private val mapNumbers: Map<Int, Int>,
     private val lambda: (pokemon: PokemonLocalDetails) -> Unit
 ) : RecyclerView.Adapter<LatestHolder>() {
 
@@ -17,7 +18,7 @@ class LatestAdapter(
     }
 
     override fun onBindViewHolder(holder: LatestHolder, position: Int) {
-        holder.bind(pokemons[position], lambda)
+        holder.bind(pokemons[position], mapNumbers, lambda)
     }
 
     override fun getItemCount(): Int = pokemons.size

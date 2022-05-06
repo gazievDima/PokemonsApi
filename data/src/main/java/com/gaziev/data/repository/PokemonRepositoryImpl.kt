@@ -1,5 +1,7 @@
 package com.gaziev.data.repository
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -53,8 +55,17 @@ class PokemonRepositoryImpl @Inject constructor(
         return@withContext localSource.insert(pokemonLocalMapper.mapFrom(pokemon))
     }
 
-    override suspend fun delete(pokemon: PokemonLocalDetails) = withContext(Dispatchers.IO) {
-        return@withContext localSource.delete(pokemonLocalMapper.mapFrom(pokemon))
+    override suspend fun delete(idPokemon: String) = withContext(Dispatchers.IO) {
+        return@withContext localSource.delete(idPokemon)
+    }
+
+    override suspend fun search(idPokemon: String): List<PokemonLocalDetails> = withContext(dispatcher.inject()) {
+        val result = localSource.search(idPokemon)
+        Log.e(TAG, "RETURN FROM LOCALBASE = $result")
+
+        return@withContext result.map {
+            pokemonLocalMapper.mapTo(it)
+        }
     }
 
 }

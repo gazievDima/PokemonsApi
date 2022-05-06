@@ -1,30 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="20dp"
-    android:padding="20dp"
     android:background="@drawable/card_round"
     android:elevation="5dp"
-    android:id="@+id/card"
     android:orientation="horizontal"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/cardImage"
-            android:layout_gravity="center"
-            android:layout_width="100dp"
-            android:src="@drawable/pikachu"
-            android:layout_height="120dp"/>
-
-    <TextView
+    <ImageView
+        android:id="@+id/cardImage"
+        android:layout_width="140dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
-        android:gravity="end"
-        android:layout_marginVertical="15dp"
-        android:id="@+id/nameText"
-        android:text="@string/pickachu"
-        android:textSize="24sp"
+        android:src="@drawable/small_card" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvNumber"
+            style="@style/StyleFieldsTextView"
+            android:layout_marginStart="15dp"
+            android:text="@string/types_no_information_available"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvId"
+            style="@style/StyleFieldsTextView"
+            android:layout_marginStart="15dp"
+            android:text="@string/types_no_information_available"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/StyleFieldsTextView"
+            android:layout_marginStart="15dp"
+            android:text="@string/types_no_information_available"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvHp"
+            style="@style/StyleFieldsTextView"
+            android:layout_marginStart="15dp"
+            android:text="@string/types_no_information_available"
+            android:textSize="16sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

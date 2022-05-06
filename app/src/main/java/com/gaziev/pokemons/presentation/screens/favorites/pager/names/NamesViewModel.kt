@@ -27,7 +27,7 @@ class NamesViewModel @Inject constructor(
     private var listSearch: List<PokemonLocalDetails> = emptyList()
     private var stateSortedUp: Boolean = true
 
-    init {
+    fun getPokemons() {
         viewModelScope.launch {
             getFavoritePokemonsUseCase.get()
                 .collect { list ->

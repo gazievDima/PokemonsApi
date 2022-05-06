@@ -7,12 +7,12 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class SaveFavoritePokemonUseCase @Inject constructor(
-    private val storage: PokemonRepository,
+    private val repository: PokemonRepository,
     private val dispatcher: DispatcherDomain
 ) {
 
     suspend fun saveFavoritePokemon(pokemon: PokemonLocalDetails) =
         withContext(dispatcher.inject()) {
-            return@withContext storage.save(pokemon)
+            return@withContext repository.save(pokemon)
         }
 }

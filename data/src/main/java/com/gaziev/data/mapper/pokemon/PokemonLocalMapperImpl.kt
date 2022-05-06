@@ -15,7 +15,7 @@ class PokemonLocalMapperImpl @Inject constructor(
     Mapper<PokemonLocalEntity, PokemonLocalDetails> {
     override fun mapTo(t: PokemonLocalEntity): PokemonLocalDetails {
         return PokemonLocalDetails(
-            primary_key = null,
+            primary_key = t.primary_key,
             id = t.id,
             name = t.name,
             supertype = t.supertype,
@@ -32,7 +32,7 @@ class PokemonLocalMapperImpl @Inject constructor(
 
     override fun mapFrom(v: PokemonLocalDetails): PokemonLocalEntity {
         return PokemonLocalEntity(
-            primary_key = null,
+            primary_key = v.primary_key,
             id = v.id,
             name = v.name,
             supertype = v.supertype,

@@ -31,12 +31,12 @@ class LatestViewModel @Inject constructor(
     private var listSearch: List<PokemonLocalDetails> = emptyList()
     private var stateSortedUp: Boolean = true
 
-    init {
+    fun getPokemons() {
         viewModelScope.launch {
             getFavoritePokemonsUseCase.get()
                 .collect { list ->
                     listFromBD = list
-                    _pokemons.value = sortLatestFavoritePokemonsUseCase.up(listFromBD)
+                    _pokemons.value = sortLatestFavoritePokemonsUseCase.down(listFromBD)
                 }
         }
     }
@@ -67,6 +67,25 @@ class LatestViewModel @Inject constructor(
 
     fun endSearch() {
         _pokemons.value = listFromBD
+    }
+
+    fun resetNumbersForView(list: List<PokemonLocalDetails>): Map<Int, Int> {
+        val mapNumbers = mutableMapOf<Int, Int>()
+
+        if(list.first().primary_key!! > list.last().primary_key!!) {
+            var count = list.size
+            for (el in list) {
+                mapNumbers[el.primary_key!!] = count
+                count -= 1
+            }
+        } else {
+            var count = 1
+            for (el in list) {
+                mapNumbers[el.primary_key!!] = count
+                count += 1
+            }
+        }
+        return mapNumbers
     }
 
 }
