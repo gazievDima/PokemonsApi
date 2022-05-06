@@ -65,14 +65,22 @@ class HealthFragment : PagerBaseFragment<PagerFavoritesHealthBinding>() {
 
     private fun subscribe() {
         viewModel.pokemons.observe(viewLifecycleOwner) { list ->
-            binding.favoritesRecycler.layoutManager =
-                GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
-            binding.favoritesRecycler.adapter =
-                HealthAdapter(list) { pokemon: PokemonLocalDetails ->
-                    val bundle = Bundle()
-                    bundle.putSerializable("info", pokemon)
-                    findNavController().navigate(R.id.cardFragment, bundle)
-                }
+            if (list.isNotEmpty()) {
+                binding.emptyPokemons.visibility = View.GONE
+                binding.favoritesRecycler.visibility = View.VISIBLE
+
+                binding.favoritesRecycler.layoutManager =
+                    GridLayoutManager(requireContext(), 1, RecyclerView.VERTICAL, false)
+                binding.favoritesRecycler.adapter =
+                    HealthAdapter(list) { pokemon: PokemonLocalDetails ->
+                        val bundle = Bundle()
+                        bundle.putSerializable("info", pokemon)
+                        findNavController().navigate(R.id.cardFragment, bundle)
+                    }
+            } else {
+                binding.favoritesRecycler.visibility = View.GONE
+                binding.emptyPokemons.visibility = View.VISIBLE
+            }
         }
     }
 

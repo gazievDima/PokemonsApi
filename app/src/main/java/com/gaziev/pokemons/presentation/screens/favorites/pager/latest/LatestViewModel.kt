@@ -45,11 +45,11 @@ class LatestViewModel @Inject constructor(
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val list = mutableListOf<PokemonLocalDetails>()
-               if (stateSortedUp) {
-                   list.addAll(sortLatestFavoritePokemonsUseCase.down(pokemons.value!!))
-               } else {
-                   list.addAll(sortLatestFavoritePokemonsUseCase.up(pokemons.value!!))
-               }
+                if (stateSortedUp) {
+                    list.addAll(sortLatestFavoritePokemonsUseCase.down(pokemons.value!!))
+                } else {
+                    list.addAll(sortLatestFavoritePokemonsUseCase.up(pokemons.value!!))
+                }
                 Log.i(TAG, "equals = " + list.equals(_pokemons.value).toString())
                 _pokemons.value = list
                 stateSortedUp = !stateSortedUp
@@ -72,7 +72,7 @@ class LatestViewModel @Inject constructor(
     fun resetNumbersForView(list: List<PokemonLocalDetails>): Map<Int, Int> {
         val mapNumbers = mutableMapOf<Int, Int>()
 
-        if(list.first().primary_key!! > list.last().primary_key!!) {
+        if (list.first().primary_key!! > list.last().primary_key!!) {
             var count = list.size
             for (el in list) {
                 mapNumbers[el.primary_key!!] = count
