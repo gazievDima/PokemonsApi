@@ -29,4 +29,5 @@
     <string name="error">Error</string>
     <string name="empty">empty</string>
     <string name="you_didn_t_choose_pokemon">You didn\'t choose Pokemon :(</string>
+    <string name="no_pokemons">No pokemons. :(</string>
 </resources>
