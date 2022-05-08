@@ -12,8 +12,9 @@ import com.gaziev.pokemons.databinding.ActivityMainBinding
 import com.gaziev.pokemons.presentation.common.MainBottomNavigation
 import com.gaziev.pokemons.presentation.common.MainToolbar
 import com.gaziev.pokemons.presentation.common.SoftKeyboardManager
-import dagger.android.AndroidInjection
-import dagger.android.support.DaggerAppCompatActivity
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.AppBarLayout.Behavior.DragCallback
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         (application as App).appComponent.inject(this)
+
+
     }
 
     override fun onBackPressed() { if (!navController.popBackStack()) finish() }

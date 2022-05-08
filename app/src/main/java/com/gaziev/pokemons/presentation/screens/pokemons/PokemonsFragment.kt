@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat.setNestedScrollingEnabled
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -22,7 +24,6 @@ import com.gaziev.pokemons.presentation.screens.favorites.pager.common.ToolbarFa
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsPagingAdapter
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsComparator
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -73,7 +74,7 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
     private fun pagingLoadListener() {
         pagingAdapter?.addLoadStateListener { state ->
             if (state.refresh != LoadState.Loading) {
-               hideShimmerLayout()
+                hideShimmerLayout()
             }
 
             if (state.refresh is LoadState.Error) {
@@ -83,28 +84,31 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
     }
 
     private fun subscribe() {
-        lifecycleScope.launchWhenStarted {
-            launch {
-                viewModel.pokemons()
-                    .collectLatest { pagingData ->
-                        pagingAdapter?.submitData(pagingData)
-                    }
+        viewModel.pokemons.observe(viewLifecycleOwner) { pagingData ->
+            lifecycleScope.launch {
+                pagingAdapter?.submitData(pagingData)
             }
         }
-
     }
 
+
     private fun showShimmerLayout() {
+        binding.pokemonsRecycler.visibility = View.GONE
         binding.shimmerLayout.startShimmerAnimation()
     }
 
     private fun hideShimmerLayout() {
+        binding.pokemonsRecycler.visibility = View.VISIBLE
         binding.shimmerLayout.stopShimmerAnimation()
         binding.shimmerLayout.visibility = View.GONE
     }
 
     private fun showErrorLayout() {
-        Snackbar.make(binding.pokemonsRecycler, getString(R.string.check_your_internet_connection), Snackbar.LENGTH_LONG).show()
+        Snackbar.make(
+            binding.pokemonsRecycler,
+            getString(R.string.check_your_internet_connection),
+            Snackbar.LENGTH_LONG
+        ).show()
         binding.screenError.splash.visibility = View.VISIBLE
         binding.shimmerLayout.visibility = View.GONE
     }
