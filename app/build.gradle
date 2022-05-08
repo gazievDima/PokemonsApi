@@ -46,6 +46,9 @@ dependencies {
     implementation project(path: ':data')
     implementation project(path: ':domain')
 
+    //shimmer for loading screen
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
     //dagger
     implementation 'com.google.dagger:dagger:2.41'
     implementation 'com.google.dagger:dagger-android:2.35.1'

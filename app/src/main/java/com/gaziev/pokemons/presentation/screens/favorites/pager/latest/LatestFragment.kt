@@ -60,7 +60,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesPokemonsBinding>() {
     private fun subscribe() {
         viewModel.pokemons.observe(viewLifecycleOwner) { list ->
             if(list.isNotEmpty()) {
-                binding.emptyPokemons.visibility = View.GONE
+                binding.emptyPokemons.splash.visibility = View.GONE
                 binding.favoritesRecycler.visibility = View.VISIBLE
 
                 binding.favoritesRecycler.layoutManager =
@@ -74,7 +74,7 @@ class LatestFragment : PagerBaseFragment<PagerFavoritesPokemonsBinding>() {
                     }
             } else {
                 binding.favoritesRecycler.visibility = View.GONE
-                binding.emptyPokemons.visibility = View.VISIBLE
+                binding.emptyPokemons.splash.visibility = View.VISIBLE
             }
         }
     }
