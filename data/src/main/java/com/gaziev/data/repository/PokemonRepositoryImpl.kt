@@ -1,7 +1,5 @@
 package com.gaziev.data.repository
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -13,9 +11,7 @@ import com.gaziev.domain.models.PokemonRemoteDetails
 import com.gaziev.domain.repository.PokemonRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -60,10 +56,7 @@ class PokemonRepositoryImpl @Inject constructor(
     }
 
     override suspend fun search(idPokemon: String): List<PokemonLocalDetails> = withContext(dispatcher.inject()) {
-        val result = localSource.search(idPokemon)
-        Log.e(TAG, "RETURN FROM LOCALBASE = $result")
-
-        return@withContext result.map {
+        return@withContext localSource.search(idPokemon).map {
             pokemonLocalMapper.mapTo(it)
         }
     }

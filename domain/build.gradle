@@ -11,8 +11,13 @@ java {
 
 dependencies {
 
+    //coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+
+    //dagger 2
     implementation 'com.google.dagger:dagger:2.41'
-    implementation 'androidx.paging:paging-common-ktx:3.1.1'
     kapt 'com.google.dagger:dagger-compiler:2.41'
+
+    //paging
+    implementation 'androidx.paging:paging-common-ktx:3.1.1'
 }
