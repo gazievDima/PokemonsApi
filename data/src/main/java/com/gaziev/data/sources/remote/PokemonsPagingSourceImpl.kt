@@ -20,11 +20,10 @@ class PokemonsPagingSourceImpl @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonRemoteDetails> {
         val currentKey = params.key ?: 1
         val nextKey = currentKey + 1
-        var response: PokemonsRetrofitEntity? = null
         val list = mutableListOf<PokemonRemoteDetails>()
 
         return try {
-            response = source.getPagePokemonsCards(currentKey, params.loadSize)
+            val response = source.getPagePokemonsCards(currentKey, params.loadSize)
 
             response.data?.forEach {
                 list.add(mapper.mapTo(it))

@@ -4,16 +4,16 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
+    android:layout_margin="@dimen/margin_item"
     android:background="@drawable/card_round"
-    android:elevation="5dp"
+    android:elevation="@dimen/elevation_card"
     android:orientation="horizontal"
-    android:padding="20dp">
+    android:padding="@dimen/item_padding">
 
     <ImageView
         android:id="@+id/cardImage"
-        android:layout_width="140dp"
-        android:layout_height="300dp"
+        android:layout_width="@dimen/width_favorite_card"
+        android:layout_height="@dimen/height_favorite_card"
         android:layout_gravity="center"
         android:src="@drawable/small_card" />
 
@@ -27,30 +27,30 @@
         <TextView
             android:id="@+id/tvNumber"
             style="@style/StyleFieldsTextView"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="@dimen/direction_margin_start"
             android:text="@string/types_no_information_available"
-            android:textSize="15sp" />
+            android:textSize="@dimen/direction_text_size" />
 
         <TextView
             android:id="@+id/tvId"
             style="@style/StyleFieldsTextView"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="@dimen/direction_margin_start"
             android:text="@string/types_no_information_available"
-            android:textSize="16sp" />
+            android:textSize="@dimen/direction_text_size" />
 
         <TextView
             android:id="@+id/tvName"
             style="@style/StyleFieldsTextView"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="@dimen/direction_margin_start"
             android:text="@string/types_no_information_available"
-            android:textSize="16sp" />
+            android:textSize="@dimen/direction_text_size" />
 
         <TextView
             android:id="@+id/tvHp"
             style="@style/StyleFieldsTextView"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="@dimen/direction_margin_start"
             android:text="@string/types_no_information_available"
-            android:textSize="16sp" />
+            android:textSize="@dimen/direction_text_size" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

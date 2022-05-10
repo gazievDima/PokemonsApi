@@ -39,12 +39,14 @@ class NamesViewModel @Inject constructor(
 
     fun sortItems() {
         viewModelScope.launch {
-            if (stateSortedUp) {
-                _pokemons.value = sortNamesFavoritePokemonsUseCase.down(pokemons.value!!)
-            } else {
-                _pokemons.value = sortNamesFavoritePokemonsUseCase.up(pokemons.value!!)
+            pokemons.value?.let {
+                if (stateSortedUp) {
+                    _pokemons.value = sortNamesFavoritePokemonsUseCase.down(it)
+                } else {
+                    _pokemons.value = sortNamesFavoritePokemonsUseCase.up(it)
+                }
+                stateSortedUp = !stateSortedUp
             }
-            stateSortedUp = !stateSortedUp
         }
     }
 

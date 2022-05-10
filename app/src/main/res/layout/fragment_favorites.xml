@@ -10,20 +10,19 @@
         android:id="@+id/tabLayout"
         android:layout_height="wrap_content">
 
-
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
-            android:text="LATEST"
+            android:text="@string/latest_text"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
-            android:text="NAMES"
+            android:text="@string/names_text"
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
-            android:text="HEALTH"
+            android:text="@string/health_text"
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.tabs.TabLayout>

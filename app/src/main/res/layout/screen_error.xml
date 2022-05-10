@@ -9,8 +9,8 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/error_icon_size"
+        android:layout_height="@dimen/error_icon_size"
         android:layout_gravity="center"
         android:src="@drawable/ic_baseline_close_24"
         app:tint="@color/light_red" />
@@ -21,6 +21,6 @@
         android:layout_margin="@dimen/margin_card_10dp"
         android:text="@string/no_pokemons"
         android:textColor="@color/black"
-        android:textSize="24sp" />
+        android:textSize="@dimen/size_error_text" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

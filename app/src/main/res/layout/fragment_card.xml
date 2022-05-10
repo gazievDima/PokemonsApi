@@ -39,13 +39,13 @@
         <ImageView
             android:layout_marginVertical="@dimen/margin_card_10dp"
             android:id="@+id/cardImage"
-            android:layout_width="350dp"
-            android:layout_height="500dp"
+            android:layout_width="@dimen/card_width"
+            android:layout_height="@dimen/card_height"
             android:layout_gravity="center"
             android:src="@drawable/pikachu" />
 
         <TextView
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/margin_top_direction"
             android:id="@+id/tvId"
             style="@style/StyleFieldsTextView"
             android:text="@string/id_no_information_available" />

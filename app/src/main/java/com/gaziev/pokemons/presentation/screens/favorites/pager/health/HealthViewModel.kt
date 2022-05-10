@@ -40,12 +40,14 @@ class HealthViewModel @Inject constructor(
 
     fun sortItems() {
         viewModelScope.launch {
-            if (stateSortedUp) {
-                _pokemons.value = sortHealthFavoritePokemonsUseCase.down(pokemons.value!!)
-            } else {
-                _pokemons.value = sortHealthFavoritePokemonsUseCase.up(pokemons.value!!)
+            pokemons.value?.let {
+                if (stateSortedUp) {
+                    _pokemons.value = sortHealthFavoritePokemonsUseCase.down(it)
+                } else {
+                    _pokemons.value = sortHealthFavoritePokemonsUseCase.up(it)
+                }
+                stateSortedUp = !stateSortedUp
             }
-            stateSortedUp = !stateSortedUp
         }
     }
 

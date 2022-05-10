@@ -44,16 +44,16 @@ class LatestViewModel @Inject constructor(
     fun sortItems() {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                val list = mutableListOf<PokemonLocalDetails>()
-                if (stateSortedUp) {
-                    list.addAll(sortLatestFavoritePokemonsUseCase.down(pokemons.value!!))
-                } else {
-                    list.addAll(sortLatestFavoritePokemonsUseCase.up(pokemons.value!!))
+                pokemons.value?.let {
+                    val list = mutableListOf<PokemonLocalDetails>()
+                    if (stateSortedUp) {
+                        list.addAll(sortLatestFavoritePokemonsUseCase.down(it))
+                    } else {
+                        list.addAll(sortLatestFavoritePokemonsUseCase.up(it))
+                    }
+                    _pokemons.value = list
+                    stateSortedUp = !stateSortedUp
                 }
-                Log.i(TAG, "equals = " + list.equals(_pokemons.value).toString())
-                _pokemons.value = list
-                stateSortedUp = !stateSortedUp
-                Log.i(TAG, pokemons.value.toString())
             }
         }
     }

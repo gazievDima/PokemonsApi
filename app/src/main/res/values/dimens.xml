@@ -4,4 +4,27 @@
     <dimen name="margin_card_10dp">10dp</dimen>
     <dimen name="margin_card_5dp">5dp</dimen>
     <dimen name="size_icon">36dp</dimen>
+    <dimen name="card_width">350dp</dimen>
+    <dimen name="card_height">500dp</dimen>
+    <dimen name="margin_top_direction">15dp</dimen>
+    <dimen name="logo_width">200dp</dimen>
+    <dimen name="logo_height">200dp</dimen>
+    <dimen name="button_width">150dp</dimen>
+    <dimen name="margin_bottom_logo">100dp</dimen>
+    <dimen name="direction_margin_start">15dp</dimen>
+    <dimen name="direction_text_size">16sp</dimen>
+    <dimen name="width_favorite_card">140dp</dimen>
+    <dimen name="height_favorite_card">300dp</dimen>
+    <dimen name="item_padding">20dp</dimen>
+    <dimen name="elevation_card">5dp</dimen>
+    <dimen name="margin_item">20dp</dimen>
+    <dimen name="item_height">250dp</dimen>
+    <dimen name="name_item_text_size">22sp</dimen>
+    <dimen name="name_text_view_height">30dp</dimen>
+    <dimen name="error_icon_size">48dp</dimen>
+    <dimen name="size_error_text">24sp</dimen>
+    <dimen name="shimmer_text_width">180dp</dimen>
+    <dimen name="shimmer_text_height">30dp</dimen>
+    <dimen name="shimmer_card_width">180dp</dimen>
+    <dimen name="shimmer_card_height">240dp</dimen>
 </resources>

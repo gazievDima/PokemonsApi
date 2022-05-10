@@ -15,20 +15,20 @@
             <ImageView
                 android:id="@+id/cardImage"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="@dimen/item_height"
                 android:layout_marginTop="@dimen/margin_card_10dp"
                 android:src="@drawable/small_card" />
 
             <TextView
                 android:id="@+id/nameText"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/name_text_view_height"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:maxLength="10"
                 android:text="@string/pickachu"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="@dimen/name_item_text_size" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
