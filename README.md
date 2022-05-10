@@ -20,7 +20,7 @@
 
 ```mermaid
 graph LR
-A[Welcome Fragment] -- button About --> B[About Fragment]
+A[Welcome Fragment] -- button About --> B[About DialogFragment]
 A -- button Gallery --> C(Pokemons Fragment)
 C -- bottom navigation --> D(Favorite Fragment)
 D -- bottom navigation --> C
