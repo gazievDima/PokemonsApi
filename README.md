@@ -14,7 +14,7 @@
 -   navigation component
 
 ## Release APK
-- https://github.com/gazievDima/apk-release.apk
+- https://github.com/gazievDima/PokemonsApi/blob/main/pokemonchiki.apk
 
 ## Navigation app
 
