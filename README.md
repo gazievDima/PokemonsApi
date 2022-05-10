@@ -21,7 +21,7 @@
 ```mermaid
 graph LR
 A[Welcome Fragment] -- button About --> B[About Fragment]
-A -- button Pokemons --> C(Pokemons Fragment)
+A -- button Gallery --> C(Pokemons Fragment)
 C -- bottom navigation --> D(Favorite Fragment)
 D -- bottom navigation --> C
 D -- view pager --> L(Latest Fragment)
