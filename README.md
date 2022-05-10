@@ -34,10 +34,10 @@ D -- view pager --> H(Health Fragment)
 
 ![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_1.jpg)
 
-![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_1.jpg)
+![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_0.jpg)
 
-![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_1.jpg)
+![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_2.jpg)
 
-![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_1.jpg)
+![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_3.jpg)
 
-![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_1.jpg)
+![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_4.jpg)
