@@ -31,18 +31,17 @@ class CardViewModel @Inject constructor(
         _pokemon.value = pokemon
     }
 
-    suspend fun savePokemon(pokemon: PokemonCard) {
+    suspend fun savePokemonToDataBase(pokemon: PokemonCard) {
         saveFavoritePokemonUseCase.saveFavoritePokemon(mapper.mapCardToLocal(pokemon))
     }
 
-    suspend fun deletePokemon(idPokemon: String) {
+    suspend fun deletePokemonFromDataBase(idPokemon: String) {
         deleteFavoritePokemonUseCase.deleteFavoritePokemon(idPokemon)
     }
 
-    suspend fun checkPokemonFromFavorite(pokemon: PokemonRemoteDetails): Boolean {
-        return searchFavoritePokemonUseCase.searchFavoritePokemon(pokemon.id!!)
-        //здесь проверяем есть ли такая карта уже
-        // в базе данных
-        // если есть то возвращаем true иначе false
+    suspend fun checkExistsPokemonFromDataBase(pokemon: PokemonRemoteDetails): Boolean {
+        return if (pokemon.id != null)
+            searchFavoritePokemonUseCase.searchFavoritePokemon(pokemon.id!!)
+        else false
     }
 }

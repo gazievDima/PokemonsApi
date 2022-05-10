@@ -1,0 +1,3 @@
+package com.gaziev.pokemons.presentation.screens.common
+
+interface BottomNavigationFragment

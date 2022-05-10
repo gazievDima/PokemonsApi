@@ -2,7 +2,7 @@ package com.gaziev.pokemons.di
 
 import android.app.Application
 import com.gaziev.pokemons.di.modules.*
-import com.gaziev.pokemons.presentation.MainActivity
+import com.gaziev.pokemons.presentation.activity.MainActivity
 import com.gaziev.pokemons.presentation.screens.card.CardFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.health.HealthFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.latest.LatestFragment
@@ -16,12 +16,12 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AppModule::class,
-        MappersModule::class,
+        MapperModule::class,
         RepositoryModule::class,
         SourceModule::class,
         ViewModelModule::class,
         UseCaseModule::class,
-        DispatchersModule::class,
+        DispatcherModule::class,
     ]
 )
 interface AppComponent {

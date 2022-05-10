@@ -1,3 +1,0 @@
-package com.gaziev.pokemons.presentation.common
-
-interface BottomNavigationFragment

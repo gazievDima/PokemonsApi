@@ -8,7 +8,7 @@ import com.gaziev.pokemons.dispatcher.DispatcherDataImpl
 import com.gaziev.pokemons.dispatcher.DispatcherDomainImpl
 
 @Module
-class DispatchersModule {
+class DispatcherModule {
 
     @Provides
     fun provideDispatcherData(): DispatcherData {

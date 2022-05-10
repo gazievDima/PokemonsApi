@@ -1,4 +1,4 @@
-package com.gaziev.pokemons.presentation.common
+package com.gaziev.pokemons.presentation.screens.common
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.gaziev.pokemons.presentation.MainActivity
-import dagger.android.support.DaggerFragment
+import com.gaziev.pokemons.presentation.activity.MainActivity
+import com.gaziev.pokemons.presentation.common.MainBottomNavigation
+import com.gaziev.pokemons.presentation.common.MainToolbar
 
 
 abstract class BaseFragment<T : ViewBinding> : Fragment() {

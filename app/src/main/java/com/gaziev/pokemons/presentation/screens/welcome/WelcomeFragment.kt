@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.gaziev.pokemons.App
 import com.gaziev.pokemons.databinding.FragmentWelcomeBinding
-import com.gaziev.pokemons.presentation.common.BaseFragment
-import com.gaziev.pokemons.presentation.common.ToolbarFragment
+import com.gaziev.pokemons.presentation.screens.common.BaseFragment
+import com.gaziev.pokemons.presentation.screens.common.ToolbarFragment
 import com.gaziev.pokemons.presentation.screens.welcome.about.AboutDialogFragment
 
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(), ToolbarFragment {

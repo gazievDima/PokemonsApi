@@ -19,7 +19,7 @@ import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.pokemons.App
 import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.FragmentCardBinding
-import com.gaziev.pokemons.presentation.common.BaseFragment
+import com.gaziev.pokemons.presentation.screens.common.BaseFragment
 import com.gaziev.pokemons.presentation.screens.card.model.PokemonCardMapperImpl
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
@@ -29,11 +29,9 @@ import javax.inject.Inject
 class CardFragment : BaseFragment<FragmentCardBinding>() {
 
     @Inject
-    lateinit var mapper: PokemonCardMapperImpl
-
+    lateinit var mapperCard: PokemonCardMapperImpl
     @Inject
     lateinit var mapperRemoteLocalDetails: PokemonRemoteLocalMapperImpl
-
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: CardViewModel by viewModels { viewModelFactory }
@@ -53,7 +51,7 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
                 }
                 if (pokemon is PokemonRemoteDetails) {
                     lifecycleScope.launch {
-                        if (viewModel.checkPokemonFromFavorite(pokemon)) {
+                        if (viewModel.checkExistsPokemonFromDataBase(pokemon)) {
                             openLocalPokemon(pokemon)
                         } else {
                             openRemotePokemon(pokemon)
@@ -74,13 +72,13 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
         } else {
             o as PokemonLocalDetails
         }
-        val pokemonCard = mapper.mapLocalToCard(pokemon)
+        val pokemonCard = mapperCard.mapLocalToCard(pokemon)
         viewModel.setPokemon(pokemonCard)
         changeLike(pokemonCard.liked)
     }
 
     private fun openRemotePokemon(o: Serializable) {
-        val pokemon = mapper.mapRemoteToCard(o as PokemonRemoteDetails)
+        val pokemon = mapperCard.mapRemoteToCard(o as PokemonRemoteDetails)
         viewModel.setPokemon(pokemon)
         changeLike(pokemon.liked)
     }
@@ -134,7 +132,7 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
                 lifecycleScope.launch {
                     viewModel.pokemon.value?.liked = false
                     changeLike(viewModel.pokemon.value?.liked!!)
-                    viewModel.deletePokemon(viewModel.pokemon.value?.id!!)
+                    viewModel.deletePokemonFromDataBase(viewModel.pokemon.value?.id!!)
                     Snackbar.make(
                         binding.cardImage,
                         "pokemon: ${viewModel.pokemon.value?.name} is deleted.",
@@ -145,7 +143,7 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
                 lifecycleScope.launch {
                     viewModel.pokemon.value?.liked = true
                     changeLike(viewModel.pokemon.value?.liked!!)
-                    viewModel.savePokemon(viewModel.pokemon.value!!)
+                    viewModel.savePokemonToDataBase(viewModel.pokemon.value!!)
                     Snackbar.make(
                         binding.cardImage,
                         "pokemon: ${viewModel.pokemon.value?.name} is saved.",

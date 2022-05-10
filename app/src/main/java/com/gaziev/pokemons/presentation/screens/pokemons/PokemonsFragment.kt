@@ -15,9 +15,9 @@ import com.gaziev.domain.models.PokemonRemoteDetails
 import com.gaziev.pokemons.App
 import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.FragmentPokemonsBinding
-import com.gaziev.pokemons.presentation.common.BaseFragment
-import com.gaziev.pokemons.presentation.common.BottomNavigationFragment
-import com.gaziev.pokemons.presentation.common.ToolbarFragment
+import com.gaziev.pokemons.presentation.screens.common.BaseFragment
+import com.gaziev.pokemons.presentation.screens.common.BottomNavigationFragment
+import com.gaziev.pokemons.presentation.screens.common.ToolbarFragment
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsPagingAdapter
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsComparator
 import com.google.android.material.snackbar.Snackbar

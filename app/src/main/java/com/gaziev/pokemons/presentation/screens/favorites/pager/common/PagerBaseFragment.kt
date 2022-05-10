@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.gaziev.pokemons.presentation.MainActivity
-import com.gaziev.pokemons.presentation.common.MainBottomNavigation
+import com.gaziev.pokemons.presentation.activity.MainActivity
 import com.gaziev.pokemons.presentation.common.MainToolbar
-import dagger.android.support.DaggerFragment
 
 abstract class PagerBaseFragment<T : ViewBinding> : Fragment() {
     abstract val inflate: (LayoutInflater, ViewGroup?, Boolean) -> T

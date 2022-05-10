@@ -2,7 +2,7 @@ package com.gaziev.pokemons.presentation.screens.favorites.pager.common
 
 import android.text.Editable
 import android.text.TextWatcher
-import com.gaziev.pokemons.presentation.MainActivity
+import com.gaziev.pokemons.presentation.activity.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.debounce

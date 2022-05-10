@@ -21,7 +21,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class MappersModule {
+class MapperModule {
 
     @Provides
     fun providePokemonRemoteMapper(
