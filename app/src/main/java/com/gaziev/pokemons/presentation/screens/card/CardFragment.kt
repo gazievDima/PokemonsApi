@@ -13,25 +13,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.gaziev.data.mapper.pokemon.PokemonRemoteLocalMapperImpl
-import com.gaziev.domain.models.PokemonRemoteDetails
-import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.pokemons.App
 import com.gaziev.pokemons.R
 import com.gaziev.pokemons.databinding.FragmentCardBinding
 import com.gaziev.pokemons.presentation.screens.common.BaseFragment
-import com.gaziev.pokemons.presentation.screens.card.model.PokemonCardMapperImpl
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
-import java.io.Serializable
 import javax.inject.Inject
 
 class CardFragment : BaseFragment<FragmentCardBinding>() {
 
-    @Inject
-    lateinit var mapperCard: PokemonCardMapperImpl
-    @Inject
-    lateinit var mapperRemoteLocalDetails: PokemonRemoteLocalMapperImpl
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: CardViewModel by viewModels { viewModelFactory }
@@ -46,55 +37,16 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
             val pokemon = arguments?.getSerializable("info")
 
             pokemon?.let {
-                if (pokemon is PokemonLocalDetails) {
-                    openLocalPokemon(pokemon)
-                }
-                if (pokemon is PokemonRemoteDetails) {
-                    lifecycleScope.launch {
-                        if (viewModel.checkExistsPokemonFromDataBase(pokemon)) {
-                            openLocalPokemon(pokemon)
-                        } else {
-                            openRemotePokemon(pokemon)
-                        }
-                    }
+                viewModel.setPokemon(it) { liked: Boolean? ->
+                    liked?.let { changeColorLikeButton(liked) }
                 }
             }
         }
 
         subscribe()
         clickListeners()
-
     }
 
-    private fun openLocalPokemon(o: Serializable) {
-        val pokemon = if (o is PokemonRemoteDetails) {
-            mapperRemoteLocalDetails.mapTo(o)
-        } else {
-            o as PokemonLocalDetails
-        }
-        val pokemonCard = mapperCard.mapLocalToCard(pokemon)
-        viewModel.setPokemon(pokemonCard)
-        changeLike(pokemonCard.liked)
-    }
-
-    private fun openRemotePokemon(o: Serializable) {
-        val pokemon = mapperCard.mapRemoteToCard(o as PokemonRemoteDetails)
-        viewModel.setPokemon(pokemon)
-        changeLike(pokemon.liked)
-    }
-
-    private fun changeLike(flag: Boolean) {
-        if (flag)
-            ImageViewCompat.setImageTintList(
-                binding.like,
-                ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.light_red))
-            )
-        else
-            ImageViewCompat.setImageTintList(
-                binding.like,
-                ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey))
-            )
-    }
 
     @SuppressLint("SetTextI18n")
     private fun subscribe() {
@@ -128,30 +80,25 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
         }
 
         binding.like.setOnClickListener {
-            if (viewModel.pokemon.value?.liked!!) {
-                lifecycleScope.launch {
-                    viewModel.pokemon.value?.liked = false
-                    changeLike(viewModel.pokemon.value?.liked!!)
-                    viewModel.deletePokemonFromDataBase(viewModel.pokemon.value?.id!!)
-                    Snackbar.make(
-                        binding.cardImage,
-                        "pokemon: ${viewModel.pokemon.value?.name} is deleted.",
-                        Snackbar.LENGTH_LONG
-                    ).show()
-                }
-            } else {
-                lifecycleScope.launch {
-                    viewModel.pokemon.value?.liked = true
-                    changeLike(viewModel.pokemon.value?.liked!!)
-                    viewModel.savePokemonToDataBase(viewModel.pokemon.value!!)
-                    Snackbar.make(
-                        binding.cardImage,
-                        "pokemon: ${viewModel.pokemon.value?.name} is saved.",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+            lifecycleScope.launch {
+
+                viewModel.setLikeState() { likeState, name ->
+                    changeColorLikeButton(likeState)
+                    val status = if (likeState) "saved" else "deleted"
+                    Snackbar.make(binding.cardImage, "$name is $status.",
+                        Snackbar.LENGTH_LONG).show()
                 }
             }
         }
+    }
+
+    private fun changeColorLikeButton(liked: Boolean) {
+        val color = if (liked) R.color.light_red else R.color.grey
+
+        ImageViewCompat.setImageTintList(
+            binding.like,
+            ColorStateList.valueOf(ContextCompat.getColor(requireContext(), color))
+        )
     }
 
 }
