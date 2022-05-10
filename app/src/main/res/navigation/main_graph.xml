@@ -20,9 +20,6 @@
         <action
             android:id="@+id/action_pokemonsFragment_to_cardFragment"
             app:destination="@id/cardFragment" />
-        <action
-            android:id="@+id/action_pokemonsFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -41,14 +38,6 @@
         android:id="@+id/cardFragment"
         android:name="com.gaziev.pokemons.presentation.screens.card.CardFragment"
         android:label="CardFragment" />
-    <fragment
-        android:id="@+id/statisticFragment"
-        android:name="com.gaziev.pokemons.presentation.screens.statistic.StatisticFragment"
-        android:label="StatisticFragment" >
-        <action
-            android:id="@+id/action_statisticFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
-    </fragment>
     <fragment
         android:id="@+id/AZFragment"
         android:name="com.gaziev.pokemons.presentation.screens.favorites.pager.latest.LatestFragment"

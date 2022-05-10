@@ -6,7 +6,6 @@
     <string name="likes_up_case">LIKES</string>
     <string name="pickachu">Pickachu</string>
     <string name="favorites">Favorites</string>
-    <string name="statistic">STATISTIC</string>
     <string name="gallery">Gallery</string>
     <string name="about">About</string>
     <string name="dialog_ok">OK</string>
@@ -31,4 +30,5 @@
     <string name="you_didn_t_choose_pokemon">You didn\'t choose Pokemon :(</string>
     <string name="no_pokemons">No pokemons. :(</string>
     <string name="check_your_internet_connection">Check your internet connection..</string>
+    <string name="favorites_caps">FAVORITES</string>
 </resources>

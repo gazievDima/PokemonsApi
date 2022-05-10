@@ -15,7 +15,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
     private var _binding: T? = null
     val binding: T get() = _binding!!
     private val mainBottomNavigation: MainBottomNavigation by lazy { (requireActivity() as MainActivity).mainBottomNavigation }
-    val mainToolbar: MainToolbar by lazy { (requireActivity() as MainActivity).mainToolbar }
+    private val mainToolbar: MainToolbar by lazy { (requireActivity() as MainActivity).mainToolbar }
 
     override fun onCreateView(
         inflater: LayoutInflater,

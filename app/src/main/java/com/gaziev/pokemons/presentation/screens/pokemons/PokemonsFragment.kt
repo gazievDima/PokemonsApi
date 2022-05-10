@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat.setNestedScrollingEnabled
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -20,7 +18,6 @@ import com.gaziev.pokemons.databinding.FragmentPokemonsBinding
 import com.gaziev.pokemons.presentation.common.BaseFragment
 import com.gaziev.pokemons.presentation.common.BottomNavigationFragment
 import com.gaziev.pokemons.presentation.common.ToolbarFragment
-import com.gaziev.pokemons.presentation.screens.favorites.pager.common.ToolbarFavoriteIcon
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsPagingAdapter
 import com.gaziev.pokemons.presentation.screens.pokemons.list.PokemonsComparator
 import com.google.android.material.snackbar.Snackbar
@@ -29,16 +26,15 @@ import javax.inject.Inject
 
 class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
     BottomNavigationFragment,
-    ToolbarFragment,
-    ToolbarFavoriteIcon {
+    ToolbarFragment {
+
+    override fun getName(): String = "List from Api"
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: PokemonsViewModel by viewModels { viewModelFactory }
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentPokemonsBinding =
         FragmentPokemonsBinding::inflate
-    private val actionToFavorite =
-        PokemonsFragmentDirections.actionPokemonsFragmentToFavoriteFragment()
     private var pagingAdapter: PokemonsPagingAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,14 +45,6 @@ class PokemonsFragment : BaseFragment<FragmentPokemonsBinding>(),
         initRecycler()
         pagingLoadListener()
         subscribe()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        PokemonsToolbarListener(mainToolbar.toolbar).setup {
-            if (findNavController().currentDestination?.id != R.id.favoriteFragment)
-                findNavController().navigate(actionToFavorite)
-        }
     }
 
     private fun initRecycler() {

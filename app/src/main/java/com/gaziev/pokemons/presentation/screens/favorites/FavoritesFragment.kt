@@ -7,14 +7,18 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.gaziev.pokemons.databinding.FragmentFavoritesBinding
 import com.gaziev.pokemons.presentation.common.BaseFragment
+import com.gaziev.pokemons.presentation.common.BottomNavigationFragment
 import com.gaziev.pokemons.presentation.common.ToolbarFragment
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.FavoritesPagerAdapter
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.ToolbarSearchIcon
 import com.gaziev.pokemons.presentation.screens.favorites.pager.common.ToolbarSortIcon
 import com.google.android.material.tabs.TabLayout
 
-class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(), ToolbarFragment,
+class FavoritesFragment : BaseFragment<FragmentFavoritesBinding>(), ToolbarFragment, BottomNavigationFragment,
     ToolbarSearchIcon, ToolbarSortIcon {
+
+    override fun getName(): String = "Your favorite c:"
+
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentFavoritesBinding =
         FragmentFavoritesBinding::inflate
 

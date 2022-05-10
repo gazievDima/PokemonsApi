@@ -12,6 +12,9 @@ import com.gaziev.pokemons.presentation.common.ToolbarFragment
 import com.gaziev.pokemons.presentation.screens.welcome.about.AboutDialogFragment
 
 class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(), ToolbarFragment {
+
+    override fun getName(): String = "Pokemonchiki"
+
     override val inflate: (LayoutInflater, ViewGroup?, Boolean) -> FragmentWelcomeBinding = FragmentWelcomeBinding::inflate
     private val actionToPokemon = WelcomeFragmentDirections.actionWelcomeFragmentToPokemonsFragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

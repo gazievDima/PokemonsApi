@@ -1,3 +1,5 @@
 package com.gaziev.pokemons.presentation.common
 
-interface ToolbarFragment
+interface ToolbarFragment {
+    fun getName(): String
+}
