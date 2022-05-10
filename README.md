@@ -32,7 +32,7 @@ D -- view pager --> H(Health Fragment)
 
 ## Screens
 
-<img src="https://github.com/gazievDima/PokemonsApi/blob/main/welcome_1.jpg" width="200" height="200" />
+<img src="https://github.com/gazievDima/PokemonsApi/blob/main/welcome_1.jpg" width="800" height="400" />
 
 ![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_1.jpg) { width: 200px; }
 
