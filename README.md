@@ -33,13 +33,7 @@ D -- view pager --> H(Health Fragment)
 ## Screens
 
 <img src="https://github.com/gazievDima/PokemonsApi/blob/main/welcome_1.jpg" width="300" height="600" />
-
-![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_1.jpg) { width: 200px; }
-
-![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_0.jpg)
-
-![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_2.jpg)
-
-![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_3.jpg)
-
-![enter image description here](https://github.com/gazievDima/PokemonsApi/blob/main/welcome_4.jpg)
+<img src="https://github.com/gazievDima/PokemonsApi/blob/main/welcome_0.jpg" width="300" height="600" />
+<img src="https://github.com/gazievDima/PokemonsApi/blob/main/welcome_2.jpg" width="300" height="600" />
+<img src="https://github.com/gazievDima/PokemonsApi/blob/main/welcome_3.jpg" width="300" height="600" />
+<img src="https://github.com/gazievDima/PokemonsApi/blob/main/welcome_4.jpg" width="300" height="600" />
