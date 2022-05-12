@@ -2,16 +2,18 @@
 
 ## Technologies used
 
--   shimmer layout
+-   api https://pokemontcg.io
+-   retrofit
 -   dagger 2
 -   room
+-   coroutines
+-   navigation component
+-   custom view (combine view group)
+-   shimmer layout
 -   paging
 -   glide
--   retrofit
--   coroutines
 -   coordinator
 -   view pager
--   navigation component
 
 ## Release APK
 - https://github.com/gazievDima/PokemonsApi/blob/main/pokemonchiki.apk
