@@ -8,6 +8,7 @@
 -   room
 -   coroutines
 -   navigation component
+-   custom view (combine view group)
 -   shimmer layout
 -   paging
 -   glide
