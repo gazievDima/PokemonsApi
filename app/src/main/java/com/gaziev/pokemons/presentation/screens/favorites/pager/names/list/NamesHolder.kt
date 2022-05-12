@@ -14,15 +14,10 @@ class NamesHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val binding = ItemFavoriteBinding.bind(itemView)
 
     fun bind(pokemon: PokemonLocalDetails, lambda: (pokemon: PokemonLocalDetails) -> Unit) {
-        binding.tvNumber.visibility = View.GONE
-        binding.tvId.text = "id: ${pokemon.id}"
-        binding.tvName.text = "name: ${pokemon.name}"
-        binding.tvHp.text = "hp: ${pokemon.hp}"
+        binding.pokemonCard.setCardImage(binding.pokemonCard, pokemon.images?.small)
+        binding.pokemonCard.setFields(pokemon, visibilityNumber = View.GONE, null)
 
-        Glide.with(itemView).load(pokemon.images?.small).fitCenter()
-            .placeholder(R.drawable.loading).into(binding.cardImage)
-
-        binding.card.setOnClickListener {
+        binding.pokemonCard.setOnClickListener {
             lambda(pokemon)
         }
     }

@@ -47,9 +47,9 @@ class LatestViewModel @Inject constructor(
                 pokemons.value?.let {
                     val list = mutableListOf<PokemonLocalDetails>()
                     if (stateSortedUp) {
-                        list.addAll(sortLatestFavoritePokemonsUseCase.down(it))
-                    } else {
                         list.addAll(sortLatestFavoritePokemonsUseCase.up(it))
+                    } else {
+                        list.addAll(sortLatestFavoritePokemonsUseCase.down(it))
                     }
                     _pokemons.value = list
                     stateSortedUp = !stateSortedUp

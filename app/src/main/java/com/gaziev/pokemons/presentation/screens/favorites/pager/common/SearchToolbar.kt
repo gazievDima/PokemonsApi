@@ -11,9 +11,8 @@ class SearchToolbar(
         const val EMPTY_FIELD = ""
     }
 
-    private val close: View = activity.binding.searchToolbarView.inputClose
-    private val input: EditText = activity.binding.searchToolbarView.inputSearch
-    private val buffer: String = activity.binding.toolbar.title.toString()
+    private val close: View = activity.binding.inputClose
+    private val input: EditText = activity.binding.inputSearch
 
     init {
          close.setOnClickListener {
@@ -22,7 +21,6 @@ class SearchToolbar(
     }
 
     fun modeOn() {
-        activity.binding.toolbar.title = EMPTY_FIELD
         close.visibility = View.VISIBLE
         input.visibility = View.VISIBLE
         input.requestFocus()
@@ -30,7 +28,6 @@ class SearchToolbar(
     }
 
     fun modeOff() {
-        activity.binding.toolbar.title = buffer
         close.visibility = View.GONE
         input.visibility = View.GONE
         input.setText(EMPTY_FIELD)

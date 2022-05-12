@@ -14,15 +14,10 @@ class LatestHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val binding = ItemFavoriteBinding.bind(itemView)
 
     fun bind(pokemon: PokemonLocalDetails, mapNumbers: Map<Int, Int>, lambda: (pokemon: PokemonLocalDetails) -> Unit) {
-        binding.tvNumber.text = "number: ${mapNumbers[pokemon.primary_key]}"
-        binding.tvId.text = "id: ${pokemon.id}"
-        binding.tvName.text = "name: ${pokemon.name}"
-        binding.tvHp.text = "hp: ${pokemon.hp}"
+        binding.pokemonCard.setCardImage(binding.pokemonCard, pokemon.images?.small)
+        binding.pokemonCard.setFields(pokemon, visibilityNumber = View.VISIBLE, mapNumbers[pokemon.primary_key])
 
-        Glide.with(itemView).load(pokemon.images?.small).fitCenter()
-            .placeholder(R.drawable.loading).into(binding.cardImage)
-
-        binding.card.setOnClickListener {
+        binding.pokemonCard.setOnClickListener {
             lambda(pokemon)
         }
     }
