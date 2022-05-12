@@ -19,8 +19,7 @@
                 android:layout_width="@dimen/size_icon"
                 android:layout_height="@dimen/size_icon"
                 android:layout_margin="@dimen/margin_card_10dp"
-                android:src="@drawable/ic_baseline_favorite_24"
-                 />
+                android:src="@drawable/ic_baseline_favorite_24" />
 
             <Space
                 android:layout_width="match_parent"
@@ -36,65 +35,10 @@
                 app:tint="?colorPrimary" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <ImageView
-            android:layout_marginVertical="@dimen/margin_card_10dp"
-            android:id="@+id/cardImage"
-            android:layout_width="@dimen/card_width"
-            android:layout_height="@dimen/card_height"
-            android:layout_gravity="center"
-            android:src="@drawable/pikachu" />
-
-        <TextView
-            android:layout_marginTop="@dimen/margin_top_direction"
-            android:id="@+id/tvId"
-            style="@style/StyleFieldsTextView"
-            android:text="@string/id_no_information_available" />
-
-        <TextView
-            android:id="@+id/tvName"
-            style="@style/StyleFieldsTextView"
-            android:text="@string/name_no_information_available" />
-
-        <TextView
-            android:id="@+id/tvSupertype"
-            style="@style/StyleFieldsTextView"
-            android:text="@string/supertype_no_information_available" />
-
-        <TextView
-            android:id="@+id/tvSubtypes"
-            style="@style/StyleFieldsTextView"
-            android:text="@string/subtypes_no_information_available" />
-
-        <TextView
-            android:id="@+id/tvHp"
-            style="@style/StyleFieldsTextView"
-            android:text="@string/hp_no_information_available" />
-
-        <TextView
-            android:id="@+id/tvTypes"
-            style="@style/StyleFieldsTextView"
-            android:text="@string/types_no_information_available" />
-
-        <TextView
-            android:id="@+id/tvEvolvesTo"
-            style="@style/StyleFieldsTextView"
-            android:text="@string/evolves_no_information_available" />
-
-        <TextView
-            android:id="@+id/tvRules"
-            style="@style/StyleFieldsTextView"
-            android:text="@string/rules_no_information_available" />
-
-        <TextView
-            android:id="@+id/tvArtist"
-            style="@style/StyleFieldsTextView"
-            android:text="@string/artist_no_information_available" />
-
-        <TextView
-            android:id="@+id/tvRarity"
-            android:layout_marginBottom="15dp"
-            style="@style/StyleFieldsTextView"
-            android:text="@string/rarity_no_information_available" />
+        <com.gaziev.pokemons.presentation.screens.view.CardPokemonView
+            android:id="@+id/cardPokemon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>

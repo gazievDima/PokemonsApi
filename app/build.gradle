@@ -17,6 +17,17 @@ android {
     compileSdk 32
 
     defaultConfig {
+        /**
+         * If you have cloned this project from the repository,
+         * then you need to add the local.properties file to the
+         * root of the project and add the apiKey field there.
+         *
+         * example: apiKey="any string of characters".
+         *
+         * This is done in order to ensure the security of a personal IP key.
+         * To get an application that has access to the key, please use the
+         * installation apk file located in the same repository.
+         */
         buildConfigField "String", "API_KEY", localProperties['apiKey']
 
         applicationId "com.gaziev.api_example"

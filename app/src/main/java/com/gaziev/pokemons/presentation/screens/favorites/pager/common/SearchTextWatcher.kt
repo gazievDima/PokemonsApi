@@ -21,7 +21,7 @@ class SearchTextWatcher(
                search(it)
             }.launchIn(lifecycleScope)
 
-        activity.binding.inputSearch.addTextChangedListener(object : TextWatcher {
+        activity.binding.searchToolbarView.inputSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
                 stateFlow.value = text.toString()

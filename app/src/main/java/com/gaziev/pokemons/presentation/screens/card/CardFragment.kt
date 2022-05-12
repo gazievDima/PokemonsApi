@@ -51,25 +51,9 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
     @SuppressLint("SetTextI18n")
     private fun subscribe() {
         viewModel.pokemon.observe(viewLifecycleOwner) {
-
-            with(binding) {
-                tvId.text = "Id: ${it.id ?: "..."}"
-                tvName.text = "Name: ${it.name ?: "..."}"
-                tvSupertype.text = "Supertype: ${it.supertype ?: "..."}"
-                tvSubtypes.text = "Subtypes: ${it.supertype ?: "..."}"
-                tvHp.text = "Hp: ${it.hp ?: "..."}"
-                tvTypes.text = "Types: ${it.types ?: "..."}"
-                tvEvolvesTo.text = "Evolves: ${it.evolvesTo ?: "..."}"
-                tvRules.text = "Rules: ${it.rules ?: "..."}"
-                tvArtist.text = "Artist: ${it.artist ?: "..."}"
-                tvRarity.text = "Rarity: ${it.rarity ?: "..."}"
-
-                Glide
-                    .with(this@CardFragment)
-                    .load(it.images?.small)
-                    .centerCrop()
-                    .placeholder(R.drawable.loading)
-                    .into(cardImage)
+            it?.let {
+                binding.cardPokemon.setCardImage(this, it.images?.small)
+                binding.cardPokemon.setFields(it)
             }
         }
     }
@@ -85,7 +69,7 @@ class CardFragment : BaseFragment<FragmentCardBinding>() {
                 viewModel.setLikeState() { likeState, name ->
                     changeColorLikeButton(likeState)
                     val status = if (likeState) "saved" else "deleted"
-                    Snackbar.make(binding.cardImage, "$name is $status.",
+                    Snackbar.make(binding.cardPokemon, "$name is $status.",
                         Snackbar.LENGTH_LONG).show()
                 }
             }

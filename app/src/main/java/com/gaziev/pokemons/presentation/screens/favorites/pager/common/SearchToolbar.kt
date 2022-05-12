@@ -7,29 +7,34 @@ import com.gaziev.pokemons.presentation.activity.MainActivity
 class SearchToolbar(
     private val activity: MainActivity
 ) {
-    private var close: View? = null
-    private var input: EditText? = null
+    companion object {
+        const val EMPTY_FIELD = ""
+    }
+
+    private val close: View = activity.binding.searchToolbarView.inputClose
+    private val input: EditText = activity.binding.searchToolbarView.inputSearch
+    private val buffer: String = activity.binding.toolbar.title.toString()
 
     init {
-        close = activity.binding.inputClose
-        input = activity.binding.inputSearch
-
-        close?.setOnClickListener {
+         close.setOnClickListener {
             modeOff()
         }
     }
 
     fun modeOn() {
-        close?.visibility = View.VISIBLE
-        input?.visibility = View.VISIBLE
-        input?.requestFocus()
+        activity.binding.toolbar.title = EMPTY_FIELD
+        close.visibility = View.VISIBLE
+        input.visibility = View.VISIBLE
+        input.requestFocus()
         activity.keyboardManager.up()
     }
 
     fun modeOff() {
-        close?.visibility = View.GONE
-        input?.visibility = View.GONE
-        input?.setText("")
+        activity.binding.toolbar.title = buffer
+        close.visibility = View.GONE
+        input.visibility = View.GONE
+        input.setText(EMPTY_FIELD)
         activity.keyboardManager.down()
     }
+
 }
