@@ -1,6 +1,6 @@
 package com.gaziev.domain.usecases.get
 
-import com.gaziev.domain.usecases.DispatcherDomain
+import com.gaziev.domain.dispatcher.DispatcherCoroutine
 import com.gaziev.domain.models.PokemonLocalDetails
 import com.gaziev.domain.repository.PokemonRepository
 import kotlinx.coroutines.flow.Flow
@@ -9,10 +9,10 @@ import javax.inject.Inject
 
 class GetFavoritesPokemonsUseCase @Inject constructor(
     private val repository: PokemonRepository,
-    private val dispatcher: DispatcherDomain
+    private val dispatcher: DispatcherCoroutine
 ) {
 
-    suspend fun get(): Flow<List<PokemonLocalDetails>> = withContext(dispatcher.inject()) {
+    suspend fun get(): Flow<List<PokemonLocalDetails>> = withContext(dispatcher.get()) {
         return@withContext repository.getFavoritesPokemons()
     }
 }

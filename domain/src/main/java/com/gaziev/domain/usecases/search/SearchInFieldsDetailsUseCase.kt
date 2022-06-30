@@ -1,14 +1,14 @@
 package com.gaziev.domain.usecases.search
 
-import com.gaziev.domain.usecases.DispatcherDomain
+import com.gaziev.domain.dispatcher.DispatcherCoroutine
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class SearchInFieldsDetailsUseCase<T : Compared> @Inject constructor(
-    private val dispatcher: DispatcherDomain
+    private val dispatcher: DispatcherCoroutine
 ) {
 
-    suspend fun search(list: List<T>, element: String): List<T> = withContext(dispatcher.inject()) {
+    suspend fun search(list: List<T>, element: String): List<T> = withContext(dispatcher.get()) {
         val bufferList: MutableList<T> = mutableListOf()
 
         for (obj in list) {

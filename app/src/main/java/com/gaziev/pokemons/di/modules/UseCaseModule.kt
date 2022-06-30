@@ -2,6 +2,7 @@ package com.gaziev.pokemons.di.modules
 
 import com.gaziev.data.repository.PokemonRepositoryImpl
 import com.gaziev.domain.comparator.PokemonComparatorImpl
+import com.gaziev.domain.dispatcher.DefaultDispatcher
 import com.gaziev.domain.usecases.delete.DeleteFavoritePokemonUseCase
 import com.gaziev.domain.usecases.get.GetFavoritesPokemonsUseCase
 import com.gaziev.domain.usecases.get.GetPokemonsUseCase
@@ -12,7 +13,6 @@ import com.gaziev.domain.usecases.search.SearchInFieldsDetailsUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByHealthUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByLatestUseCase
 import com.gaziev.domain.usecases.sort.SortedPokemonsByNamesUseCase
-import com.gaziev.pokemons.dispatcher.DispatcherDomainImpl
 import dagger.Module
 import dagger.Provides
 
@@ -22,7 +22,7 @@ class UseCaseModule {
     @Provides
     fun provideSearchFavoritePokemonUseCase(
         repository: PokemonRepositoryImpl,
-        dispatcher: DispatcherDomainImpl
+        dispatcher: DefaultDispatcher
     ): SearchFavoritePokemonUseCase {
         return SearchFavoritePokemonUseCase(repository, dispatcher)
     }
@@ -30,7 +30,7 @@ class UseCaseModule {
     @Provides
     fun provideGetFavoritesPokemonsUseCase(
         repository: PokemonRepositoryImpl,
-        dispatcher: DispatcherDomainImpl
+        dispatcher: DefaultDispatcher
     ): GetFavoritesPokemonsUseCase {
         return GetFavoritesPokemonsUseCase(repository, dispatcher)
     }
@@ -38,7 +38,7 @@ class UseCaseModule {
     @Provides
     fun provideGetPokemonsUseCase(
         repository: PokemonRepositoryImpl,
-        dispatcher: DispatcherDomainImpl
+        dispatcher: DefaultDispatcher
     ): GetPokemonsUseCase {
         return GetPokemonsUseCase(repository, dispatcher)
     }
@@ -46,7 +46,7 @@ class UseCaseModule {
     @Provides
     fun provideDeleteFavoritePokemonUseCase(
         repository: PokemonRepositoryImpl,
-        dispatcher: DispatcherDomainImpl
+        dispatcher: DefaultDispatcher
     ): DeleteFavoritePokemonUseCase {
         return DeleteFavoritePokemonUseCase(repository, dispatcher)
     }
@@ -54,7 +54,7 @@ class UseCaseModule {
     @Provides
     fun provideSaveFavoritePokemonUseCase(
         repository: PokemonRepositoryImpl,
-        dispatcher: DispatcherDomainImpl
+        dispatcher: DefaultDispatcher
     ): SaveFavoritePokemonUseCase {
         return SaveFavoritePokemonUseCase(repository, dispatcher)
     }
@@ -63,7 +63,7 @@ class UseCaseModule {
     fun provideSortedPokemonByHealthUseCase(
         pokemonComparatorHealthUp: PokemonComparatorImpl.HealthUP,
         pokemonComparatorHealthDown: PokemonComparatorImpl.HealthDown,
-        dispatcher: DispatcherDomainImpl
+        dispatcher: DefaultDispatcher
     ) : SortedPokemonsByHealthUseCase {
         return SortedPokemonsByHealthUseCase(pokemonComparatorHealthUp, pokemonComparatorHealthDown, dispatcher)
     }
@@ -72,7 +72,7 @@ class UseCaseModule {
     fun provideSortedPokemonsByLatestUseCase(
         pokemonComparatorLatestUp: PokemonComparatorImpl.LatestUp,
         pokemonComparatorLatestDown: PokemonComparatorImpl.LatestDown,
-        dispatcher: DispatcherDomainImpl
+        dispatcher: DefaultDispatcher
     ): SortedPokemonsByLatestUseCase {
         return SortedPokemonsByLatestUseCase(pokemonComparatorLatestUp, pokemonComparatorLatestDown, dispatcher)
     }
@@ -81,14 +81,14 @@ class UseCaseModule {
     fun provideSortedPokemonsByNamesUseCase(
         pokemonComparatorNameUp: PokemonComparatorImpl.NameUp,
         pokemonComparatorNameDown: PokemonComparatorImpl.NameDown,
-        dispatcher: DispatcherDomainImpl
+        dispatcher: DefaultDispatcher
     ): SortedPokemonsByNamesUseCase {
         return SortedPokemonsByNamesUseCase(pokemonComparatorNameUp, pokemonComparatorNameDown, dispatcher)
     }
 
     @Provides
     fun provideSearchInFieldsDetailsUseCase(
-        dispatcher: DispatcherDomainImpl
+        dispatcher: DefaultDispatcher
     ) : SearchInFieldsDetailsUseCase<Compared> {
         return SearchInFieldsDetailsUseCase(dispatcher)
     }
