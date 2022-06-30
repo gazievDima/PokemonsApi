@@ -30,11 +30,8 @@ class HealthViewModel @Inject constructor(
 
     fun getPokemons() {
         viewModelScope.launch {
-            getFavoritePokemonsUseCase.get()
-                    .collect { list ->
-                        listFromBD = list
-                        _pokemons.value = sortHealthFavoritePokemonsUseCase.up(listFromBD)
-                    }
+            listFromBD = getFavoritePokemonsUseCase.get()
+            _pokemons.value = sortHealthFavoritePokemonsUseCase.up(listFromBD)
         }
     }
 
@@ -59,7 +56,7 @@ class HealthViewModel @Inject constructor(
     }
 
     fun endSearch() {
-            _pokemons.value = listFromBD
+        _pokemons.value = listFromBD
     }
 
 }

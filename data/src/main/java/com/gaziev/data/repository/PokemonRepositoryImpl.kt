@@ -36,17 +36,14 @@ class PokemonRepositoryImpl @Inject constructor(
         }
 
 
-    override suspend fun getFavoritesPokemons(): Flow<List<PokemonLocalDetails>> =
+    override suspend fun getFavoritesPokemons(): List<PokemonLocalDetails> =
         withContext(dispatcher.get()) {
-            return@withContext flow {
-                val result = localSource.getAll()
-                    .map {
-                        pokemonLocalMapper.mapTo(it)
-                    }
-                emit(result)
-            }
-
+            return@withContext localSource.getAll()
+                .map {
+                    pokemonLocalMapper.mapTo(it)
+                }
         }
+
 
     override suspend fun save(pokemon: PokemonLocalDetails) = withContext(Dispatchers.IO) {
         return@withContext localSource.insert(pokemonLocalMapper.mapFrom(pokemon))
@@ -56,11 +53,12 @@ class PokemonRepositoryImpl @Inject constructor(
         return@withContext localSource.delete(idPokemon)
     }
 
-    override suspend fun search(idPokemon: String): List<PokemonLocalDetails> = withContext(dispatcher.get()) {
-        return@withContext localSource.search(idPokemon).map {
-            pokemonLocalMapper.mapTo(it)
+    override suspend fun search(idPokemon: String): List<PokemonLocalDetails> =
+        withContext(dispatcher.get()) {
+            return@withContext localSource.search(idPokemon).map {
+                pokemonLocalMapper.mapTo(it)
+            }
         }
-    }
 
 }
 

@@ -33,11 +33,8 @@ class LatestViewModel @Inject constructor(
 
     fun getPokemons() {
         viewModelScope.launch {
-            getFavoritePokemonsUseCase.get()
-                .collect { list ->
-                    listFromBD = list
-                    _pokemons.value = sortLatestFavoritePokemonsUseCase.down(listFromBD)
-                }
+            listFromBD =getFavoritePokemonsUseCase.get()
+            _pokemons.value = sortLatestFavoritePokemonsUseCase.down(listFromBD)
         }
     }
 

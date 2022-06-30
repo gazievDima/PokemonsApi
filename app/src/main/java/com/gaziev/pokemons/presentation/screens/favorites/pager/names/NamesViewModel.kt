@@ -29,11 +29,8 @@ class NamesViewModel @Inject constructor(
 
     fun getPokemons() {
         viewModelScope.launch {
-            getFavoritePokemonsUseCase.get()
-                .collect { list ->
-                    listFromBD = list
-                    _pokemons.value = sortNamesFavoritePokemonsUseCase.up(listFromBD)
-                }
+            listFromBD = getFavoritePokemonsUseCase.get()
+            _pokemons.value = sortNamesFavoritePokemonsUseCase.up(listFromBD)
         }
     }
 

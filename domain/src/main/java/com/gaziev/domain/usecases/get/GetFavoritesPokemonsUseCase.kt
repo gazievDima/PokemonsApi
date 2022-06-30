@@ -12,7 +12,7 @@ class GetFavoritesPokemonsUseCase @Inject constructor(
     private val dispatcher: DispatcherCoroutine
 ) {
 
-    suspend fun get(): Flow<List<PokemonLocalDetails>> = withContext(dispatcher.get()) {
+    suspend fun get(): List<PokemonLocalDetails> = withContext(dispatcher.get()) {
         return@withContext repository.getFavoritesPokemons()
     }
 }
