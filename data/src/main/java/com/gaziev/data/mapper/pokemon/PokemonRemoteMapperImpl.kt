@@ -1,5 +1,6 @@
 package com.gaziev.data.mapper.pokemon
 
+import com.gaziev.data.mapper.DefaultValues
 import com.gaziev.data.models.ImagesRemoteEntity
 import com.gaziev.data.models.PokemonRemoteEntity
 import com.gaziev.data.repository.Mapper
@@ -13,17 +14,17 @@ class PokemonRemoteMapperImpl @Inject constructor(
 
     override fun mapTo(t: PokemonRemoteEntity): PokemonRemoteDetails {
         return PokemonRemoteDetails(
-            id = t.id,
-            name = t.name,
-            supertype = t.supertype,
-            subtypes = t.subtypes,
-            hp = t.hp,
-            types = t.types,
-            evolvesTo = t.evolvesTo,
-            rules = t.rules,
-            artist = t.artist,
-            rarity = t.rarity,
-            images = mapper.mapTo(t.images!!)
+            id = t.id ?: DefaultValues.STRING_NO_INFORMATION,
+            name = t.name ?: DefaultValues.STRING_NO_INFORMATION,
+            supertype = t.supertype ?: DefaultValues.STRING_NO_INFORMATION,
+            hp = t.hp ?: DefaultValues.STRING_NO_INFORMATION,
+            artist = t.artist ?: DefaultValues.STRING_NO_INFORMATION,
+            images = mapper.mapTo(
+                t.images ?: ImagesRemoteEntity(
+                    DefaultValues.STRING_NO_IMAGE,
+                    DefaultValues.STRING_NO_IMAGE
+                )
+            )
         )
     }
 
@@ -32,14 +33,14 @@ class PokemonRemoteMapperImpl @Inject constructor(
             id = v.id,
             name = v.name,
             supertype = v.supertype,
-            subtypes = v.subtypes,
             hp = v.hp,
-            types = v.types,
-            evolvesTo = v.evolvesTo,
-            rules = v.rules,
             artist = v.artist,
-            rarity = v.rarity,
-            images = mapper.mapFrom(v.images!!)
+            images = mapper.mapFrom(
+                v.images ?: ImagesRemoteDetails(
+                    DefaultValues.STRING_NO_IMAGE,
+                    DefaultValues.STRING_NO_IMAGE
+                )
+            )
         )
     }
 }

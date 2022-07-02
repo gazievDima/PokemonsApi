@@ -36,13 +36,8 @@ class CardPokemonView(context: Context, attrs: AttributeSet) : LinearLayoutCompa
                 tvId.text = "Id: ${it.id ?: "..."}"
                 tvName.text = "Name: ${it.name ?: "..."}"
                 tvSupertype.text = "Supertype: ${it.supertype ?: "..."}"
-                tvSubtypes.text = "Subtypes: ${it.supertype ?: "..."}"
                 tvHp.text = "Hp: ${it.hp ?: "..."}"
-                tvTypes.text = "Types: ${it.types ?: "..."}"
-                tvEvolvesTo.text = "Evolves: ${it.evolvesTo ?: "..."}"
-                tvRules.text = "Rules: ${it.rules ?: "..."}"
                 tvArtist.text = "Artist: ${it.artist ?: "..."}"
-                tvRarity.text = "Rarity: ${it.rarity ?: "..."}"
             }
         }
     }

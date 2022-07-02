@@ -1,5 +1,7 @@
 package com.gaziev.data.mapper.pokemon
 
+import com.gaziev.data.mapper.DefaultValues
+import com.gaziev.data.models.ImagesLocalEntity
 import com.gaziev.data.repository.Mapper
 import com.gaziev.domain.models.ImagesLocalDetails
 import com.gaziev.domain.models.ImagesRemoteDetails
@@ -20,8 +22,13 @@ class PokemonRemoteLocalMapperImpl @Inject constructor(
             supertype = t.supertype,
             hp = t.hp,
             artist = t.artist,
-            images = mapper.mapTo(t.images!!)
+            images = mapper.mapTo(
+                t.images ?: ImagesRemoteDetails(
+                    DefaultValues.STRING_NO_IMAGE,
+                    DefaultValues.STRING_NO_IMAGE
+                )
             )
+        )
     }
 
     override fun mapFrom(v: PokemonLocalDetails): PokemonRemoteDetails {
@@ -31,12 +38,12 @@ class PokemonRemoteLocalMapperImpl @Inject constructor(
             supertype = v.supertype,
             hp = v.hp,
             artist = v.artist,
-            images = mapper.mapFrom(v.images!!),
-            subtypes = null,
-            types = null,
-            evolvesTo = null,
-            rules = null,
-            rarity = null
+            images = mapper.mapFrom(
+                v.images ?: ImagesLocalDetails(
+                    DefaultValues.STRING_NO_IMAGE,
+                    DefaultValues.STRING_NO_IMAGE
+                )
+            )
         )
     }
 }

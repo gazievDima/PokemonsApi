@@ -1,11 +1,10 @@
 package com.gaziev.data.mapper.pokemon
 
+import com.gaziev.data.mapper.DefaultValues
 import com.gaziev.data.models.ImagesLocalEntity
-import com.gaziev.data.models.ImagesRemoteEntity
 import com.gaziev.data.models.PokemonLocalEntity
 import com.gaziev.data.repository.Mapper
 import com.gaziev.domain.models.ImagesLocalDetails
-import com.gaziev.domain.models.ImagesRemoteDetails
 import com.gaziev.domain.models.PokemonLocalDetails
 import javax.inject.Inject
 
@@ -16,12 +15,17 @@ class PokemonLocalMapperImpl @Inject constructor(
     override fun mapTo(t: PokemonLocalEntity): PokemonLocalDetails {
         return PokemonLocalDetails(
             primary_key = t.primary_key,
-            id = t.id,
-            name = t.name,
-            supertype = t.supertype,
-            hp = t.hp,
-            artist = t.artist,
-            images = mapper.mapTo(t.images!!)
+            id = t.id ?: DefaultValues.STRING_NO_INFORMATION,
+            name = t.name ?: DefaultValues.STRING_NO_INFORMATION,
+            supertype = t.supertype ?: DefaultValues.STRING_NO_INFORMATION,
+            hp = t.hp ?: DefaultValues.STRING_NO_INFORMATION,
+            artist = t.artist ?: DefaultValues.STRING_NO_INFORMATION,
+            images = mapper.mapTo(
+                t.images ?: ImagesLocalEntity(
+                    DefaultValues.STRING_NO_IMAGE,
+                    DefaultValues.STRING_NO_IMAGE
+                )
+            )
         )
     }
 
@@ -33,7 +37,12 @@ class PokemonLocalMapperImpl @Inject constructor(
             supertype = v.supertype,
             hp = v.hp,
             artist = v.artist,
-            images = mapper.mapFrom(v.images!!)
+            images = mapper.mapFrom(
+                v.images ?: ImagesLocalDetails(
+                    DefaultValues.STRING_NO_IMAGE,
+                    DefaultValues.STRING_NO_IMAGE
+                )
+            )
         )
     }
 }
