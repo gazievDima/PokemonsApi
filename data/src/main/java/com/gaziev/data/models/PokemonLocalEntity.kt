@@ -10,13 +10,8 @@ import com.gaziev.data.models.converters.ListStringConverter
             "id",
             "name",
             "supertype",
-            "subtypes",
             "hp",
-            "types",
-            "evolvesTo",
-            "rules",
             "artist",
-            "rarity",
             "images",
             unique = true
         )]
@@ -27,13 +22,8 @@ class PokemonLocalEntity(
     val id: String?,
     val name: String?,
     val supertype: String?,
-    val subtypes: List<String>?,
     val hp: String?,
-    val types: List<String>?,
-    val evolvesTo: List<String>?,
-    val rules: List<String>?,
     val artist: String?,
-    val rarity: String?,
     val images: ImagesLocalEntity?
 )
 

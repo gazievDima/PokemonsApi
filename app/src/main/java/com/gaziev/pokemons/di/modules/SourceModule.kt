@@ -29,7 +29,7 @@ class SourceModule {
             context.applicationContext,
             PokemonDataBase::class.java, "database-name"
         )
-            .fallbackToDestructiveMigration()
+            .addMigrations(PokemonDataBase.MIGRATION_1_2)
             .build()
     }
 

@@ -8,13 +8,8 @@ class PokemonLocalDetails(
     val id: String?,
     val name: String?,
     val supertype: String?,
-    val subtypes: List<String>?,
     val hp: String?,
-    val types: List<String>?,
-    val evolvesTo: List<String>?,
-    val rules: List<String>?,
     val artist: String?,
-    val rarity: String?,
     val images: ImagesLocalDetails?
 
 ) : Compared, Serializable {
@@ -24,8 +19,7 @@ class PokemonLocalDetails(
                 name!!.uppercase().contains(element.uppercase()) ||
                 supertype!!.uppercase().contains(element.uppercase()) ||
                 hp!!.uppercase().contains(element.uppercase()) ||
-                artist!!.uppercase().contains(element.uppercase()) ||
-                rarity!!.uppercase().contains(element.uppercase())
+                artist!!.uppercase().contains(element.uppercase())
     }
 }
 

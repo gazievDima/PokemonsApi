@@ -38,14 +38,14 @@ class PokemonCardMapperImpl @Inject constructor(
             id = t.id,
             name = t.name,
             supertype = t.supertype,
-            subtypes = t.subtypes,
             hp = t.hp,
-            types = t.types,
-            evolvesTo = t.evolvesTo,
-            rules = t.rules,
             artist = t.artist,
-            rarity = t.rarity,
-            images = t.images
+            images = t.images,
+            subtypes = null,
+            types = null,
+            evolvesTo = null,
+            rules = null,
+            rarity = null
         )
     }
 
@@ -55,13 +55,8 @@ class PokemonCardMapperImpl @Inject constructor(
             id = t.id,
             name = t.name,
             supertype = t.supertype,
-            subtypes = t.subtypes,
             hp = t.hp,
-            types = t.types,
-            evolvesTo = t.evolvesTo,
-            rules = t.rules,
             artist = t.artist,
-            rarity = t.rarity,
             images = t.images
         )
     }
