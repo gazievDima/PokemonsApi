@@ -36,6 +36,7 @@
             android:text="@string/hp_no_information_available" />
 
         <TextView
+            android:layout_marginBottom="?actionBarSize"
             android:id="@+id/tvArtist"
             style="@style/StyleFieldsTextView"
             android:text="@string/artist_no_information_available" />
